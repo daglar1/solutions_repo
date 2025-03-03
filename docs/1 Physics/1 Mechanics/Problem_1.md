@@ -4,7 +4,7 @@
 Projectile motion, while seemingly simple, provides a rich foundation for understanding fundamental physics principles. The problem is straightforward: analyze how the range of a projectile depends on its angle of projection. However, beneath this simplicity lies a complex framework involving both linear and quadratic relationships.
 
 This topic is particularly compelling due to the number of free parameters involved, such as:
-- **Initial velocity** \( v_0 \)
+- **Initial velocity** $ v_0 $
 - **Gravitational acceleration** \( g \)
 - **Launch height** \( h \)
 
