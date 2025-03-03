@@ -12,7 +12,6 @@ This topic is particularly compelling due to the number of free parameters invol
 - **Initial velocity** $v_0$
 - **Gravitational acceleration**  $g$
 - **Launch height** $h$
->>>>>>> a0206cca3075c3379c03928c15324f2c265e45cf 
 
 These parameters give rise to a diverse set of solutions that describe real-world phenomena, from the arc of a soccer ball to the trajectory of a rocket.
 
@@ -30,7 +29,7 @@ The horizontal and vertical motion of a projectile are governed by kinematic equ
 - **Vertical motion (accelerated motion due to gravity):**
 <<<<<<< HEAD
   $$
-   y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 
+  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 
   $$
 =======
   $$ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 $$
