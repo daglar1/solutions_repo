@@ -22,7 +22,7 @@ The horizontal and vertical motion of a projectile are governed by kinematic equ
   \[ x(t) = v_0 \cos(\theta) t \]
 
 - **Vertical motion (accelerated motion due to gravity):**
-  \[ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]
+  $$ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 $$
 
 where:
 - \( x(t) \) and \( y(t) \) are the projectile's position at time \( t \).
