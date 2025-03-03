@@ -4,9 +4,15 @@
 Projectile motion, while seemingly simple, provides a rich foundation for understanding fundamental physics principles. The problem is straightforward: analyze how the range of a projectile depends on its angle of projection. However, beneath this simplicity lies a complex framework involving both linear and quadratic relationships.
 
 This topic is particularly compelling due to the number of free parameters involved, such as:
+<<<<<<< HEAD
 - **Initial velocity** $v_0$
-- **Gravitational acceleration** \( g \)
-- **Launch height** \( h \)
+- **Gravitational acceleration** $g$
+- **Launch height** $h$
+=======
+- **Initial velocity** $v_0$
+- **Gravitational acceleration**  $g$
+- **Launch height** $h$
+>>>>>>> a0206cca3075c3379c03928c15324f2c265e45cf 
 
 These parameters give rise to a diverse set of solutions that describe real-world phenomena, from the arc of a soccer ball to the trajectory of a rocket.
 
@@ -19,10 +25,16 @@ To analyze projectile motion, we derive the governing equations from fundamental
 The horizontal and vertical motion of a projectile are governed by kinematic equations:
 
 - **Horizontal motion (constant velocity):**
-  \[ x(t) = v_0 \cos(\theta) t \]
+  $x(t) = v_0 \cos(\theta) t$
 
 - **Vertical motion (accelerated motion due to gravity):**
+<<<<<<< HEAD
+  $$
+   y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 
+  $$
+=======
   $$ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 $$
+>>>>>>> c4b7582b6e81bcb93d4f9b21b86559300fb4f8ed
 
 where:
 - \( x(t) \) and \( y(t) \) are the projectile's position at time \( t \).
