@@ -36,19 +36,19 @@ The horizontal and vertical motion of a projectile are governed by kinematic equ
 >>>>>>> c4b7582b6e81bcb93d4f9b21b86559300fb4f8ed
 
 where:
-- \( x(t) \) and \( y(t) \) are the projectile's position at time \( t \).
-- \( v_0 \) is the initial velocity.
-- \( \theta \) is the launch angle.
-- \( g \) is the gravitational acceleration (typically 9.81 m/s² on Earth).
+- $x(t)$ and $y(t)$ are the projectile's position at time $t$.
+- $v_0$ is the initial velocity.
+-  $\theta$ is the launch angle.
+- $g$ is the gravitational acceleration (typically 9.81 m/s² on Earth).
 
 ### **2.2. Time of Flight**
-The total time the projectile spends in the air can be determined by setting \( y(t) = 0 \):
-\[ t_f = \frac{2 v_0 \sin(\theta)}{g} \]
+The total time the projectile spends in the air can be determined by setting $y(t) = 0$:
+$t_f = \frac{2 v_0 \sin(\theta)}{g}$
 
 ### **2.3. Range Equation**
-The range \( R \) is the total horizontal distance traveled before the projectile lands.
-Using \( t_f \) in the horizontal motion equation:
-\[ R = v_0 \cos(\theta) \cdot \frac{2 v_0 \sin(\theta)}{g} \]
+The range $R$ is the total horizontal distance traveled before the projectile lands.
+Using $t_f$ in the horizontal motion equation:
+ $R = v_0 \cos(\theta) \cdot \frac{2 v_0 \sin(\theta)}{g}$
 
 Using the trigonometric identity \( 2\sin(\theta) \cos(\theta) = \sin(2\theta) \), we obtain:
 \[ R(\theta) = \frac{v_0^2}{g} \sin(2\theta) \]
