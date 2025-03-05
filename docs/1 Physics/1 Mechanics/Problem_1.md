@@ -4,7 +4,6 @@
 Projectile motion, while seemingly simple, provides a rich foundation for understanding fundamental physics principles. The problem is straightforward: analyze how the range of a projectile depends on its angle of projection. However, beneath this simplicity lies a complex framework involving both linear and quadratic relationships.
 
 This topic is particularly compelling due to the number of free parameters involved, such as:
-<<<<<<< HEAD
 - **Initial velocity** $v_0$
 - **Gravitational acceleration** $g$
 - **Launch height** $h$
@@ -27,13 +26,10 @@ The horizontal and vertical motion of a projectile are governed by kinematic equ
   $x(t) = v_0 \cos(\theta) t$
 
 - **Vertical motion (accelerated motion due to gravity):**
-<<<<<<< HEAD
-  $$
-  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 
-  $$
+  $$y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2$$
 =======
-  $$ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 $$
->>>>>>> c4b7582b6e81bcb93d4f9b21b86559300fb4f8ed
+  $$y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2$$
+
 
 where:
 - $x(t)$ and $y(t)$ are the projectile's position at time $t$.
@@ -50,26 +46,26 @@ The range $R$ is the total horizontal distance traveled before the projectile la
 Using $t_f$ in the horizontal motion equation:
  $R = v_0 \cos(\theta) \cdot \frac{2 v_0 \sin(\theta)}{g}$
 
-Using the trigonometric identity \( 2\sin(\theta) \cos(\theta) = \sin(2\theta) \), we obtain:
-\[ R(\theta) = \frac{v_0^2}{g} \sin(2\theta) \]
+Using the trigonometric identity $2\sin(\theta) \cos(\theta) = \sin(2\theta)$, we obtain:
+$R(\theta) = \frac{v_0^2}{g} \sin(2\theta)$
 
 ### **2.4. Maximum Range**
-The maximum range occurs when \( \sin(2\theta) \) is maximized, which happens at \( \theta = 45^\circ \):
-\[ R_{max} = \frac{v_0^2}{g} \]
+The maximum range occurs when $\sin(2\theta)$ is maximized, which happens at $\theta = 45^\circ$:
+$R_{max} = \frac{v_0^2}{g}$
 
 ---
 
 ## **3. Analysis of the Range**
 
 ### **3.1. Dependence on Angle**
-- The range follows a **symmetrical** pattern around \( \theta = 45^\circ \).
-- Angles \( \theta \) and \( 90^\circ - \theta \) result in the same range.
+- The range follows a **symmetrical** pattern around $\theta = 45^\circ$.
+- Angles $\theta$ and $90^\circ - \theta$ result in the same range.
 
 ### **3.2. Effect of Initial Velocity**
-- Higher \( v_0 \) leads to a longer range, proportional to \( v_0^2 \).
+- Higher $v_0$ leads to a longer range, proportional to $v_0^2$.
 
 ### **3.3. Effect of Gravity**
-- A larger \( g \) (such as on Jupiter) reduces range, while a smaller \( g \) (such as on the Moon) increases it.
+- A larger $g$ (such as on Jupiter) reduces range, while a smaller $g$ (such as on the Moon) increases it.
 
 ---
 
