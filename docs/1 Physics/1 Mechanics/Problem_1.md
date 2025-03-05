@@ -7,9 +7,7 @@ This topic is particularly compelling due to the number of free parameters invol
 - **Initial velocity** $v_0$
 - **Gravitational acceleration** $g$
 - **Launch height** $h$
-- **Initial velocity** $v_0$
-- **Gravitational acceleration**  $g$
-- **Launch height** $h$
+
 
 These parameters give rise to a diverse set of solutions that describe real-world phenomena, from the arc of a soccer ball to the trajectory of a rocket.
 
