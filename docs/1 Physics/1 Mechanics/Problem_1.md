@@ -7,7 +7,6 @@ This topic is particularly compelling due to the number of free parameters invol
 - **Initial velocity** $v_0$
 - **Gravitational acceleration** $g$
 - **Launch height** $h$
-=======
 - **Initial velocity** $v_0$
 - **Gravitational acceleration**  $g$
 - **Launch height** $h$
@@ -27,7 +26,7 @@ The horizontal and vertical motion of a projectile are governed by kinematic equ
 
 - **Vertical motion (accelerated motion due to gravity):**
   $$y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2$$
-=======
+
   $$y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2$$
 
 
