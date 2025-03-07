@@ -109,6 +109,26 @@ plt.show()
 ```
 ![alt text](image.png)
 
+## 🚀 Projectile Motion Simulation
+
+This simulation demonstrates the **parabolic trajectory of a projectile** launched at a given angle and velocity.  
+Users can **adjust the launch angle and initial speed**, allowing them to observe how different conditions affect projectile motion.
+
+### 📌 **How It Works?**
+- The user selects a **launch angle (0° - 90°) and initial velocity (5 - 50 m/s)**.
+- Pressing the **"Start Simulation"** button runs the animation based on the selected values.
+- A **moving particle (blue dot) follows a curved trajectory due to gravity**.
+- The **graph dynamically updates** to show the horizontal and vertical motion.
+
+### 🖥 **Use Cases**
+✅ **Understanding projectile motion in physics courses.**  
+✅ **Basic modeling for engineering and ballistic calculations.**  
+✅ **Trajectory analysis for real-world problems.**  
+
+🔗 **Run the Simulation on Google Colab:**  
+https://colab.research.google.com/drive/1U-gdNsOIBkSQR3tMoc0KqLe4vPOr5lib?usp=sharing
+
+
 ### **5.3. Expected Output**
 - A **parabolic curve** showing maximum range at **45°**.
 - Symmetry about **45°**, showing equal ranges for complementary angles.
