@@ -120,6 +120,97 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="investigating-the-dynamics-of-a-forced-damped-pendulum">Investigating the Dynamics of a Forced Damped Pendulum</h1>
+<h2 id="1-motivation"><strong>1. Motivation</strong></h2>
+<p>The forced damped pendulum is a classic example of a nonlinear system exhibiting a rich spectrum of dynamic behaviors. By introducing damping and external periodic forcing, the system transitions from simple harmonic motion to more complex phenomena, such as resonance, quasiperiodicity, and chaos. Understanding these dynamics is essential in fields ranging from mechanical engineering to climate modeling and electrical circuits.</p>
+<p>The introduction of an external periodic force adds new parameters, including amplitude and frequency, which significantly affect the pendulum's motion. By varying these parameters, we can observe different behaviors, including synchronized oscillations, chaotic motion, and resonance effects. These dynamics not only illustrate fundamental physical principles but also provide practical insights into engineering applications such as energy harvesting, vibration isolation, and resonance mitigation.</p>
+<hr/>
+<h2 id="2-theoretical-foundation"><strong>2. Theoretical Foundation</strong></h2>
+<h3 id="21-governing-differential-equation"><strong>2.1 Governing Differential Equation</strong></h3>
+<p>The motion of a forced damped pendulum is governed by Newton’s Second Law applied to rotational motion:</p>
+<div class="arithmatex">\[I \alpha = \sum \tau\]</div>
+<p>For a simple pendulum of mass <span class="arithmatex">\(m\)</span> and length <span class="arithmatex">\(L\)</span>, the moment of inertia about the pivot is:</p>
+<div class="arithmatex">\[I = mL^2\]</div>
+<p>The forces acting on the pendulum bob include:
+- <strong>Gravitational force</strong>: Produces a restoring torque:
+<span class="arithmatex">\(<span class="arithmatex">\(\tau_{\text{gravity}} = -mgL \sin \theta\)</span>\)</span>
+- <strong>Damping force</strong>: Opposes motion due to air resistance:
+  <span class="arithmatex">\(<span class="arithmatex">\(\tau_{\text{damping}} = -b L \frac{d\theta}{dt}\)</span>\)</span>
+- <strong>External forcing</strong>: A periodic force applied to the system:
+  <span class="arithmatex">\(<span class="arithmatex">\(\tau_{\text{forcing}} = F_0 L \cos(\omega t)\)</span>\)</span></p>
+<p>Applying Newton’s Second Law:</p>
+<div class="arithmatex">\[
+ mL^2 \frac{d^2\theta}{dt^2} = -mgL \sin\theta - b L \frac{d\theta}{dt} + F_0 L \cos(\omega t)
+\]</div>
+<p>Dividing by <span class="arithmatex">\(mL^2\)</span>, we obtain the standard form:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \sin\theta = A \cos(\omega t)
+\]</div>
+<p>where:
+- <strong>Natural frequency</strong>: <span class="arithmatex">\(<span class="arithmatex">\(\omega_0 = \sqrt{\frac{g}{L}}\)</span>\)</span>
+- <strong>Damping coefficient</strong>: <span class="arithmatex">\(<span class="arithmatex">\(\gamma = \frac{b}{mL}\)</span>\)</span>
+- <strong>Forcing term</strong>: <span class="arithmatex">\(<span class="arithmatex">\(A = \frac{F_0}{mL}\)</span>\)</span></p>
+<h3 id="22-approximate-solutions-for-small-angles"><strong>2.2 Approximate Solutions for Small Angles</strong></h3>
+<p>For small oscillations, we use the approximation <span class="arithmatex">\(<span class="arithmatex">\(\sin \theta \approx \theta\)</span>\)</span>, simplifying the equation to:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \theta = A \cos(\omega t)
+\]</div>
+<p>Solving the homogeneous equation leads to an exponentially decaying oscillatory solution, and the particular solution describes steady-state oscillations driven by the forcing term.</p>
+<p>At resonance <span class="arithmatex">\((\omega \approx \omega_0)\)</span>, the amplitude of motion is maximized, leading to significant energy absorption.</p>
+<h2 id="22-python-visualizations">2.2  Python Visualizations</h2>
+<p><img alt="alt text" src="../image-1.png"/>
+<img alt="alt text" src="../image-2.png"/>
+<img alt="alt text" src="../image-3.png"/>
+<img alt="alt text" src="../image-4.png"/></p>
+<hr/>
+<h2 id="3-analysis-of-dynamics"><strong>3. Analysis of Dynamics</strong></h2>
+<h3 id="31-influence-of-parameters"><strong>3.1 Influence of Parameters</strong></h3>
+<ul>
+<li><strong>Damping coefficient <span class="arithmatex">\((\gamma)\)</span></strong>:</li>
+<li>High damping suppresses oscillations.</li>
+<li>Low damping allows oscillations to persist longer.</li>
+<li><strong>Driving force amplitude <span class="arithmatex">\(( A )\)</span></strong>:</li>
+<li>Larger $ A $ can lead to chaotic motion.</li>
+<li><strong>Driving frequency <span class="arithmatex">\(( \omega )\)</span></strong>:</li>
+<li>At <span class="arithmatex">\(\omega \approx \omega_0\)</span>, resonance occurs.</li>
+<li>For high <span class="arithmatex">\(\omega\)</span>, behavior becomes irregular.</li>
+</ul>
+<h3 id="32-transition-to-chaos"><strong>3.2 Transition to Chaos</strong></h3>
+<p>As forcing increases, the system moves from periodic motion to quasiperiodic and eventually chaotic behavior. This is analyzed using:
+- <strong>Phase portraits</strong> (visualizing velocity vs. displacement)
+- <strong>Poincaré sections</strong> (snapshots at regular time intervals)
+- <strong>Bifurcation diagrams</strong> (tracking equilibrium solutions as parameters vary)</p>
+<hr/>
+<h2 id="4-practical-applications"><strong>4. Practical Applications</strong></h2>
+<ul>
+<li><strong>Energy Harvesting</strong>: Piezoelectric pendulums convert oscillations into electrical energy.</li>
+<li><strong>Suspension Bridges</strong>: Understanding resonance prevents structural failures.</li>
+<li><strong>Electrical Circuits</strong>: Analogous to forced RLC circuits.</li>
+<li><strong>Biomechanics</strong>: Gait patterns modeled using pendulum dynamics.</li>
+</ul>
+<hr/>
+<h2 id="5-computational-implementation"><strong>5. Computational Implementation</strong></h2>
+<h3 id="51-numerical-simulation"><strong>5.1 Numerical Simulation</strong></h3>
+<p>The forced damped pendulum equation is solved using numerical integration (Runge-Kutta method). The code generates:
+- <strong>Motion plots</strong> for varying parameters.
+- <strong>Phase portraits</strong> to visualize periodic and chaotic behavior.
+- <strong>Poincaré sections</strong> for transition analysis.
+- <strong>Bifurcation diagrams</strong> to study nonlinear effects.</p>
+<h3 id="52-model-limitations-extensions"><strong>5.2 Model Limitations &amp; Extensions</strong></h3>
+<h4 id="limitations"><strong>Limitations</strong>:</h4>
+<ul>
+<li>Small-angle approximations break down at large amplitudes.</li>
+<li>Linear damping does not always accurately model real-world resistance.</li>
+<li>External forcing is not always purely periodic.</li>
+</ul>
+<h4 id="extensions"><strong>Extensions</strong>:</h4>
+<ul>
+<li>Nonlinear damping (e.g., quadratic drag) can be incorporated.</li>
+<li>Stochastic forcing to simulate real-world perturbations.</li>
+<li>Coupled oscillators for multi-degree-of-freedom systems.</li>
+</ul>
+<hr/>
+<p>This document provides a detailed <strong>theoretical analysis</strong>, <strong>numerical simulations</strong>, and <strong>real-world applications</strong> of the forced damped pendulum. The Python script associated with this report implements these concepts to explore chaotic behavior, resonance, and nonlinear dynamics.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
