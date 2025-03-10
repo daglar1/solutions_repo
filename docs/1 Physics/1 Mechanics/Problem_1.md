@@ -324,7 +324,7 @@ ani = FuncAnimation(fig, update, frames=frames, init_func=init, blit=False, inte
 plt.close()
 HTML(ani.to_html5_video())
 ```
-### Link To The Simulation On Google Colab
+### Link To The Simulation Above On Google Colab
 https://colab.research.google.com/drive/1JAPKrMDEgJBFYaxuZgfnd50JqxAKGi-t?usp=sharing
 
 
