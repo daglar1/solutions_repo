@@ -219,30 +219,6 @@ plt.show()
 <p><img alt="alt text" src="../image-5.png"/></p>
 <h3 id="4-implementation-python-visualization"><strong>4. Implementation: Python Visualization</strong></h3>
 <p>We implement a computational tool to visualize the range as a function of the angle.</p>
-<h3 id="41-required-libraries"><strong>4.1. Required Libraries</strong></h3>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-</code></pre>
-<h3 id="42-visualization-code"><strong>4.2. Visualization Code</strong></h3>
-<pre><code class="language-python"># Define parameters
-v0 = 20  # Initial velocity (m/s)
-g = 9.81  # Gravity (m/s^2)
-theta = np.linspace(0, 90, 100)  # Angle range from 0 to 90 degrees
-
-# Compute range
-R = (v0**2 * np.sin(np.deg2rad(2 * theta))) / g
-
-# Plot the range vs. angle
-plt.figure(figsize=(10, 6))
-plt.plot(theta, R, label='Range (R)', color='blue')
-plt.xlabel('Projection Angle (θ) [Degrees]')
-plt.ylabel('Range (R) [m]')
-plt.title('Projectile Range as a Function of Launch Angle')
-plt.grid(True)
-plt.legend()
-plt.show()
-</code></pre>
-<p><img alt="alt text" src="../image.png"/></p>
 <h2 id="projectile-motion-simulation">🚀 Projectile Motion Simulation</h2>
 <p>This simulation demonstrates the <strong>parabolic trajectory of a projectile</strong> launched at a given angle and velocity.<br/>
 Users can <strong>adjust the launch angle and initial speed</strong>, allowing them to observe how different conditions affect projectile motion.</p>
