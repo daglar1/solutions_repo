@@ -222,7 +222,7 @@ plt.show()
 
  ## Projectile Motion with and Without Air Resistance (with Bouncing)
 
-## 1️⃣ What Does This Code Do?
+### 1️⃣ What Does This Code Do?
 
 This Python script simulates and visualizes projectile motion with and without air resistance, including bounces off the ground. The animation shows how air resistance affects the motion of a projectile compared to the idealized case with no drag.
 
