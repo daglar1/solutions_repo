@@ -130,33 +130,6 @@ plt.show()
 ### **4. Implementation: Python Visualization**
 We implement a computational tool to visualize the range as a function of the angle.
 
-### **4.1. Required Libraries**
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-```
-
-### **4.2. Visualization Code**
-```python
-# Define parameters
-v0 = 20  # Initial velocity (m/s)
-g = 9.81  # Gravity (m/s^2)
-theta = np.linspace(0, 90, 100)  # Angle range from 0 to 90 degrees
-
-# Compute range
-R = (v0**2 * np.sin(np.deg2rad(2 * theta))) / g
-
-# Plot the range vs. angle
-plt.figure(figsize=(10, 6))
-plt.plot(theta, R, label='Range (R)', color='blue')
-plt.xlabel('Projection Angle (θ) [Degrees]')
-plt.ylabel('Range (R) [m]')
-plt.title('Projectile Range as a Function of Launch Angle')
-plt.grid(True)
-plt.legend()
-plt.show()
-```
-![alt text](image.png)
 
 ## 🚀 Projectile Motion Simulation
 
