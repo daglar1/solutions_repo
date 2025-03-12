@@ -150,14 +150,175 @@
 - <strong>Natural frequency</strong>: <span class="arithmatex">\(<span class="arithmatex">\(\omega_0 = \sqrt{\frac{g}{L}}\)</span>\)</span>
 - <strong>Damping coefficient</strong>: <span class="arithmatex">\(<span class="arithmatex">\(\gamma = \frac{b}{mL}\)</span>\)</span>
 - <strong>Forcing term</strong>: <span class="arithmatex">\(<span class="arithmatex">\(A = \frac{F_0}{mL}\)</span>\)</span></p>
-<h3 id="22-approximate-solutions-for-small-angles"><strong>2.2 Approximate Solutions for Small Angles</strong></h3>
-<p>For small oscillations, we use the approximation <span class="arithmatex">\(<span class="arithmatex">\(\sin \theta \approx \theta\)</span>\)</span>, simplifying the equation to:</p>
-<div class="arithmatex">\[
-\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \theta = A \cos(\omega t)
-\]</div>
-<p>Solving the homogeneous equation leads to an exponentially decaying oscillatory solution, and the particular solution describes steady-state oscillations driven by the forcing term.</p>
-<p>At resonance <span class="arithmatex">\((\omega \approx \omega_0)\)</span>, the amplitude of motion is maximized, leading to significant energy absorption.</p>
+<hr/>
+<h3 id="12-approximate-solutions-for-small-angle-oscillations">1.2 Approximate Solutions for Small-Angle Oscillations</h3>
+<p>For small angles ($ \theta \ll 1 $), we use the small-angle approximation:</p>
+<p>$ \sin\theta \approx \theta $</p>
+<p>Substituting this into the equation simplifies it to:</p>
+<p>$ \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t) $</p>
+<p>This is a linear inhomogeneous second-order differential equation that can be solved using standard techniques.</p>
+<h4 id="121-general-solution">1.2.1 General Solution</h4>
+<p>The general solution consists of:</p>
+<ol>
+<li>Homogeneous solution ($ A = 0 $), solving:</li>
+</ol>
+<p>$ \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = 0 $</p>
+<p>The characteristic equation is:</p>
+<p>$ r^2 + br + \frac{g}{L} = 0 $</p>
+<p>Solving for $ r $, the solution depends on the damping coefficient $ b $:</p>
+<ul>
+<li>Underdamped case ($ b^2 &lt; 4g/L $):</li>
+</ul>
+<p>$ \theta_h(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t)) $</p>
+<p>where $ \omega{\prime} = \sqrt{\frac{g}{L} - \frac{b^2}{4}} $ is the damped frequency.</p>
+<ul>
+<li>
+<p>Overdamped and critically damped cases are handled similarly but result in non-oscillatory motion.</p>
+</li>
+<li>
+<p>Particular solution for the forced term:</p>
+</li>
+</ul>
+<p>$ \theta_p(t) = A_0 \cos(\omega t - \delta) $</p>
+<p>where:</p>
+<p>$ A_0 = \frac{A}{\sqrt{\left(\frac{g}{L} - \omega^2\right)^2 + b^2 \omega^2}} $</p>
+<p>and</p>
+<p>$ \tan\delta = \frac{b\omega}{\frac{g}{L} - \omega^2} $</p>
+<p>Thus, the full solution is:</p>
+<p>$ \theta(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t)) + A_0 \cos(\omega t - \delta) $</p>
+<p>where the first term decays over time, leaving only the steady-state oscillation.</p>
+<hr/>
+<h3 id="13-resonance-conditions-and-energy-implications">1.3 Resonance Conditions and Energy Implications</h3>
+<p>Resonance occurs when the driving frequency $ \omega $ approaches the system’s natural frequency:</p>
+<p>$ \omega \approx \sqrt{\frac{g}{L}} $</p>
+<p>At resonance, the amplitude $ A_0 $ is maximized:</p>
+<p>$ A_{\text{max}} \approx \frac{A}{b\omega} $</p>
+<p>which shows that:
+- For small damping ($ b \to 0 $), the amplitude can grow excessively, leading to large oscillations.
+- For strong damping, resonance is suppressed, and energy is dissipated before large oscillations develop.</p>
+<p>The total energy of the system:</p>
+<p>$ E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} mgL \theta^2 $</p>
+<p>is maximized at resonance, which can lead to destructive consequences in mechanical systems (e.g., bridges, buildings). Damping helps dissipate this energy and stabilize the system.</p>
+<hr/>
 <h2 id="22-python-visualizations">2.2  Python Visualizations</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+g = 9.81          # gravitational acceleration (m/s^2)
+L = 1.0           # pendulum length (m)
+b = 0.1           # damping coefficient (s^-1)
+A = 0.5           # forcing amplitude
+omega = np.sqrt(g / L)  # driving frequency (resonance condition, rad/s)
+theta0 = 0.1      # initial angle (radians)
+theta_dot0 = 0.0  # initial angular velocity (rad/s)
+
+# Time settings
+t_max = 20.0      # total simulation time (s)
+dt = 0.01         # time step (s)
+t = np.arange(0, t_max, dt)  # time array
+
+# Define the system of ODEs
+def pendulum_derivatives(t, state, b, g, L, A, omega):
+    theta, theta_dot = state
+    dtheta_dt = theta_dot
+    dtheta_dot_dt = -b * theta_dot - (g / L) * theta + A * np.cos(omega * t)
+    return np.array([dtheta_dt, dtheta_dot_dt])
+
+# RK4 solver
+def rk4_step(t, state, dt, b, g, L, A, omega):
+    k1 = pendulum_derivatives(t, state, b, g, L, A, omega)
+    k2 = pendulum_derivatives(t + dt/2, state + dt * k1/2, b, g, L, A, omega)
+    k3 = pendulum_derivatives(t + dt/2, state + dt * k2/2, b, g, L, A, omega)
+    k4 = pendulum_derivatives(t + dt, state + dt * k3, b, g, L, A, omega)
+    return state + (dt / 6) * (k1 + 2*k2 + 2*k3 + k4)
+
+# Initialize arrays
+state = np.array([theta0, theta_dot0])  # [theta, theta_dot]
+theta = np.zeros(len(t))
+theta_dot = np.zeros(len(t))
+theta[0], theta_dot[0] = state
+
+# Simulate the motion
+for i in range(1, len(t)):
+    state = rk4_step(t[i-1], state, dt, b, g, L, A, omega)
+    theta[i], theta_dot[i] = state
+
+# Calculate total energy
+m = 1.0  # mass (kg), assumed for simplicity
+energy = 0.5 * m * L**2 * theta_dot**2 + 0.5 * m * g * L * theta**2
+
+# Plotting
+plt.figure(figsize=(12, 8))
+
+# Angle vs Time
+plt.subplot(2, 1, 1)
+plt.plot(t, theta, label=r'$\theta(t)$')
+plt.xlabel('Time (s)')
+plt.ylabel('Angle (rad)')
+plt.title('Forced Damped Pendulum Motion')
+plt.grid(True)
+plt.legend()
+
+# Energy vs Time
+plt.subplot(2, 1, 2)
+plt.plot(t, energy, label='Total Energy', color='orange')
+plt.xlabel('Time (s)')
+plt.ylabel('Energy (J)')
+plt.title('Total Energy Over Time')
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+# Optional: Phase space plot
+plt.figure(figsize=(6, 6))
+plt.plot(theta, theta_dot, label='Phase Trajectory')
+plt.xlabel(r'$\theta$ (rad)')
+plt.ylabel(r'$\dot{\theta}$ (rad/s)')
+plt.title('Phase Space: Angle vs Angular Velocity')
+plt.grid(True)
+plt.legend()
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image-8.png"/>
+<img alt="alt text" src="../image-9.png"/></p>
+<h2 id="explanation-of-the-code">Explanation of the Code</h2>
+<h3 id="parameters">Parameters</h3>
+<p>The following physical constants and initial conditions are defined with realistic values:</p>
+<ul>
+<li>$ g $: Gravitational acceleration (m/s²).</li>
+<li>$ L $: Pendulum length (m).</li>
+<li>$ b $: Damping coefficient (s⁻¹).</li>
+<li>$ A $: Forcing amplitude.</li>
+<li>$ \omega $: Driving frequency (rad/s), set to $ \omega = \sqrt{\frac{g}{L}} $ to match the natural frequency for resonance.</li>
+<li>Initial conditions:</li>
+<li>$ \theta_0 $: Initial angle (radians), starting the pendulum slightly displaced.</li>
+<li>$ \dot{\theta}_0 $: Initial angular velocity (rad/s).</li>
+</ul>
+<h3 id="ode-definition">ODE Definition</h3>
+<p>The <code>pendulum_derivatives</code> function computes the derivatives of the system:
+- $ \frac{d\theta}{dt} $: Angular velocity.
+- $ \frac{d\dot{\theta}}{dt} $: Angular acceleration, based on the equation of motion.</p>
+<h3 id="rk4-solver">RK4 Solver</h3>
+<p>The <code>rk4_step</code> function implements the 4th-order Runge-Kutta method to advance the solution one time step:
+- Numerically integrates the ODEs using four stages (k1, k2, k3, k4) to update $ \theta $ and $ \dot{\theta} $.</p>
+<h3 id="simulation">Simulation</h3>
+<p>The simulation process:
+- A loop iterates over time, updating:
+  - $ \theta $: Angular displacement.
+  - $ \dot{\theta} $: Angular velocity.
+- Energy is calculated using:
+  - $ E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} m g L \theta^2 $ (small-angle potential energy, in joules).</p>
+<h3 id="visualization">Visualization</h3>
+<p>The results are visualized with:
+- Two plots:
+  1. Angle ($ \theta <span class="arithmatex">\() vs. time.
+  2. Energy (\)</span> E $) vs. time.
+- A phase space plot:
+  - $ \theta $ vs. $ \dot{\theta} $, showing the system’s trajectory in phase space.</p>
+<hr/>
 <p><img alt="alt text" src="../image-1.png"/>
 <img alt="alt text" src="../image-2.png"/>
 <img alt="alt text" src="../image-3.png"/>
@@ -210,7 +371,6 @@
 <li>Coupled oscillators for multi-degree-of-freedom systems.</li>
 </ul>
 <hr/>
-<p>This document provides a detailed <strong>theoretical analysis</strong>, <strong>numerical simulations</strong>, and <strong>real-world applications</strong> of the forced damped pendulum. The Python script associated with this report implements these concepts to explore chaotic behavior, resonance, and nonlinear dynamics.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
