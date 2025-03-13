@@ -433,6 +433,43 @@ plt.show()
 <img alt="alt text" src="../image-2.png"/>
 <img alt="alt text" src="../image-3.png"/>
 <img alt="alt text" src="../image-4.png"/></p>
+<h2 id="forced-damped-pendulum-simulation">Forced Damped Pendulum Simulation</h2>
+<p>This Python code simulates a forced damped pendulum and visualizes its behavior using NumPy, Matplotlib, and SciPy. Here's a concise explanation:</p>
+<h3 id="setup">Setup</h3>
+<p>Defines parameters:
+- Gravity: <span class="arithmatex">\(g=9.81,\text{m/s}^2\)</span>
+- Pendulum length: <span class="arithmatex">\(L=1.0,\text{m}\)</span>
+- Damping coefficients: <span class="arithmatex">\(b\)</span>
+- Forcing amplitudes: <span class="arithmatex">\(F_0\)</span>
+- Driving frequencies: <span class="arithmatex">\(\omega\)</span>
+- Natural frequency: <span class="arithmatex">\(\omega_0=\sqrt{\frac{g}{L}}\)</span></p>
+<h2 id="equations">Equations</h2>
+<p>Models the pendulum with the ODE:
+- <span class="arithmatex">\(\frac{d^2\theta}{dt^2}=-\gamma\dot{\theta}-\omega_0^2\sin(\theta)+F_0\cos(\omega t)\)</span></p>
+<p>Split into two first-order equations:
+- Angle: <span class="arithmatex">\(\theta\)</span>
+- Angular velocity: <span class="arithmatex">\(\dot{\theta}\)</span></p>
+<h2 id="simulation_1">Simulation</h2>
+<ul>
+<li>Uses <code>solve_ivp</code> with the RK45 method to solve the ODE over 50 seconds.</li>
+<li>Initial condition: Small angle (0.1 rad).</li>
+</ul>
+<h2 id="plots">Plots</h2>
+<ul>
+<li><strong>Motion</strong>: Graphs <span class="arithmatex">\(\theta(t)\)</span> for combinations of <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(F_0\)</span>, and <span class="arithmatex">\(\omega\)</span>.</li>
+<li><strong>Phase Portrait</strong>: Plots <span class="arithmatex">\(\theta\)</span> vs. <span class="arithmatex">\(\dot{\theta}\)</span> for one case.</li>
+<li><strong>Poincaré Section</strong>: Scatters <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(\dot{\theta}\)</span> every 20th point.</li>
+<li><strong>Bifurcation Diagram</strong>: Shows final <span class="arithmatex">\(\theta\)</span> values vs. driving frequency (<span class="arithmatex">\(\omega\)</span>).</li>
+</ul>
+<h2 id="discussion">Discussion</h2>
+<ul>
+<li><strong>Limitations</strong>:</li>
+<li>No small-angle approximation.</li>
+<li>Linear damping may not reflect real-world conditions.</li>
+<li><strong>Extensions</strong>:</li>
+<li>Nonlinear damping (e.g., quadratic drag).</li>
+<li>Stochastic forcing for real-world perturbations.</li>
+</ul>
 <hr/>
 <h2 id="3-analysis-of-dynamics"><strong>3. Analysis of Dynamics</strong></h2>
 <h3 id="31-influence-of-parameters"><strong>3.1 Influence of Parameters</strong></h3>
