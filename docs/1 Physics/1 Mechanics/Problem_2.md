@@ -240,7 +240,7 @@ The following physical constants and initial conditions are defined with realist
 - $L$: Pendulum length (m).
 - $b$: Damping coefficient (s⁻¹).
 - $A$: Forcing amplitude.
-- $\omega $: Driving frequency (rad/s), set to $ \omega = \sqrt{\frac{g}{L}}$ to match the natural frequency for resonance.
+- $\omega$: Driving frequency (rad/s), set to $\omega = \sqrt{\frac{g}{L}}$ to match the natural frequency for resonance.
 - Initial conditions:
   - $\theta_0$: Initial angle (radians), starting the pendulum slightly displaced.
   - $\dot{\theta}_0$: Initial angular velocity (rad/s).
