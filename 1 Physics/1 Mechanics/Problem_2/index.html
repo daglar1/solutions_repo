@@ -210,7 +210,7 @@
 - For small damping <span class="arithmatex">\(b \to 0\)</span>, the amplitude can grow excessively, leading to large oscillations.
 - For strong damping, resonance is suppressed, and energy is dissipated before large oscillations develop.</p>
 <p>The total energy of the system:</p>
-<p>$ E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} mgL \theta^2 $</p>
+<div class="arithmatex">\[E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} mgL \theta^2\]</div>
 <p>is maximized at resonance, which can lead to destructive consequences in mechanical systems (e.g., bridges, buildings). Damping helps dissipate this energy and stabilize the system.</p>
 <hr/>
 <h2 id="22-python-visualizations">2.2  Python Visualizations</h2>
@@ -301,19 +301,19 @@ plt.show()
 <h3 id="parameters">Parameters</h3>
 <p>The following physical constants and initial conditions are defined with realistic values:</p>
 <ul>
-<li>$ g $: Gravitational acceleration (m/s²).</li>
-<li>$ L $: Pendulum length (m).</li>
-<li>$ b $: Damping coefficient (s⁻¹).</li>
-<li>$ A $: Forcing amplitude.</li>
-<li>$ \omega $: Driving frequency (rad/s), set to $ \omega = \sqrt{\frac{g}{L}} $ to match the natural frequency for resonance.</li>
+<li><span class="arithmatex">\(g\)</span>: Gravitational acceleration (m/s²).</li>
+<li><span class="arithmatex">\(L\)</span>: Pendulum length (m).</li>
+<li><span class="arithmatex">\(b\)</span>: Damping coefficient (s⁻¹).</li>
+<li><span class="arithmatex">\(A\)</span>: Forcing amplitude.</li>
+<li>$\omega $: Driving frequency (rad/s), set to $ \omega = \sqrt{\frac{g}{L}}$ to match the natural frequency for resonance.</li>
 <li>Initial conditions:</li>
-<li>$ \theta_0 $: Initial angle (radians), starting the pendulum slightly displaced.</li>
-<li>$ \dot{\theta}_0 $: Initial angular velocity (rad/s).</li>
+<li><span class="arithmatex">\(\theta_0\)</span>: Initial angle (radians), starting the pendulum slightly displaced.</li>
+<li><span class="arithmatex">\(\dot{\theta}_0\)</span>: Initial angular velocity (rad/s).</li>
 </ul>
 <h3 id="ode-definition">ODE Definition</h3>
 <p>The <code>pendulum_derivatives</code> function computes the derivatives of the system:
-- $ \frac{d\theta}{dt} $: Angular velocity.
-- $ \frac{d\dot{\theta}}{dt} $: Angular acceleration, based on the equation of motion.</p>
+- <span class="arithmatex">\(<span class="arithmatex">\(\frac{d\theta}{dt}\)</span>\)</span>: Angular velocity.
+- <span class="arithmatex">\(<span class="arithmatex">\(\frac{d\dot{\theta}}{dt}\)</span>\)</span>: Angular acceleration, based on the equation of motion.</p>
 <h3 id="rk4-solver">RK4 Solver</h3>
 <p>The <code>rk4_step</code> function implements the 4th-order Runge-Kutta method to advance the solution one time step:
 - Numerically integrates the ODEs using four stages (k1, k2, k3, k4) to update $ \theta $ and $ \dot{\theta} $.</p>
