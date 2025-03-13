@@ -38,9 +38,7 @@ $$\tau_{\text{forcing}} = F_0 L \cos(\omega t)$$
 
 Applying Newton’s Second Law:
 
-$$
- mL^2 \frac{d^2\theta}{dt^2} = -mgL \sin\theta - b L \frac{d\theta}{dt} + F_0 L \cos(\omega t)
-$$
+$$mL^2 \frac{d^2\theta}{dt^2} = -mgL \sin\theta - b L \frac{d\theta}{dt} + F_0 L \cos(\omega t)$$
 
 Dividing by $mL^2$, we obtain the standard form:
 
@@ -68,13 +66,13 @@ $$A = \frac{F_0}{mL}$$
 
 ### 1.2 Approximate Solutions for Small-Angle Oscillations
 
-For small angles ($ \theta \ll 1 $), we use the small-angle approximation:
+For small angles $ \theta \ll 1 $, we use the small-angle approximation:
 
 $ \sin\theta \approx \theta $
 
 Substituting this into the equation simplifies it to:
 
-$ \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t) $
+$$\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t)$$
 
 This is a linear inhomogeneous second-order differential equation that can be solved using standard techniques.
 
@@ -82,21 +80,21 @@ This is a linear inhomogeneous second-order differential equation that can be so
 
 The general solution consists of:
 
-1. Homogeneous solution ($ A = 0 $), solving:
+1. Homogeneous solution $ A = 0 $, solving:
 
-$ \frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = 0 $
+$$\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = 0$$
 
 The characteristic equation is:
 
-$ r^2 + br + \frac{g}{L} = 0 $
+$$r^2 + br + \frac{g}{L} = 0$$
 
-Solving for $ r $, the solution depends on the damping coefficient $ b $:
+Solving for $r$, the solution depends on the damping coefficient $b$:
 
-- Underdamped case ($ b^2 < 4g/L $):
+- Underdamped case $b^2 < 4g/L$:
 
-$ \theta_h(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t)) $
+$$\theta_h(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t))$$
 
-where $ \omega{\prime} = \sqrt{\frac{g}{L} - \frac{b^2}{4}} $ is the damped frequency.
+where $$\omega{\prime} = \sqrt{\frac{g}{L} - \frac{b^2}{4}}$$ is the damped frequency.
 
 - Overdamped and critically damped cases are handled similarly but result in non-oscillatory motion.
 
