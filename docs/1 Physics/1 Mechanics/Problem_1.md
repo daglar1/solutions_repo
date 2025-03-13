@@ -148,8 +148,8 @@ Users can **adjust the launch angle and initial speed**, allowing them to observ
 ✅ **Trajectory analysis for real-world problems.**  
 
 🔗 **Run the Simulation on Google Colab:**  
-https://colab.research.google.com/drive/1U-gdNsOIBkSQR3tMoc0KqLe4vPOr5lib?usp=sharing
-
+[Link text](https://colab.research.google.com/drive/1U-gdNsOIBkSQR3tMoc0KqLe4vPOr5lib?usp=sharing
+)
 ---
 
 ## **5. Air Resistance & Improved Models**
