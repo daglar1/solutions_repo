@@ -248,8 +248,14 @@ The following physical constants and initial conditions are defined with realist
 ### ODE Definition
 
 The `pendulum_derivatives` function computes the derivatives of the system:
-- $$\frac{d\theta}{dt}$$: Angular velocity.
-- $$\frac{d\dot{\theta}}{dt}$$: Angular acceleration, based on the equation of motion.
+
+- $$\frac{d\theta}{dt}$$: 
+
+Angular velocity.
+
+- $$\frac{d\dot{\theta}}{dt}$$:
+
+ Angular acceleration, based on the equation of motion.
 
 ### RK4 Solver
 
