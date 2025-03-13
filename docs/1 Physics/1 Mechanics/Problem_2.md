@@ -137,7 +137,7 @@ which shows that:
 
 The total energy of the system:
 
-$ E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} mgL \theta^2 $
+$$E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} mgL \theta^2$$
 
 is maximized at resonance, which can lead to destructive consequences in mechanical systems (e.g., bridges, buildings). Damping helps dissipate this energy and stabilize the system.
 
@@ -236,20 +236,20 @@ plt.show()
 
 The following physical constants and initial conditions are defined with realistic values:
 
-- $ g $: Gravitational acceleration (m/s²).
-- $ L $: Pendulum length (m).
-- $ b $: Damping coefficient (s⁻¹).
-- $ A $: Forcing amplitude.
-- $ \omega $: Driving frequency (rad/s), set to $ \omega = \sqrt{\frac{g}{L}} $ to match the natural frequency for resonance.
+- $g$: Gravitational acceleration (m/s²).
+- $L$: Pendulum length (m).
+- $b$: Damping coefficient (s⁻¹).
+- $A$: Forcing amplitude.
+- $\omega $: Driving frequency (rad/s), set to $ \omega = \sqrt{\frac{g}{L}}$ to match the natural frequency for resonance.
 - Initial conditions:
-  - $ \theta_0 $: Initial angle (radians), starting the pendulum slightly displaced.
-  - $ \dot{\theta}_0 $: Initial angular velocity (rad/s).
+  - $\theta_0$: Initial angle (radians), starting the pendulum slightly displaced.
+  - $\dot{\theta}_0$: Initial angular velocity (rad/s).
 
 ### ODE Definition
 
 The `pendulum_derivatives` function computes the derivatives of the system:
-- $ \frac{d\theta}{dt} $: Angular velocity.
-- $ \frac{d\dot{\theta}}{dt} $: Angular acceleration, based on the equation of motion.
+- $$\frac{d\theta}{dt}$$: Angular velocity.
+- $$\frac{d\dot{\theta}}{dt}$$: Angular acceleration, based on the equation of motion.
 
 ### RK4 Solver
 
