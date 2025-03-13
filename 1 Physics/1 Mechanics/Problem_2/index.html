@@ -316,14 +316,14 @@ plt.show()
 - <span class="arithmatex">\(<span class="arithmatex">\(\frac{d\dot{\theta}}{dt}\)</span>\)</span>: Angular acceleration, based on the equation of motion.</p>
 <h3 id="rk4-solver">RK4 Solver</h3>
 <p>The <code>rk4_step</code> function implements the 4th-order Runge-Kutta method to advance the solution one time step:
-- Numerically integrates the ODEs using four stages (k1, k2, k3, k4) to update $ \theta $ and $ \dot{\theta} $.</p>
+- Numerically integrates the ODEs using four stages (k1, k2, k3, k4) to update <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(\dot{\theta}\)</span>.</p>
 <h3 id="simulation">Simulation</h3>
 <p>The simulation process:
 - A loop iterates over time, updating:
-  - $ \theta $: Angular displacement.
-  - $ \dot{\theta} $: Angular velocity.
+  - <span class="arithmatex">\(\theta\)</span>: Angular displacement.
+  - <span class="arithmatex">\(\dot{\theta}\)</span>: Angular velocity.
 - Energy is calculated using:
-  - $ E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} m g L \theta^2 $ (small-angle potential energy, in joules).</p>
+  - <span class="arithmatex">\(E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} m g L \theta^2\)</span> (small-angle potential energy, in joules).</p>
 <h3 id="visualization">Visualization</h3>
 <p>The results are visualized with:
 - Two plots:
