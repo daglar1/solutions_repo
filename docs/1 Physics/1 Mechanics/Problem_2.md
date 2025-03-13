@@ -379,6 +379,51 @@ plt.show()
 ![alt text](image-2.png)
 ![alt text](image-3.png)
 ![alt text](image-4.png)
+
+## Forced Damped Pendulum Simulation
+
+This Python code simulates a forced damped pendulum and visualizes its behavior using NumPy, Matplotlib, and SciPy. Here's a concise explanation:
+
+### Setup
+
+Defines parameters:
+- Gravity: $g=9.81,\text{m/s}^2$
+- Pendulum length: $L=1.0,\text{m}$
+- Damping coefficients: $b$
+- Forcing amplitudes: $F_0$
+- Driving frequencies: $\omega$
+- Natural frequency: $\omega_0=\sqrt{\frac{g}{L}}$
+
+## Equations
+
+Models the pendulum with the ODE:
+- $\frac{d^2\theta}{dt^2}=-\gamma\dot{\theta}-\omega_0^2\sin(\theta)+F_0\cos(\omega t)$
+
+Split into two first-order equations:
+- Angle: $\theta$
+- Angular velocity: $\dot{\theta}$
+
+## Simulation
+
+- Uses `solve_ivp` with the RK45 method to solve the ODE over 50 seconds.
+- Initial condition: Small angle (0.1 rad).
+
+## Plots
+
+- **Motion**: Graphs $\theta(t)$ for combinations of $b$, $F_0$, and $\omega$.
+- **Phase Portrait**: Plots $\theta$ vs. $\dot{\theta}$ for one case.
+- **Poincaré Section**: Scatters $\theta$ and $\dot{\theta}$ every 20th point.
+- **Bifurcation Diagram**: Shows final $\theta$ values vs. driving frequency ($\omega$).
+
+## Discussion
+
+- **Limitations**:
+  - No small-angle approximation.
+  - Linear damping may not reflect real-world conditions.
+- **Extensions**:
+  - Nonlinear damping (e.g., quadratic drag).
+  - Stochastic forcing for real-world perturbations.
+
 ---
 
 ## **3. Analysis of Dynamics**
