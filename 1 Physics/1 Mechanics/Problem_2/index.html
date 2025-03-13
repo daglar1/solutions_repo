@@ -165,8 +165,8 @@
 <div class="arithmatex">\[A = \frac{F_0}{mL}\]</div>
 <hr/>
 <h3 id="12-approximate-solutions-for-small-angle-oscillations">1.2 Approximate Solutions for Small-Angle Oscillations</h3>
-<p>For small angles $ \theta \ll 1 $, we use the small-angle approximation:</p>
-<p>$ \sin\theta \approx \theta $</p>
+<p>For small angles <span class="arithmatex">\(\theta \ll 1\)</span>, we use the small-angle approximation:</p>
+<div class="arithmatex">\[\sin\theta \approx \theta\]</div>
 <p>Substituting this into the equation simplifies it to:</p>
 <div class="arithmatex">\[\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t)\]</div>
 <p>This is a linear inhomogeneous second-order differential equation that can be solved using standard techniques.</p>
@@ -192,22 +192,22 @@
 <p>Particular solution for the forced term:</p>
 </li>
 </ul>
-<p>$ \theta_p(t) = A_0 \cos(\omega t - \delta) $</p>
+<div class="arithmatex">\[\theta_p(t) = A_0 \cos(\omega t - \delta)\]</div>
 <p>where:</p>
-<p>$ A_0 = \frac{A}{\sqrt{\left(\frac{g}{L} - \omega^2\right)^2 + b^2 \omega^2}} $</p>
+<div class="arithmatex">\[A_0 = \frac{A}{\sqrt{\left(\frac{g}{L} - \omega^2\right)^2 + b^2 \omega^2}}\]</div>
 <p>and</p>
-<p>$ \tan\delta = \frac{b\omega}{\frac{g}{L} - \omega^2} $</p>
+<div class="arithmatex">\[\tan\delta = \frac{b\omega}{\frac{g}{L} - \omega^2}\]</div>
 <p>Thus, the full solution is:</p>
-<p>$ \theta(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t)) + A_0 \cos(\omega t - \delta) $</p>
+<div class="arithmatex">\[\theta(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t)) + A_0 \cos(\omega t - \delta)\]</div>
 <p>where the first term decays over time, leaving only the steady-state oscillation.</p>
 <hr/>
 <h3 id="13-resonance-conditions-and-energy-implications">1.3 Resonance Conditions and Energy Implications</h3>
-<p>Resonance occurs when the driving frequency $ \omega $ approaches the system’s natural frequency:</p>
-<p>$ \omega \approx \sqrt{\frac{g}{L}} $</p>
-<p>At resonance, the amplitude $ A_0 $ is maximized:</p>
-<p>$ A_{\text{max}} \approx \frac{A}{b\omega} $</p>
+<p>Resonance occurs when the driving frequency <span class="arithmatex">\(\omega\)</span> approaches the system’s natural frequency:</p>
+<div class="arithmatex">\[\omega \approx \sqrt{\frac{g}{L}}\]</div>
+<p>At resonance, the amplitude <span class="arithmatex">\(A_0\)</span> is maximized:</p>
+<div class="arithmatex">\[A_{\text{max}} \approx \frac{A}{b\omega}\]</div>
 <p>which shows that:
-- For small damping ($ b \to 0 $), the amplitude can grow excessively, leading to large oscillations.
+- For small damping <span class="arithmatex">\(b \to 0\)</span>, the amplitude can grow excessively, leading to large oscillations.
 - For strong damping, resonance is suppressed, and energy is dissipated before large oscillations develop.</p>
 <p>The total energy of the system:</p>
 <p>$ E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} mgL \theta^2 $</p>
