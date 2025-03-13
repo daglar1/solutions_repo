@@ -22,12 +22,18 @@ $$I = mL^2$$
 
 
 The forces acting on the pendulum bob include:
+
 - **Gravitational force**: Produces a restoring torque:
+
 $$\tau_{\text{gravity}} = -mgL \sin \theta$$
+
 - **Damping force**: Opposes motion due to air resistance:
-  $$\tau_{\text{damping}} = -b L \frac{d\theta}{dt}$$
+
+$$\tau_{\text{damping}} = -b L \frac{d\theta}{dt}$$
+
 - **External forcing**: A periodic force applied to the system:
-  $$\tau_{\text{forcing}} = F_0 L \cos(\omega t)$$
+
+$$\tau_{\text{forcing}} = F_0 L \cos(\omega t)$$
 
 
 Applying Newton’s Second Law:
@@ -43,9 +49,19 @@ $$
 $$
 
 where:
-- **Natural frequency**: $$\omega_0 = \sqrt{\frac{g}{L}}$$
-- **Damping coefficient**: $$\gamma = \frac{b}{mL}$$
-- **Forcing term**: $$A = \frac{F_0}{mL}$$
+
+- **Natural frequency**: 
+
+$$\omega_0 = \sqrt{\frac{g}{L}}$$
+
+
+- **Damping coefficient**: 
+
+$$\gamma = \frac{b}{mL}$$
+
+- **Forcing term**: 
+
+$$A = \frac{F_0}{mL}$$
 
 
 ---
