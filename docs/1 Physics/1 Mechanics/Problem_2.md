@@ -66,9 +66,9 @@ $$A = \frac{F_0}{mL}$$
 
 ### 1.2 Approximate Solutions for Small-Angle Oscillations
 
-For small angles $ \theta \ll 1 $, we use the small-angle approximation:
+For small angles $\theta \ll 1$, we use the small-angle approximation:
 
-$ \sin\theta \approx \theta $
+$$\sin\theta \approx \theta$$
 
 Substituting this into the equation simplifies it to:
 
@@ -100,19 +100,19 @@ where $$\omega{\prime} = \sqrt{\frac{g}{L} - \frac{b^2}{4}}$$ is the damped freq
 
 2. Particular solution for the forced term:
 
-$ \theta_p(t) = A_0 \cos(\omega t - \delta) $
+$$\theta_p(t) = A_0 \cos(\omega t - \delta)$$
 
 where:
 
-$ A_0 = \frac{A}{\sqrt{\left(\frac{g}{L} - \omega^2\right)^2 + b^2 \omega^2}} $
+$$A_0 = \frac{A}{\sqrt{\left(\frac{g}{L} - \omega^2\right)^2 + b^2 \omega^2}}$$
 
 and
 
-$ \tan\delta = \frac{b\omega}{\frac{g}{L} - \omega^2} $
+$$\tan\delta = \frac{b\omega}{\frac{g}{L} - \omega^2}$$
 
 Thus, the full solution is:
 
-$ \theta(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t)) + A_0 \cos(\omega t - \delta) $
+$$\theta(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t)) + A_0 \cos(\omega t - \delta)$$
 
 where the first term decays over time, leaving only the steady-state oscillation.
 
@@ -123,16 +123,16 @@ where the first term decays over time, leaving only the steady-state oscillation
 
 ### 1.3 Resonance Conditions and Energy Implications
 
-Resonance occurs when the driving frequency $ \omega $ approaches the system’s natural frequency:
+Resonance occurs when the driving frequency $\omega$ approaches the system’s natural frequency:
 
-$ \omega \approx \sqrt{\frac{g}{L}} $
+$$\omega \approx \sqrt{\frac{g}{L}}$$
 
-At resonance, the amplitude $ A_0 $ is maximized:
+At resonance, the amplitude $A_0$ is maximized:
 
-$ A_{\text{max}} \approx \frac{A}{b\omega} $
+$$A_{\text{max}} \approx \frac{A}{b\omega}$$
 
 which shows that:
-- For small damping ($ b \to 0 $), the amplitude can grow excessively, leading to large oscillations.
+- For small damping $b \to 0$, the amplitude can grow excessively, leading to large oscillations.
 - For strong damping, resonance is suppressed, and energy is dissipated before large oscillations develop.
 
 The total energy of the system:
