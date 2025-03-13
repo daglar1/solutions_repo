@@ -254,16 +254,16 @@ The `pendulum_derivatives` function computes the derivatives of the system:
 ### RK4 Solver
 
 The `rk4_step` function implements the 4th-order Runge-Kutta method to advance the solution one time step:
-- Numerically integrates the ODEs using four stages (k1, k2, k3, k4) to update $ \theta $ and $ \dot{\theta} $.
+- Numerically integrates the ODEs using four stages (k1, k2, k3, k4) to update $\theta$ and $\dot{\theta}$.
 
 ### Simulation
 
 The simulation process:
 - A loop iterates over time, updating:
-  - $ \theta $: Angular displacement.
-  - $ \dot{\theta} $: Angular velocity.
+  - $\theta$: Angular displacement.
+  - $\dot{\theta}$: Angular velocity.
 - Energy is calculated using:
-  - $ E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} m g L \theta^2 $ (small-angle potential energy, in joules).
+  - $E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} m g L \theta^2$ (small-angle potential energy, in joules).
 
 ### Visualization
 
