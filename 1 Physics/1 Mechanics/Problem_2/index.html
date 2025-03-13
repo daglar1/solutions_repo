@@ -311,9 +311,15 @@ plt.show()
 <li><span class="arithmatex">\(\dot{\theta}_0\)</span>: Initial angular velocity (rad/s).</li>
 </ul>
 <h3 id="ode-definition">ODE Definition</h3>
-<p>The <code>pendulum_derivatives</code> function computes the derivatives of the system:
-- <span class="arithmatex">\(<span class="arithmatex">\(\frac{d\theta}{dt}\)</span>\)</span>: Angular velocity.
-- <span class="arithmatex">\(<span class="arithmatex">\(\frac{d\dot{\theta}}{dt}\)</span>\)</span>: Angular acceleration, based on the equation of motion.</p>
+<p>The <code>pendulum_derivatives</code> function computes the derivatives of the system:</p>
+<ul>
+<li><span class="arithmatex">\(<span class="arithmatex">\(\frac{d\theta}{dt}\)</span>\)</span>: </li>
+</ul>
+<p>Angular velocity.</p>
+<ul>
+<li><span class="arithmatex">\(<span class="arithmatex">\(\frac{d\dot{\theta}}{dt}\)</span>\)</span>:</li>
+</ul>
+<p>Angular acceleration, based on the equation of motion.</p>
 <h3 id="rk4-solver">RK4 Solver</h3>
 <p>The <code>rk4_step</code> function implements the 4th-order Runge-Kutta method to advance the solution one time step:
 - Numerically integrates the ODEs using four stages (k1, k2, k3, k4) to update <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(\dot{\theta}\)</span>.</p>
