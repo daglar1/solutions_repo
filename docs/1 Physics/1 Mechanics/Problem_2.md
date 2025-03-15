@@ -426,6 +426,247 @@ Split into two first-order equations:
 
 ---
 
+
+## HTML Simulation For Further Implementation
+
+
+## What It Does
+This Python script creates an interactive web-based simulation of a **forced damped pendulum**. It:
+
+- Generates an HTML file (`pendulum_simulation.html`) with a canvas showing a pendulum and a chart plotting its motion.
+- Lets you adjust parameters (damping, driving amplitude, frequency) via sliders and start/stop the simulation with buttons.
+- Simulates the pendulum’s motion under gravity, damping, and an external driving force.
+
+## How It Works
+
+### Structure
+- The code defines `html_content` as a triple-quoted string containing HTML, CSS, JavaScript, and Brython Python.
+- It writes this string to `pendulum_simulation.html` and saves it.
+
+### Components
+- **HTML/CSS**: Sets up the webpage layout with sliders, buttons, a pendulum canvas, and a chart canvas.
+- **Brython**: Runs Python in the browser (loaded via CDN), handling the simulation logic.
+- **Chart.js**: Plots the pendulum’s angular displacement over time.
+
+### Simulation Logic
+- **Physics**: Uses the Runge-Kutta 4 (RK4) method to solve differential equations for a damped, driven pendulum:
+  - `dx_dt`: Calculates angular velocity and acceleration based on gravity, damping, and driving force.
+  - `rk4_step`: Updates the pendulum’s angle (`theta`) and velocity (`omega`) every time step (`dt = 0.01s`).
+- **Animation**: The `animate()` function updates the pendulum’s position, redraws it on the canvas, and updates the chart every 10ms (if `running = True`).
+
+### Interactivity
+- **Sliders**: `updateParams()` adjusts `b` (damping), `F_d` (driving amplitude), and `omega_d` (driving frequency) in real-time.
+- **Buttons**: 
+  - `startSimulation()` resets variables and starts the animation loop.
+  - `stopSimulation()` pauses it by setting `running = False`.
+
+### Execution
+- Run the Python script to create the HTML file.
+- Open the HTML file in a browser, where Brython executes the embedded Python, simulating the pendulum and responding to user input.
+
+--- 
+
+```python
+from IPython.display import HTML
+
+# Define the HTML content
+html_content = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forced Damped Pendulum Simulation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.0/brython.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.0/brython_stdlib.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        canvas {
+            border: 1px solid black;
+            margin: 10px;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        .controls label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body onload="brython()">
+    <div class="container">
+        <h1>Forced Damped Pendulum Simulation</h1>
+        <div class="controls">
+            <label>Damping Coefficient (b): <input type="range" id="damping" min="0" max="0.2" step="0.01" value="0.05" oninput="updateParams()"></label>
+            <span id="dampingValue">0.05</span><br>
+            <label>Driving Amplitude (F_d): <input type="range" id="drivingAmplitude" min="0" max="1.5" step="0.1" value="0.5" oninput="updateParams()"></label>
+            <span id="drivingAmplitudeValue">0.5</span><br>
+            <label>Driving Frequency (ω_d): <input type="range" id="drivingFrequency" min="0" max="5" step="0.1" value="3.13" oninput="updateParams()"></label>
+            <span id="drivingFrequencyValue">3.13</span><br>
+            <button onclick="startSimulation()">Start Simulation</button>
+            <button onclick="stopSimulation()">Stop Simulation</button>
+        </div>
+        <canvas id="pendulumCanvas" width="400" height="400"></canvas>
+        <canvas id="chartCanvas" width="400" height="200"></canvas>
+    </div>
+
+    <script type="text/python">
+from browser import document, window, timer
+import math
+
+# Constants
+g = 9.81  # Acceleration due to gravity (m/s^2)
+L = 1.0   # Length of pendulum (m)
+m = 0.1   # Mass of the bob (kg)
+dt = 0.01  # Time step (s)
+theta_0 = 0.1  # Initial angle (radians)
+omega_0 = 0.0  # Initial angular velocity (radians/s)
+omega_natural = math.sqrt(g / L)
+
+# Global variables
+b = 0.05  # Damping coefficient
+F_d = 0.5  # Driving amplitude
+omega_d = 3.13  # Driving frequency (near resonance)
+theta = theta_0
+omega = omega_0
+t = 0.0
+time_data = []
+theta_data = []
+running = False
+
+# Canvas and Chart setup
+canvas = document["pendulumCanvas"]
+ctx = canvas.getContext("2d")
+chartCanvas = document["chartCanvas"]
+chartCtx = chartCanvas.getContext("2d")
+chart = window.Chart.new(chartCtx, {
+    "type": "line",
+    "data": {
+        "labels": [],
+        "datasets": [{
+            "label": "Angular Displacement (radians)",
+            "data": [],
+            "borderColor": "blue",
+            "fill": False
+        }]
+    },
+    "options": {
+        "scales": {
+            "x": {"title": {"display": True, "text": "Time (s)"}},
+            "y": {"title": {"display": True, "text": "θ (radians)"}}
+        }
+    }
+})
+
+# Differential equations
+def dx_dt(x, t):
+    theta, omega = x
+    dtheta_dt = omega
+    domega_dt = -(b / (m * L)) * omega - (g / L) * math.sin(theta) + (F_d / (m * L)) * math.sin(omega_d * t)
+    return [dtheta_dt, domega_dt]
+
+# RK4 step
+def rk4_step(x, t):
+    k1 = dx_dt(x, t)
+    k2 = dx_dt([x[0] + k1[0] * dt / 2, x[1] + k1[1] * dt / 2], t + dt / 2)
+    k3 = dx_dt([x[0] + k2[0] * dt / 2, x[1] + k2[1] * dt / 2], t + dt / 2)
+    k4 = dx_dt([x[0] + k3[0] * dt, x[1] + k3[1] * dt], t + dt)
+    x_new = [x[0] + (dt / 6) * (k1[0] + 2*k2[0] + 2*k3[0] + k4[0]),
+             x[1] + (dt / 6) * (k1[1] + 2*k2[1] + 2*k3[1] + k4[1])]
+    return x_new
+
+# Update parameters from sliders
+def updateParams(ev=None):
+    global b, F_d, omega_d
+    b = float(document["damping"].value)
+    F_d = float(document["drivingAmplitude"].value)
+    omega_d = float(document["drivingFrequency"].value)
+    document["dampingValue"].text = f"{b:.2f}"
+    document["drivingAmplitudeValue"].text = f"{F_d:.1f}"
+    document["drivingFrequencyValue"].text = f"{omega_d:.2f}"
+
+# Animation function
+def animate():
+    global theta, omega, t, running
+    if not running:
+        return
+
+    # Update position using RK4
+    x = [theta, omega]
+    x_new = rk4_step(x, t)
+    theta, omega = x_new
+    t += dt
+
+    # Update canvas (draw pendulum)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.beginPath()
+    pivot_x, pivot_y = canvas.width / 2, 50
+    bob_x = pivot_x + 150 * math.sin(theta)  # Scaled length for visibility
+    bob_y = pivot_y + 150 * math.cos(theta)
+    ctx.moveTo(pivot_x, pivot_y)
+    ctx.lineTo(bob_x, bob_y)
+    ctx.strokeStyle = "black"
+    ctx.lineWidth = 2
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.arc(bob_x, bob_y, 10, 0, 2 * math.pi)
+    ctx.fillStyle = "red"
+    ctx.fill()
+
+    # Update chart
+    time_data.append(t)
+    theta_data.append(theta)
+    if len(time_data) > 200:  # Limit data points for performance
+        time_data.pop(0)
+        theta_data.pop(0)
+    chart.data.labels = [f"{t:.1f}" for t in time_data]
+    chart.data.datasets[0].data = theta_data
+    chart.update()
+
+    # Schedule next frame
+    timer.set_timeout(animate, 10)
+
+# Start and stop functions
+def startSimulation(ev=None):
+    global running, t, theta, omega, time_data, theta_data
+    if not running:
+        running = True
+        t = 0.0
+        theta = theta_0
+        omega = omega_0
+        time_data = []
+        theta_data = []
+        animate()
+
+def stopSimulation(ev=None):
+    global running
+    running = False
+
+# Bind functions to window for JavaScript calls
+window.startSimulation = startSimulation
+window.stopSimulation = stopSimulation
+window.updateParams = updateParams
+
+# Initial parameter update
+updateParams()
+    </script>
+</body>
+</html>
+"""
+
+# Display the HTML in Jupyter
+HTML(html_content)
+```
+---
+
+
 ## **3. Analysis of Dynamics**
 ### **3.1 Influence of Parameters**
 - **Damping coefficient $(\gamma)$**:
