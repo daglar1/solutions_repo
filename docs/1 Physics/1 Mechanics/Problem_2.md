@@ -94,7 +94,7 @@ Solving for $r$, the solution depends on the damping coefficient $b$:
 
 $$\theta_h(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t))$$
 
-where $$ \omega{\prime} = \sqrt{\frac{g}{L} - \frac{b^2}{4}} $$ is the damped frequency.
+where $$ omega{\prime} = \sqrt{\frac{g}{L} - \frac{b^2}{4}} $$ is the damped frequency.
 
 - Overdamped and critically damped cases are handled similarly but result in non-oscillatory motion.
 
