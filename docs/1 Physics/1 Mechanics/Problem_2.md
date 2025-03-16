@@ -256,7 +256,10 @@ $$:
 
 Angular velocity.
 
-- $$\frac{d\dot{\theta}}{dt}$$:
+- 
+$$
+\frac{d\dot{\theta}}{dt}
+$$:
 
  Angular acceleration, based on the equation of motion.
 
