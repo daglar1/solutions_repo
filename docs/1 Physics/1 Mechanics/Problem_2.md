@@ -257,6 +257,7 @@ $$:
 Angular velocity.
 
 - 
+
 $$
 \frac{d\dot{\theta}}{dt}
 $$:
