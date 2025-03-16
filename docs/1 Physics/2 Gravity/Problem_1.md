@@ -314,12 +314,17 @@ This section explains the Python code used to simulate circular orbits and verif
 
 ### Orbital Period Function
 - The function `orbital_period(r, M)` implements:
-  $$
-  T = \sqrt{\frac{4\pi^2 r^3}{G M}}
-  $$
+$$
+T = \sqrt{\frac{4\pi^2 r^3}{G M}}
+$$
+
+$$
 - This comes from Kepler’s Third Law, rearranged from $$
+
+$$
 T^2 = \frac{4\pi^2}{G M} r^3
 $$.
+
 - Periods are converted from seconds to days (divided by $24 \times 3600$ for readability.
 
 ### Verification Plot
