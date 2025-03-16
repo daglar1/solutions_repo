@@ -113,6 +113,7 @@ we can calculate the mass of a central body (e.g., a planet or star) if we know 
 Using Earth’s orbit around the Sun:
 - $r = 1.496 \times 10^{11} \, \text{m}$ (1 AU),
 - $T = 365.25 \, \text{days} = 3.156 \times 10^7 \, \text{s}$,
+
 - $G = 6.674 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$.
 
 Plugging these values in:
