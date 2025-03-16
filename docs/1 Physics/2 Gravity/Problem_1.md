@@ -330,27 +330,27 @@ $$.
 ### Verification Plot
 - Computes $r^3$ and $T^2$ for a range of radii $5 \times 10^9$ to $( 2 \times 10^{11} \, \text{m} )$.
 - Plots $T^2$ vs. $r^3$ for orbits around the Sun and Earth.
-- A straight line is expected, as $T^2 \propto r^3 $, with the slope given by $\frac{4\pi^2}{G M}$.
+- A straight line is expected, as $T^2 \propto r^3$, with the slope given by $\frac{4\pi^2}{G M}$.
 
 ### Orbit Simulation
-- The function `simulate_orbit(r, T, label, color)` calculates $ x $ and $ y $ coordinates for one orbit:
-  - $ x = r \cos\left(\frac{2\pi t}{T}\right) $,
-  - $ y = r \sin\left(\frac{2\pi t}{T}\right) $,
-  where $ t $ is time over one period, and $ \theta = \frac{2\pi t}{T} $ is the angular position.
+- The function `simulate_orbit(r, T, label, color)` calculates $x$ and $y$ coordinates for one orbit:
+  - $x = r \cos\left(\frac{2\pi t}{T}\right)$,
+  - $y = r \sin\left(\frac{2\pi t}{T}\right)$,
+  where $t$ is time over one period, and $\theta = \frac{2\pi t}{T}$ is the angular position.
 - These parametric equations describe uniform circular motion.
 - Plots Earth’s orbit around the Sun and the Moon’s orbit around Earth.
 
 ### Output
 - **Two Plots**:
-  1. One verifying $ T^2 \propto r^3 $ (linearity check).
+  1. One verifying $T^2 \propto r^3$ (linearity check).
   2. One showing circular orbits (visual representation).
 - **Printed Values**: Orbital radii and periods for Earth and Moon orbits, compared with real data.
 
 ## Results and Verification
 
-### Plot 1: $ T^2 $ vs. $ r^3 $
-- **Description**: The plot shows a linear relationship between $ T^2 $ in days and $ r^3 $ (in $m^3$), confirming:
-  $$ T^2 \propto r^3 $$
+### Plot 1: $T^2$ vs. $r^3$
+- **Description**: The plot shows a linear relationship between $T^2$ in days and $r^3$ (in $m^3$), confirming:
+  $$T^2 \propto r^3$$
 - **Slope**: Depends on $ \frac{4\pi^2}{G M} $:
   - Smaller slope for the Sun (larger $ M $) than for Earth, as $ M_{\text{sun}} \gg M_{\text{earth}} $.
 - **Verification**: Linearity matches Kepler’s Third Law, with the constant of proportionality validated by the central mass.
