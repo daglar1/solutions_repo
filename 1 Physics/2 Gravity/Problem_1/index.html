@@ -365,12 +365,16 @@ print(f"Moon’s orbital period: {T_moon_earth / (24 * 3600):.2f} days")
 <h3 id="orbital-period-function">Orbital Period Function</h3>
 <ul>
 <li>The function <code>orbital_period(r, M)</code> implements:
-  $$
-  T = \sqrt{\frac{4\pi^2 r^3}{G M}}
-  $$</li>
-<li>This comes from Kepler’s Third Law, rearranged from $$
+$$
+T = \sqrt{\frac{4\pi^2 r^3}{G M}}
+$$</li>
+</ul>
+<div class="arithmatex">\[
+- This comes from Kepler’s Third Law, rearranged from \]</div>
+<p>$$
 T^2 = \frac{4\pi^2}{G M} r^3
-$$.</li>
+$$.</p>
+<ul>
 <li>Periods are converted from seconds to days (divided by <span class="arithmatex">\(24 \times 3600\)</span> for readability.</li>
 </ul>
 <h3 id="verification-plot">Verification Plot</h3>
