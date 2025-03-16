@@ -249,7 +249,10 @@ The following physical constants and initial conditions are defined with realist
 
 The `pendulum_derivatives` function computes the derivatives of the system:
 
-- $$\frac{d\theta}{dt}$$: 
+- 
+$$
+\frac{d\theta}{dt}
+$$: 
 
 Angular velocity.
 
