@@ -166,7 +166,7 @@ This corresponds to an altitude of about 35,786 km above Earth’s equator.
 
 The radial velocity method and transit method both rely on Kepler’s Third Law to determine exoplanet orbits.
 
-- **Transit Method**: When a planet passes in front of a star, its orbital period $ T $ can be measured.
+- **Transit Method**: When a planet passes in front of a star, its orbital period $T$ can be measured.
 - **Radial Velocity Method**: By observing how a star wobbles due to gravitational interaction, astronomers infer a planet’s mass and distance.
 
 ### Example: Kepler Space Telescope Discoveries
@@ -187,7 +187,7 @@ $$ M_1 + M_2 = \frac{4\pi^2 r^3}{G T^2} $$
 - This is one of the main methods used to detect stellar-mass black holes by observing their interaction with a companion star.
 
 ### Example: Cygnus X-1 Black Hole
-- By applying Kepler’s Law to the orbit of a star around an unseen object, astronomers confirmed the presence of a black hole with a mass of approximately $ 21 M_{\odot} $.
+- By applying Kepler’s Law to the orbit of a star around an unseen object, astronomers confirmed the presence of a black hole with a mass of approximately $21 M_{\odot}$.
 
 ---
 
@@ -314,9 +314,13 @@ This section explains the Python code used to simulate circular orbits and verif
 
 ### Orbital Period Function
 - The function `orbital_period(r, M)` implements:
-  $$T = \sqrt{\frac{4\pi^2 r^3}{G M}}$$
-- This comes from Kepler’s Third Law, rearranged from $$( T^2 = \frac{4\pi^2}{G M} r^3 )$$.
-- Periods are converted from seconds to days (divided by $( 24 \times 3600 )$) for readability.
+  $$
+  T = \sqrt{\frac{4\pi^2 r^3}{G M}}
+  $$
+- This comes from Kepler’s Third Law, rearranged from $$
+T^2 = \frac{4\pi^2}{G M} r^3
+$$.
+- Periods are converted from seconds to days (divided by $24 \times 3600$ for readability.
 
 ### Verification Plot
 - Computes $r^3$ and $T^2$ for a range of radii $5 \times 10^9$ to $( 2 \times 10^{11} \, \text{m} )$.
