@@ -381,29 +381,29 @@ $$.</p>
 <ul>
 <li>Computes <span class="arithmatex">\(r^3\)</span> and <span class="arithmatex">\(T^2\)</span> for a range of radii <span class="arithmatex">\(5 \times 10^9\)</span> to <span class="arithmatex">\(( 2 \times 10^{11} \, \text{m} )\)</span>.</li>
 <li>Plots <span class="arithmatex">\(T^2\)</span> vs. <span class="arithmatex">\(r^3\)</span> for orbits around the Sun and Earth.</li>
-<li>A straight line is expected, as $T^2 \propto r^3 $, with the slope given by <span class="arithmatex">\(\frac{4\pi^2}{G M}\)</span>.</li>
+<li>A straight line is expected, as <span class="arithmatex">\(T^2 \propto r^3\)</span>, with the slope given by <span class="arithmatex">\(\frac{4\pi^2}{G M}\)</span>.</li>
 </ul>
 <h3 id="orbit-simulation">Orbit Simulation</h3>
 <ul>
-<li>The function <code>simulate_orbit(r, T, label, color)</code> calculates $ x $ and $ y $ coordinates for one orbit:</li>
-<li>$ x = r \cos\left(\frac{2\pi t}{T}\right) $,</li>
-<li>$ y = r \sin\left(\frac{2\pi t}{T}\right) $,
-  where $ t $ is time over one period, and $ \theta = \frac{2\pi t}{T} $ is the angular position.</li>
+<li>The function <code>simulate_orbit(r, T, label, color)</code> calculates <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> coordinates for one orbit:</li>
+<li><span class="arithmatex">\(x = r \cos\left(\frac{2\pi t}{T}\right)\)</span>,</li>
+<li><span class="arithmatex">\(y = r \sin\left(\frac{2\pi t}{T}\right)\)</span>,
+  where <span class="arithmatex">\(t\)</span> is time over one period, and <span class="arithmatex">\(\theta = \frac{2\pi t}{T}\)</span> is the angular position.</li>
 <li>These parametric equations describe uniform circular motion.</li>
 <li>Plots Earth’s orbit around the Sun and the Moon’s orbit around Earth.</li>
 </ul>
 <h3 id="output">Output</h3>
 <ul>
 <li><strong>Two Plots</strong>:</li>
-<li>One verifying $ T^2 \propto r^3 $ (linearity check).</li>
+<li>One verifying <span class="arithmatex">\(T^2 \propto r^3\)</span> (linearity check).</li>
 <li>One showing circular orbits (visual representation).</li>
 <li><strong>Printed Values</strong>: Orbital radii and periods for Earth and Moon orbits, compared with real data.</li>
 </ul>
 <h2 id="results-and-verification">Results and Verification</h2>
-<h3 id="plot-1-t2-vs-r3">Plot 1: $ T^2 $ vs. $ r^3 $</h3>
+<h3 id="plot-1-t2-vs-r3">Plot 1: <span class="arithmatex">\(T^2\)</span> vs. <span class="arithmatex">\(r^3\)</span></h3>
 <ul>
-<li><strong>Description</strong>: The plot shows a linear relationship between $ T^2 $ in days and $ r^3 $ (in <span class="arithmatex">\(m^3\)</span>), confirming:
-  $$ T^2 \propto r^3 $$</li>
+<li><strong>Description</strong>: The plot shows a linear relationship between <span class="arithmatex">\(T^2\)</span> in days and <span class="arithmatex">\(r^3\)</span> (in <span class="arithmatex">\(m^3\)</span>), confirming:
+  <span class="arithmatex">\(<span class="arithmatex">\(T^2 \propto r^3\)</span>\)</span></li>
 <li><strong>Slope</strong>: Depends on $ \frac{4\pi^2}{G M} $:</li>
 <li>Smaller slope for the Sun (larger $ M $) than for Earth, as $ M_{\text{sun}} \gg M_{\text{earth}} $.</li>
 <li><strong>Verification</strong>: Linearity matches Kepler’s Third Law, with the constant of proportionality validated by the central mass.</li>
