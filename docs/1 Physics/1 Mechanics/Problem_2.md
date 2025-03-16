@@ -276,7 +276,10 @@ The simulation process:
   - $\theta$: Angular displacement.
   - $\dot{\theta}$: Angular velocity.
 - Energy is calculated using:
-  - $$ E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} m g L \theta^2 $$ (small-angle potential energy, in joules).
+  - $$ 
+  E = \frac{1}{2} m L^2 \dot{\theta}^2 + \frac{1}{2} m g L \theta^2 
+  $$
+   (small-angle potential energy, in joules).
 
 ### Visualization
 
