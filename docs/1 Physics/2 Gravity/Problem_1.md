@@ -20,9 +20,15 @@ F = \frac{G M m}{r^2}
 $$
 
 where:
-- $(G)$ is the gravitational constant $(6.674 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2})$,
+- $(G)$ is the gravitational constant
+$$
+6.674 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}
+$$,
+
 - $(M)$ is the mass of the central body (e.g., the Sun for planetary orbits),
+
 - $(m)$ is the orbiting mass,
+
 - $(r)$ is the orbital radius.
 
 For a circular orbit, the centripetal force required to maintain the orbit is:
