@@ -80,7 +80,7 @@ This is a linear inhomogeneous second-order differential equation that can be so
 
 The general solution consists of:
 
-1. Homogeneous solution $ A = 0 $, solving:
+1. Homogeneous solution $A = 0$, solving:
 
 $$\frac{d^2\theta}{dt^2} + b \frac{d\theta}{dt} + \frac{g}{L} \theta = 0$$
 
@@ -94,7 +94,7 @@ Solving for $r$, the solution depends on the damping coefficient $b$:
 
 $$\theta_h(t) = e^{-bt/2} (C_1 \cos(\omega{\prime} t) + C_2 \sin(\omega{\prime} t))$$
 
-where $$\omega{\prime} = \sqrt{\frac{g}{L} - \frac{b^2}{4}}$$ is the damped frequency.
+where $$ \omega{\prime} = \sqrt{\frac{g}{L} - \frac{b^2}{4}} $$ is the damped frequency.
 
 - Overdamped and critically damped cases are handled similarly but result in non-oscillatory motion.
 
