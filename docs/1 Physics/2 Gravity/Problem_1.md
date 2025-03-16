@@ -110,11 +110,13 @@ we can calculate the mass of a central body (e.g., a planet or star) if we know 
 
 ### Example: Finding the Mass of the Sun
 
-Using Earth’s orbit around the Sun:
-- $r = 1.496 \times 10^{11} \, \text{m}$ (1 AU),
-- $T = 365.25 \, \text{days} = 3.156 \times 10^7 \, \text{s}$,
 
-- $G = 6.674 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$.
+---
+
+Using Earth’s orbit around the Sun:
+- $r=1.496\times10^{11}\text{m}$ (1 AU),
+- $T=365.25\text{days}=3.156\times10^7\text{s}$,
+- $G=6.674\times10^{-11}\text{m}^3\text{kg}^{-1}\text{s}^{-2}$.
 
 Plugging these values in:
 
@@ -148,11 +150,13 @@ This method applies to exoplanets—measuring the transit time of a planet aroun
 
 - Kepler’s Law governs how satellites orbit Earth.
 - Space agencies use it to calculate fuel needs and plan satellite deployments.
-- Geostationary satellites (e.g., GPS satellites) are placed in orbits where their period matches Earth’s rotation ($ T = 24 \, \text{hours} $), ensuring they stay fixed above one location.
+- Geostationary satellites (e.g., GPS satellites) are placed in orbits where their period matches Earth’s rotation $T = 24 \, \text{hours}$, ensuring they stay fixed above one location.
 
-Using $ T^2 \propto r^3 $, we can determine the correct altitude needed for stable satellite orbits. For a geostationary orbit:
+Using $T^2 \propto r^3$, we can determine the correct altitude needed for stable satellite orbits. For a geostationary orbit:
 
-$$ r = \left( \frac{G M_{\text{Earth}} (24 \times 3600)^2}{4\pi^2} \right)^{1/3} \approx 4.22 \times 10^7 \, \text{m} $$
+$$
+ r = \left( \frac{G M_{\text{Earth}} (24 \times 3600)^2}{4\pi^2} \right)^{1/3} \approx 4.22 \times 10^7 \, \text{m}
+$$
 
 This corresponds to an altitude of about 35,786 km above Earth’s equator.
 
