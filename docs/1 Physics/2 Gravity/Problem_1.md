@@ -350,22 +350,24 @@ $$.
 
 ### Plot 1: $T^2$ vs. $r^3$
 - **Description**: The plot shows a linear relationship between $T^2$ in days and $r^3$ (in $m^3$), confirming:
-  $$T^2 \propto r^3$$
-- **Slope**: Depends on $ \frac{4\pi^2}{G M} $:
-  - Smaller slope for the Sun (larger $ M $) than for Earth, as $ M_{\text{sun}} \gg M_{\text{earth}} $.
+  $$
+  T^2 \propto r^3
+  $$
+- **Slope**: Depends on $\frac{4\pi^2}{G M}$:
+  - Smaller slope for the Sun (larger $ M $) than for Earth, as $M_{\text{sun}} \gg M_{\text{earth}}$.
 - **Verification**: Linearity matches Kepler’s Third Law, with the constant of proportionality validated by the central mass.
 
 ### Plot 2: Circular Orbits
 - **Description**: Visualizes:
-  - Earth’s orbit around the Sun $( r = 1.496 \times 10^{11} \, \text{m} )$,
-  - Moon’s orbit around Earth $( r = 3.844 \times 10^8 \, \text{m} )$.
-- **Scale Difference**: The Moon’s orbit appears small due to the vast difference in radii $ 10^{11} $ vs. $ 10^8 $.
+  - Earth’s orbit around the Sun $r = 1.496 \times 10^{11} \, \text{m}$,
+  - Moon’s orbit around Earth $r = 3.844 \times 10^8 \, \text{m}$.
+- **Scale Difference**: The Moon’s orbit appears small due to the vast difference in radii $10^{11}$ vs. $10^8$.
 - **Verification**: The circular shapes align with the assumption of circular motion, and calculated periods match real values:
-  - Earth: $ T \approx 365.25 \, \text{days} $,
-  - Moon: $ T \approx 27.32 \, \text{days} $.
+  - Earth: $T \approx 365.25 \, \text{days}$,
+  - Moon: $T \approx 27.32 \, \text{days}$.
 
 ## Conclusion
-The code accurately simulates circular orbits and verifies Kepler’s Third Law. The linear $ T^2 $ vs. $ r^3 $ plot confirms the theoretical relationship, while the orbit visualization illustrates the physical motion. Printed values align with astronomical observations, reinforcing the model’s validity.
+The code accurately simulates circular orbits and verifies Kepler’s Third Law. The linear $T^2$ vs. $r^3$ plot confirms the theoretical relationship, while the orbit visualization illustrates the physical motion. Printed values align with astronomical observations, reinforcing the model’s validity.
 
 ---
 
