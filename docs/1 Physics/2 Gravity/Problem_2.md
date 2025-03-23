@@ -199,18 +199,24 @@ This Python script calculates and visualizes the first, second, and third cosmic
 1. **First Cosmic Velocity (v₁):**  
    - The speed needed to enter a stable circular orbit just above a planet’s surface.  
    - Formula:  
-     $$v_1 = \sqrt{\frac{GM}{R}}$$
+     $$
+     v_1 = \sqrt{\frac{GM}{R}}
+     $$
 
 2. **Second Cosmic Velocity (v₂):**  
    - The speed needed to escape the gravitational field of a planet entirely.  
    - Formula:  
-     $$v_2 = \sqrt{\frac{2GM}{R}}$$
+     $$
+     v_2 = \sqrt{\frac{2GM}{R}}
+     $$
 
 3. **Third Cosmic Velocity (v₃):**  
    - The speed needed to escape the Sun’s gravity, starting from a planet’s orbit.  
    - Combines the escape velocity from the Sun and the planet’s orbital speed.  
    - Formula:  
-     $$v_3 = \sqrt{v^2_{\text{escape from Sun}} + v^2_{\text{orbital}}}$$
+     $$
+     v_3 = \sqrt{v^2_{\text{escape from Sun}} + v^2_{\text{orbital}}}
+     $$
 
 ---
 
