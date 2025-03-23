@@ -11,7 +11,9 @@ The concept of escape velocity is fundamental to spaceflight and astrophysics. I
 The minimum velocity needed to achieve a **stable circular orbit** around a planet just above its surface.
 
 **Equation:**  
-$$v_1 = \sqrt{\frac{GM}{R}}$$
+$$
+v_1 = \sqrt{\frac{GM}{R}}
+$$
 
 Where:
 - $G$ is the gravitational constant: $6.67430 \times 10^{-11} \ \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$
@@ -19,7 +21,9 @@ Where:
 - $R$ is the radius of the planet
 
 **Derivation:** Set the **centripetal force** equal to the **gravitational force**:  
-$$\frac{mv^2}{R} = \frac{GMm}{R^2} \Rightarrow v = \sqrt{\frac{GM}{R}}$$
+$$
+\frac{mv^2}{R} = \frac{GMm}{R^2} \Rightarrow v = \sqrt{\frac{GM}{R}}
+$$
 
 ---
 
@@ -27,10 +31,14 @@ $$\frac{mv^2}{R} = \frac{GMm}{R^2} \Rightarrow v = \sqrt{\frac{GM}{R}}$$
 The minimum velocity needed to **escape the gravitational pull** of a planet without further propulsion.
 
 **Equation:**  
-$$v_2 = \sqrt{\frac{2GM}{R}}$$
+$$
+v_2 = \sqrt{\frac{2GM}{R}}
+$$
 
 **Derivation:** From conservation of energy:  
-$$\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v = \sqrt{\frac{2GM}{R}}$$
+$$
+\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v = \sqrt{\frac{2GM}{R}}
+$$
 
 ---
 
@@ -38,10 +46,14 @@ $$\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v = \sqrt{\frac{2GM}{R}}$$
 The minimum velocity needed to **escape the gravity of the Sun** starting from Earth’s orbit.
 
 **Equation:**  
-$$v_3 = \sqrt{v_\text{escape from Earth orbit}^2 + v_\text{Earth orbit}^2}$$
+$$
+v_3 = \sqrt{v_\text{escape from Earth orbit}^2 + v_\text{Earth orbit}^2}
+$$
 
 Or more formally:  
-$$v_3 = \sqrt{\frac{2GM_\odot}{r} - v_\text{Earth}^2}$$
+$$
+v_3 = \sqrt{\frac{2GM_\odot}{r} - v_\text{Earth}^2}
+$$
 
 Where:
 - $M_\odot$ is the Sun's mass
@@ -54,27 +66,42 @@ Where:
 
 ### **3.1 Dependence on Mass ($M$)**
 All cosmic velocities are **directly proportional** to the square root of the celestial body's mass:
-- $$v \propto \sqrt{M}$$
+- 
+$$
+v \propto \sqrt{M}
+$$
 
 This means that more massive planets or stars require higher speeds to orbit or escape their gravitational fields.
 
 ### **3.2 Dependence on Radius ($R$)**
 All cosmic velocities are **inversely proportional** to the square root of the radius:
-- $$v \propto \frac{1}{\sqrt{R}}$$
+- 
+$$
+v \propto \frac{1}{\sqrt{R}}
+$$
 
 Larger planets (in terms of radius) require lower speeds for orbit or escape, assuming mass is constant.
 
 ### **3.3 First Cosmic Velocity Recap**
 The orbital velocity ($v_1$) ensures that the centripetal acceleration matches gravitational acceleration:
-- $$v_1 = \sqrt{\frac{GM}{R}}$$
+- 
+$$
+v_1 = \sqrt{\frac{GM}{R}}
+$$
 
 ### **3.4 Second Cosmic Velocity Recap**
 The escape velocity ($v_2$) is derived by equating kinetic energy to gravitational potential energy:
-- $$\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v_2 = \sqrt{\frac{2GM}{R}}$$
+- 
+$$
+\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v_2 = \sqrt{\frac{2GM}{R}}
+$$
 
 ### **3.5 Third Cosmic Velocity Recap**
 To escape the **entire solar system**, the third cosmic velocity takes into account both the Sun’s gravity and Earth's motion around the Sun:
-- $$v_3 = \sqrt{v_\text{escape,Sun}^2 + v_\text{Earth orbit}^2}$$
+- 
+$$
+v_3 = \sqrt{v_\text{escape,Sun}^2 + v_\text{Earth orbit}^2}
+$$
 
 ### **3.6 Summary of Parameters**
 | Parameter | Effect on $v_1$, $v_2$, $v_3$ |
