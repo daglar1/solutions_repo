@@ -74,14 +74,34 @@
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#31-dependence-on-mass-m">3.1 Dependence on Mass (\(M\))</a>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#all-cosmic-velocities-are-directly-proportional-to-the-square-root-of-the-celestial-bodys-mass">All cosmic velocities are directly proportional to the square root of the celestial body's mass:</a>
+<ul>
 <li class="toctree-l4"><a class="reference internal" href="#32-dependence-on-radius-r">3.2 Dependence on Radius (\(R\))</a>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#all-cosmic-velocities-are-inversely-proportional-to-the-square-root-of-the-radius">All cosmic velocities are inversely proportional to the square root of the radius:</a>
+<ul>
 <li class="toctree-l4"><a class="reference internal" href="#33-first-cosmic-velocity-recap">3.3 First Cosmic Velocity Recap</a>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#the-orbital-velocity-v_1-ensures-that-the-centripetal-acceleration-matches-gravitational-acceleration">The orbital velocity (\(v_1\)) ensures that the centripetal acceleration matches gravitational acceleration:</a>
+<ul>
 <li class="toctree-l4"><a class="reference internal" href="#34-second-cosmic-velocity-recap">3.4 Second Cosmic Velocity Recap</a>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#the-escape-velocity-v_2-is-derived-by-equating-kinetic-energy-to-gravitational-potential-energy">The escape velocity (\(v_2\)) is derived by equating kinetic energy to gravitational potential energy:</a>
+<ul>
 <li class="toctree-l4"><a class="reference internal" href="#35-third-cosmic-velocity-recap">3.5 Third Cosmic Velocity Recap</a>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#to-escape-the-entire-solar-system-the-third-cosmic-velocity-takes-into-account-both-the-suns-gravity-and-earths-motion-around-the-sun">To escape the entire solar system, the third cosmic velocity takes into account both the Sun’s gravity and Earth's motion around the Sun:</a>
+<ul>
 <li class="toctree-l4"><a class="reference internal" href="#36-summary-of-parameters">3.6 Summary of Parameters</a>
 </li>
 </ul>
@@ -155,27 +175,39 @@
 <h3 id="21-first-cosmic-velocity-orbital-velocity"><strong>2.1 First Cosmic Velocity (Orbital Velocity)</strong></h3>
 <p>The minimum velocity needed to achieve a <strong>stable circular orbit</strong> around a planet just above its surface.</p>
 <p><strong>Equation:</strong><br/>
-<span class="arithmatex">\(<span class="arithmatex">\(v_1 = \sqrt{\frac{GM}{R}}\)</span>\)</span></p>
+$$
+v_1 = \sqrt{\frac{GM}{R}}
+$$</p>
 <p>Where:
 - <span class="arithmatex">\(G\)</span> is the gravitational constant: <span class="arithmatex">\(6.67430 \times 10^{-11} \ \text{m}^3 \text{kg}^{-1} \text{s}^{-2}\)</span>
 - <span class="arithmatex">\(M\)</span> is the mass of the planet
 - <span class="arithmatex">\(R\)</span> is the radius of the planet</p>
 <p><strong>Derivation:</strong> Set the <strong>centripetal force</strong> equal to the <strong>gravitational force</strong>:<br/>
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{mv^2}{R} = \frac{GMm}{R^2} \Rightarrow v = \sqrt{\frac{GM}{R}}\)</span>\)</span></p>
+$$
+\frac{mv^2}{R} = \frac{GMm}{R^2} \Rightarrow v = \sqrt{\frac{GM}{R}}
+$$</p>
 <hr/>
 <h3 id="22-second-cosmic-velocity-escape-velocity"><strong>2.2 Second Cosmic Velocity (Escape Velocity)</strong></h3>
 <p>The minimum velocity needed to <strong>escape the gravitational pull</strong> of a planet without further propulsion.</p>
 <p><strong>Equation:</strong><br/>
-<span class="arithmatex">\(<span class="arithmatex">\(v_2 = \sqrt{\frac{2GM}{R}}\)</span>\)</span></p>
+$$
+v_2 = \sqrt{\frac{2GM}{R}}
+$$</p>
 <p><strong>Derivation:</strong> From conservation of energy:<br/>
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v = \sqrt{\frac{2GM}{R}}\)</span>\)</span></p>
+$$
+\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v = \sqrt{\frac{2GM}{R}}
+$$</p>
 <hr/>
 <h3 id="23-third-cosmic-velocity-interstellar-escape-velocity"><strong>2.3 Third Cosmic Velocity (Interstellar Escape Velocity)</strong></h3>
 <p>The minimum velocity needed to <strong>escape the gravity of the Sun</strong> starting from Earth’s orbit.</p>
 <p><strong>Equation:</strong><br/>
-<span class="arithmatex">\(<span class="arithmatex">\(v_3 = \sqrt{v_\text{escape from Earth orbit}^2 + v_\text{Earth orbit}^2}\)</span>\)</span></p>
+$$
+v_3 = \sqrt{v_\text{escape from Earth orbit}^2 + v_\text{Earth orbit}^2}
+$$</p>
 <p>Or more formally:<br/>
-<span class="arithmatex">\(<span class="arithmatex">\(v_3 = \sqrt{\frac{2GM_\odot}{r} - v_\text{Earth}^2}\)</span>\)</span></p>
+$$
+v_3 = \sqrt{\frac{2GM_\odot}{r} - v_\text{Earth}^2}
+$$</p>
 <p>Where:
 - <span class="arithmatex">\(M_\odot\)</span> is the Sun's mass
 - <span class="arithmatex">\(r\)</span> is the Earth-Sun distance
@@ -183,22 +215,32 @@
 <hr/>
 <h2 id="3-mathematical-analysis-and-parameters"><strong>3. Mathematical Analysis and Parameters</strong></h2>
 <h3 id="31-dependence-on-mass-m"><strong>3.1 Dependence on Mass (<span class="arithmatex">\(M\)</span>)</strong></h3>
-<p>All cosmic velocities are <strong>directly proportional</strong> to the square root of the celestial body's mass:
-- <span class="arithmatex">\(<span class="arithmatex">\(v \propto \sqrt{M}\)</span>\)</span></p>
+<h2 id="all-cosmic-velocities-are-directly-proportional-to-the-square-root-of-the-celestial-bodys-mass">All cosmic velocities are <strong>directly proportional</strong> to the square root of the celestial body's mass:</h2>
+<div class="arithmatex">\[
+v \propto \sqrt{M}
+\]</div>
 <p>This means that more massive planets or stars require higher speeds to orbit or escape their gravitational fields.</p>
 <h3 id="32-dependence-on-radius-r"><strong>3.2 Dependence on Radius (<span class="arithmatex">\(R\)</span>)</strong></h3>
-<p>All cosmic velocities are <strong>inversely proportional</strong> to the square root of the radius:
-- <span class="arithmatex">\(<span class="arithmatex">\(v \propto \frac{1}{\sqrt{R}}\)</span>\)</span></p>
+<h2 id="all-cosmic-velocities-are-inversely-proportional-to-the-square-root-of-the-radius">All cosmic velocities are <strong>inversely proportional</strong> to the square root of the radius:</h2>
+<div class="arithmatex">\[
+v \propto \frac{1}{\sqrt{R}}
+\]</div>
 <p>Larger planets (in terms of radius) require lower speeds for orbit or escape, assuming mass is constant.</p>
 <h3 id="33-first-cosmic-velocity-recap"><strong>3.3 First Cosmic Velocity Recap</strong></h3>
-<p>The orbital velocity (<span class="arithmatex">\(v_1\)</span>) ensures that the centripetal acceleration matches gravitational acceleration:
-- <span class="arithmatex">\(<span class="arithmatex">\(v_1 = \sqrt{\frac{GM}{R}}\)</span>\)</span></p>
+<h2 id="the-orbital-velocity-v_1-ensures-that-the-centripetal-acceleration-matches-gravitational-acceleration">The orbital velocity (<span class="arithmatex">\(v_1\)</span>) ensures that the centripetal acceleration matches gravitational acceleration:</h2>
+<div class="arithmatex">\[
+v_1 = \sqrt{\frac{GM}{R}}
+\]</div>
 <h3 id="34-second-cosmic-velocity-recap"><strong>3.4 Second Cosmic Velocity Recap</strong></h3>
-<p>The escape velocity (<span class="arithmatex">\(v_2\)</span>) is derived by equating kinetic energy to gravitational potential energy:
-- <span class="arithmatex">\(<span class="arithmatex">\(\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v_2 = \sqrt{\frac{2GM}{R}}\)</span>\)</span></p>
+<h2 id="the-escape-velocity-v_2-is-derived-by-equating-kinetic-energy-to-gravitational-potential-energy">The escape velocity (<span class="arithmatex">\(v_2\)</span>) is derived by equating kinetic energy to gravitational potential energy:</h2>
+<div class="arithmatex">\[
+\frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v_2 = \sqrt{\frac{2GM}{R}}
+\]</div>
 <h3 id="35-third-cosmic-velocity-recap"><strong>3.5 Third Cosmic Velocity Recap</strong></h3>
-<p>To escape the <strong>entire solar system</strong>, the third cosmic velocity takes into account both the Sun’s gravity and Earth's motion around the Sun:
-- <span class="arithmatex">\(<span class="arithmatex">\(v_3 = \sqrt{v_\text{escape,Sun}^2 + v_\text{Earth orbit}^2}\)</span>\)</span></p>
+<h2 id="to-escape-the-entire-solar-system-the-third-cosmic-velocity-takes-into-account-both-the-suns-gravity-and-earths-motion-around-the-sun">To escape the <strong>entire solar system</strong>, the third cosmic velocity takes into account both the Sun’s gravity and Earth's motion around the Sun:</h2>
+<div class="arithmatex">\[
+v_3 = \sqrt{v_\text{escape,Sun}^2 + v_\text{Earth orbit}^2}
+\]</div>
 <h3 id="36-summary-of-parameters"><strong>3.6 Summary of Parameters</strong></h3>
 <table>
 <thead>
