@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 3 - Physics and Mathematics</title>
+<title>Problem 3: - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 3";
+        var mkdocs_page_name = "Problem 3:";
         var mkdocs_page_input_path = "1 Physics/2 Gravity/Problem_3.md";
         var mkdocs_page_url = null;
       </script>
@@ -58,8 +58,50 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Escape Velocities and Cosmic Velocities</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 3</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 3:</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#trajectories-of-a-freely-released-payload-near-earth">Trajectories of a Freely Released Payload Near Earth</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#1-governing-physical-principles">1. Governing Physical Principles</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#11-newtons-law-of-universal-gravitation">1.1 Newton's Law of Universal Gravitation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#12-total-mechanical-energy-of-the-payload">1.2 Total Mechanical Energy of the Payload</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#13-orbital-velocity-conditions">1.3 Orbital Velocity Conditions</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-numerical-simulation-approach">2. Numerical Simulation Approach</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#21-equations-of-motion-in-2d">2.1 Equations of Motion (in 2D)</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#this-python-code">This Python code:</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#code-description-payload-trajectories-at-different-initial-velocities">🛰️ Code Description – Payload Trajectories at Different Initial Velocities</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-features">✅ Key Features:</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#goal">📊 Goal:</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-initial-conditions">3. Initial Conditions</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-applications-and-scenarios">4. Applications and Scenarios</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#41-orbital-insertion">4.1 Orbital Insertion</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#42-suborbital-and-reentry">4.2 Suborbital and Reentry</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#43-escape-trajectory">4.3 Escape Trajectory</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-deliverables">5. Deliverables</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -111,7 +153,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">2 Gravity</li>
-<li class="breadcrumb-item active">Problem 3</li>
+<li class="breadcrumb-item active">Problem 3:</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -119,7 +161,234 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-3">Problem 3</h1>
+<h1 id="problem-3">Problem 3:</h1>
+<h2 id="trajectories-of-a-freely-released-payload-near-earth">Trajectories of a Freely Released Payload Near Earth</h2>
+<h2 id="motivation"><strong>Motivation</strong></h2>
+<p>When a payload is released from a moving rocket near Earth, its resulting motion is governed by classical mechanics and gravitational forces. Depending on its speed and direction at the moment of release, the payload may fall back to Earth, enter orbit, escape Earth’s gravity, or follow a complex trajectory. This scenario blends concepts from Newtonian gravity and orbital mechanics, and is essential for space mission design and payload deployment.</p>
+<hr/>
+<h2 id="1-governing-physical-principles"><strong>1. Governing Physical Principles</strong></h2>
+<h3 id="11-newtons-law-of-universal-gravitation"><strong>1.1 Newton's Law of Universal Gravitation</strong></h3>
+<p>The gravitational force acting on a payload of mass <span class="arithmatex">\(m\)</span> near Earth:</p>
+<div class="arithmatex">\[
+F = \frac{GMm}{r^2}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(G\)</span> is the gravitational constant: <span class="arithmatex">\(6.67430 \times 10^{-11} \ \text{m}^3\,\text{kg}^{-1}\,\text{s}^{-2}\)</span>
+- <span class="arithmatex">\(M\)</span> is the mass of the Earth (<span class="arithmatex">\(5.972 \times 10^{24}\ \text{kg}\)</span>)
+- <span class="arithmatex">\(r\)</span> is the distance from the center of the Earth to the payload</p>
+<p>From Newton's Second Law <span class="arithmatex">\(F = ma\)</span>, the gravitational acceleration is:</p>
+<div class="arithmatex">\[
+a = \frac{F}{m} = \frac{GM}{r^2}
+\]</div>
+<p>This acceleration points toward the center of the Earth.</p>
+<hr/>
+<h3 id="12-total-mechanical-energy-of-the-payload"><strong>1.2 Total Mechanical Energy of the Payload</strong></h3>
+<p>The total energy <span class="arithmatex">\(E\)</span> of the payload determines the type of trajectory:</p>
+<div class="arithmatex">\[
+E = K + U = \frac{1}{2}mv^2 - \frac{GMm}{r}
+\]</div>
+<p>Depending on <span class="arithmatex">\(E\)</span>:
+- <span class="arithmatex">\(E &lt; 0\)</span>: Elliptical orbit
+- <span class="arithmatex">\(E = 0\)</span>: Parabolic escape trajectory
+- <span class="arithmatex">\(E &gt; 0\)</span>: Hyperbolic escape trajectory</p>
+<hr/>
+<h3 id="13-orbital-velocity-conditions"><strong>1.3 Orbital Velocity Conditions</strong></h3>
+<ul>
+<li>
+<p><strong>Circular Orbit (First Cosmic Velocity)</strong>:
+  <span class="arithmatex">\(<span class="arithmatex">\(v = \sqrt{\frac{GM}{r}}\)</span>\)</span></p>
+</li>
+<li>
+<p><strong>Escape Velocity (Second Cosmic Velocity)</strong>:
+  <span class="arithmatex">\(<span class="arithmatex">\(v = \sqrt{\frac{2GM}{r}}\)</span>\)</span></p>
+</li>
+</ul>
+<p>If the initial speed is between these two values, the object follows an <strong>elliptical trajectory</strong>.</p>
+<hr/>
+<h2 id="2-numerical-simulation-approach"><strong>2. Numerical Simulation Approach</strong></h2>
+<p>We simulate the payload’s trajectory using numerical integration of Newton’s equations of motion:</p>
+<h3 id="21-equations-of-motion-in-2d"><strong>2.1 Equations of Motion (in 2D)</strong></h3>
+<p>Let the position be <span class="arithmatex">\(\vec{r} = (x, y)\)</span> and velocity <span class="arithmatex">\(\vec{v} = (v_x, v_y)\)</span>.</p>
+<p>Acceleration due to gravity is:</p>
+<div class="arithmatex">\[
+\vec{a} = -\frac{GM}{r^3} \vec{r}
+\]</div>
+<p>Where <span class="arithmatex">\(r = \sqrt{x^2 + y^2}\)</span> and <span class="arithmatex">\(\vec{r} = (x, y)\)</span>.</p>
+<p>This gives a second-order ODE system:</p>
+<div class="arithmatex">\[
+\frac{d^2x}{dt^2} = -\frac{GMx}{(x^2 + y^2)^{3/2}}, \quad \frac{d^2y}{dt^2} = -\frac{GMy}{(x^2 + y^2)^{3/2}}
+\]</div>
+<p>We convert this into a system of first-order ODEs for numerical integration.</p>
+<hr/>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+G = 6.67430e-11  # gravitational constant (m^3 kg^-1 s^-2)
+M = 5.972e24     # mass of Earth (kg)
+R_earth = 6.371e6  # radius of Earth (m)
+
+# Initial conditions
+altitude = 300e3            # altitude above Earth's surface (m)
+r0 = R_earth + altitude     # initial distance from Earth's center (m)
+velocity_mag = 7500         # initial speed (m/s)
+theta = np.radians(30)      # launch angle from horizontal (degrees to radians)
+
+# Initial position and velocity components
+x0 = r0
+y0 = 0
+vx0 = velocity_mag * np.cos(theta)
+vy0 = velocity_mag * np.sin(theta)
+
+# Time span for simulation
+t_span = (0, 10000)  # seconds
+t_eval = np.linspace(t_span[0], t_span[1], 10000)
+
+# Define the system of ODEs
+def equations(t, y):
+    x, y_pos, vx, vy = y
+    r = np.sqrt(x**2 + y_pos**2)
+    ax = -G * M * x / r**3
+    ay = -G * M * y_pos / r**3
+    return [vx, vy, ax, ay]
+
+# Initial state vector
+y_init = [x0, y0, vx0, vy0]
+
+# Solve the equations of motion
+solution = solve_ivp(equations, t_span, y_init, t_eval=t_eval, rtol=1e-8)
+
+# Extract solution
+x_vals = solution.y[0]
+y_vals = solution.y[1]
+r_vals = np.sqrt(x_vals**2 + y_vals**2)
+
+# Plot trajectory
+plt.figure(figsize=(8, 8))
+plt.plot(x_vals / 1e3, y_vals / 1e3, label='Payload Trajectory')
+
+# Draw Earth
+theta_circle = np.linspace(0, 2 * np.pi, 500)
+plt.plot(R_earth * np.cos(theta_circle) / 1e3,
+         R_earth * np.sin(theta_circle) / 1e3,
+         color='blue', label='Earth')
+
+plt.xlabel('x (km)')
+plt.ylabel('y (km)')
+plt.title('Trajectory of a Freely Released Payload')
+plt.axis('equal')
+plt.grid(True)
+plt.legend()
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<h2 id="this-python-code">This Python code:</h2>
+<ul>
+<li>Numerically solves the trajectory of an object released with a specific height, initial velocity, and angle,</li>
+<li>Under the influence of Earth's gravitational force (using Runge-Kutta with <code>solve_ivp</code>),</li>
+<li>Graphically plots the trajectory,</li>
+<li>Displays the shape of the Earth as a circle (for comparison).</li>
+</ul>
+<hr/>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Sabitler
+G = 6.67430e-11     # Evrensel kütleçekim sabiti (m^3/kg/s^2)
+M = 5.972e24        # Dünya'nın kütlesi (kg)
+R = 6.371e6         # Dünya'nın yarıçapı (m)
+
+# Başlangıç yüksekliği ve açısı
+h = 300e3           # 300 km yukarıdan bırakılıyor
+r0 = R + h
+angle = np.radians(45)  # fırlatma açısı (dereceden radyana)
+
+# Farklı hızlar (m/s cinsinden)
+initial_speeds = [6000, 7500, 11000]
+
+# Simülasyon süresi
+t_span = (0, 10000)
+t_eval = np.linspace(t_span[0], t_span[1], 10000)
+
+# Diferansiyel denklem sistemi
+def equations(t, y):
+    x, y_pos, vx, vy = y
+    r = np.sqrt(x**2 + y_pos**2)
+    ax = -G * M * x / r**3
+    ay = -G * M * y_pos / r**3
+    return [vx, vy, ax, ay]
+
+# Yörünge çizimi
+plt.figure(figsize=(8, 8))
+for v0 in initial_speeds:
+    # Başlangıç vektörü
+    vx0 = v0 * np.cos(angle)
+    vy0 = v0 * np.sin(angle)
+    y_init = [r0, 0, vx0, vy0]
+    sol = solve_ivp(equations, t_span, y_init, t_eval=t_eval, rtol=1e-8)
+
+    x_vals = sol.y[0] / 1e3  # km cinsine çevir
+    y_vals = sol.y[1] / 1e3
+    plt.plot(x_vals, y_vals, label=f'v₀ = {v0/1000:.1f} km/s')
+
+# Dünya'nın çemberi
+theta = np.linspace(0, 2*np.pi, 500)
+plt.plot(R*np.cos(theta)/1e3, R*np.sin(theta)/1e3, color='blue', label='Earth')
+
+# Grafik ayarları
+plt.title('Payload Trajectories at Different Initial Velocities')
+plt.xlabel('x (km)')
+plt.ylabel('y (km)')
+plt.axis('equal')
+plt.grid(True)
+plt.legend()
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<h2 id="code-description-payload-trajectories-at-different-initial-velocities">🛰️ Code Description – Payload Trajectories at Different Initial Velocities</h2>
+<p>This Python script simulates and visualizes the trajectories of a payload released from 300 km above Earth with different initial speeds:</p>
+<h2 id="key-features">✅ Key Features:</h2>
+<ul>
+<li>Uses Newton’s law of gravitation to model motion in 2D space.</li>
+<li>Simulates trajectories for three different initial velocities: <strong>6000 m/s</strong>, <strong>7500 m/s</strong>, and <strong>11000 m/s</strong>.</li>
+<li>Integrates the equations of motion using <code>solve_ivp</code> (Runge-Kutta method).</li>
+<li>Plots each trajectory along with a circle representing Earth for comparison.</li>
+</ul>
+<h2 id="goal">📊 Goal:</h2>
+<p>To show how initial velocity affects the type of trajectory:
+- <strong>Suborbital</strong> (falls back to Earth),
+- <strong>Orbital</strong> (remains in stable orbit),
+- <strong>Escape</strong> (leaves Earth’s gravity).</p>
+<hr/>
+<h2 id="3-initial-conditions"><strong>3. Initial Conditions</strong></h2>
+<p>Let’s assume the payload is released from a height <span class="arithmatex">\(h\)</span> above Earth’s surface with an initial velocity <span class="arithmatex">\(v_0\)</span> at angle <span class="arithmatex">\(\theta\)</span> from the horizontal.</p>
+<ul>
+<li>Initial position: <span class="arithmatex">\(x_0 = R_{\oplus} + h\)</span>, <span class="arithmatex">\(y_0 = 0\)</span></li>
+<li>Initial velocity components:
+  <span class="arithmatex">\(<span class="arithmatex">\(v_x = v_0 \cos(\theta)\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(v_y = v_0 \sin(\theta)\)</span>\)</span></li>
+</ul>
+<hr/>
+<h2 id="4-applications-and-scenarios"><strong>4. Applications and Scenarios</strong></h2>
+<h3 id="41-orbital-insertion"><strong>4.1 Orbital Insertion</strong></h3>
+<p>If <span class="arithmatex">\(v_0 \approx \sqrt{\frac{GM}{R + h}}\)</span>, the payload can enter a circular or elliptical orbit.</p>
+<h3 id="42-suborbital-and-reentry"><strong>4.2 Suborbital and Reentry</strong></h3>
+<p>If <span class="arithmatex">\(v_0\)</span> is low, the trajectory will be parabolic or elliptical, eventually leading to reentry.</p>
+<h3 id="43-escape-trajectory"><strong>4.3 Escape Trajectory</strong></h3>
+<p>If <span class="arithmatex">\(v_0 \geq \sqrt{\frac{2GM}{R + h}}\)</span>, the payload escapes Earth’s gravity.</p>
+<hr/>
+<h2 id="5-deliverables"><strong>5. Deliverables</strong></h2>
+<ul>
+<li>Python script that integrates the equations of motion for various initial conditions</li>
+<li>Visualizations of trajectories: reentry, orbital, and escape</li>
+<li>Energy calculations to classify the trajectory</li>
+<li>Analysis of velocity thresholds and angle dependence</li>
+</ul>
+<hr/>
+<p><strong>Note:</strong> The accompanying Python script uses the <code>solve_ivp</code> method from SciPy to integrate the motion equations, and Matplotlib to visualize the payload's path.</p>
+<p>(See Python code for numerical simulation and trajectory plots.)</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
