@@ -225,6 +225,98 @@ To show how initial velocity affects the type of trajectory:
 - **Orbital** (remains in stable orbit),
 - **Escape** (leaves Earth’s gravity).
 ---
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+from ipywidgets import interact, FloatSlider, IntSlider
+import matplotlib.patches as patches
+
+# Constants
+G = 6.67430e-11     # Gravitational constant (m^3 kg^-1 s^-2)
+M = 5.972e24        # Mass of Earth (kg)
+R = 6.371e6         # Radius of Earth (m)
+
+# Equations of motion
+def equations(t, y):
+    x, y_pos, vx, vy = y
+    r = np.sqrt(x**2 + y_pos**2)
+    ax = -G * M * x / r**3
+    ay = -G * M * y_pos / r**3
+    return [vx, vy, ax, ay]
+
+# Simulation function
+def simulate_trajectories(h=300e3, v0_1=7000, angle_1=45, v0_2=11000, angle_2=60, sim_time=10000):
+    fig, ax = plt.subplots(figsize=(8, 8))
+
+    for v0, angle_deg, color, label in zip(
+        [v0_1, v0_2],
+        [angle_1, angle_2],
+        ['orange', 'green'],
+        ['Object 1', 'Object 2']
+    ):
+        r0 = R + h
+        theta = np.radians(angle_deg)
+        x0, y0 = r0, 0
+        vx0 = v0 * np.cos(theta)
+        vy0 = v0 * np.sin(theta)
+        y_init = [x0, y0, vx0, vy0]
+
+        t_span = (0, sim_time)
+        t_eval = np.linspace(*t_span, 10000)
+        sol = solve_ivp(equations, t_span, y_init, t_eval=t_eval, rtol=1e-8)
+
+        x_vals = sol.y[0] / 1e3
+        y_vals = sol.y[1] / 1e3
+        ax.plot(x_vals, y_vals, label=f'{label} (v₀={v0/1000:.1f} km/s, {angle_deg}°)', color=color)
+
+    # Draw filled Earth
+    earth = patches.Circle((0, 0), R / 1e3, color='blue')
+    ax.add_patch(earth)
+
+    ax.set_title('Payload Trajectories with Adjustable Parameters')
+    ax.set_xlabel('x (km)')
+    ax.set_ylabel('y (km)')
+    ax.axis('equal')
+    ax.grid(True)
+    ax.legend()
+    plt.show()
+
+# Interactive sliders
+interact(
+    simulate_trajectories,
+    h=FloatSlider(min=100e3, max=1000e3, step=50e3, value=300e3, description='Altitude (m)'),
+    v0_1=FloatSlider(min=5000, max=12000, step=500, value=7000, description='v₀₁ (m/s)'),
+    angle_1=IntSlider(min=0, max=90, step=5, value=45, description='Angle₁ (°)'),
+    v0_2=FloatSlider(min=5000, max=12000, step=500, value=11000, description='v₀₂ (m/s)'),
+    angle_2=IntSlider(min=0, max=90, step=5, value=60, description='Angle₂ (°)'),
+    sim_time=IntSlider(min=5000, max=20000, step=1000, value=10000, description='Time (s)')
+);
+```
+## Link to the adjustable graph on colab:
+https://colab.research.google.com/drive/1weDyNUnnCzVuiJtVWFnrUDHLfWNI4IiS#scrollTo=xLo0zbPLACx8
+## 🛰️ Code Explanation – Interactive Payload Trajectory Simulation
+
+This Python code simulates the motion of two payloads released near Earth with different initial velocities and angles. It demonstrates how their trajectories evolve under Earth’s gravitational pull.
+
+## ✅ Key Features
+- Uses Newton’s law of gravity to compute motion in 2D space.
+- Simulates and compares two different payloads.
+- Lets you adjust:
+  - **Altitude**: Initial height above Earth.
+  - **Initial speeds and angles**: For both objects.
+  - **Simulation time**: Duration of the simulation.
+- Uses `ipywidgets` sliders to make the parameters interactive.
+- Visualizes:
+  - The curved paths (orbits/trajectories) of each payload.
+  - A filled blue circle representing Earth.
+
+## 📌 Goal
+To show how changing the initial velocity and direction affects whether the payload:
+- Falls back to Earth,
+- Enters orbit,
+- Escapes Earth’s gravity.
+---
 
 ## **3. Initial Conditions**
 
