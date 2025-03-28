@@ -88,6 +88,14 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#goal">📊 Goal:</a>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#link-to-the-adjustable-graph-on-colab">Link to the adjustable graph on colab:</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#code-explanation-interactive-payload-trajectory-simulation">🛰️ Code Explanation – Interactive Payload Trajectory Simulation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-features_1">✅ Key Features</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#goal_1">📌 Goal</a>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#3-initial-conditions">3. Initial Conditions</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#4-applications-and-scenarios">4. Applications and Scenarios</a>
@@ -361,6 +369,96 @@ plt.show()
 - <strong>Suborbital</strong> (falls back to Earth),
 - <strong>Orbital</strong> (remains in stable orbit),
 - <strong>Escape</strong> (leaves Earth’s gravity).</p>
+<hr/>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+from ipywidgets import interact, FloatSlider, IntSlider
+import matplotlib.patches as patches
+
+# Constants
+G = 6.67430e-11     # Gravitational constant (m^3 kg^-1 s^-2)
+M = 5.972e24        # Mass of Earth (kg)
+R = 6.371e6         # Radius of Earth (m)
+
+# Equations of motion
+def equations(t, y):
+    x, y_pos, vx, vy = y
+    r = np.sqrt(x**2 + y_pos**2)
+    ax = -G * M * x / r**3
+    ay = -G * M * y_pos / r**3
+    return [vx, vy, ax, ay]
+
+# Simulation function
+def simulate_trajectories(h=300e3, v0_1=7000, angle_1=45, v0_2=11000, angle_2=60, sim_time=10000):
+    fig, ax = plt.subplots(figsize=(8, 8))
+
+    for v0, angle_deg, color, label in zip(
+        [v0_1, v0_2],
+        [angle_1, angle_2],
+        ['orange', 'green'],
+        ['Object 1', 'Object 2']
+    ):
+        r0 = R + h
+        theta = np.radians(angle_deg)
+        x0, y0 = r0, 0
+        vx0 = v0 * np.cos(theta)
+        vy0 = v0 * np.sin(theta)
+        y_init = [x0, y0, vx0, vy0]
+
+        t_span = (0, sim_time)
+        t_eval = np.linspace(*t_span, 10000)
+        sol = solve_ivp(equations, t_span, y_init, t_eval=t_eval, rtol=1e-8)
+
+        x_vals = sol.y[0] / 1e3
+        y_vals = sol.y[1] / 1e3
+        ax.plot(x_vals, y_vals, label=f'{label} (v₀={v0/1000:.1f} km/s, {angle_deg}°)', color=color)
+
+    # Draw filled Earth
+    earth = patches.Circle((0, 0), R / 1e3, color='blue')
+    ax.add_patch(earth)
+
+    ax.set_title('Payload Trajectories with Adjustable Parameters')
+    ax.set_xlabel('x (km)')
+    ax.set_ylabel('y (km)')
+    ax.axis('equal')
+    ax.grid(True)
+    ax.legend()
+    plt.show()
+
+# Interactive sliders
+interact(
+    simulate_trajectories,
+    h=FloatSlider(min=100e3, max=1000e3, step=50e3, value=300e3, description='Altitude (m)'),
+    v0_1=FloatSlider(min=5000, max=12000, step=500, value=7000, description='v₀₁ (m/s)'),
+    angle_1=IntSlider(min=0, max=90, step=5, value=45, description='Angle₁ (°)'),
+    v0_2=FloatSlider(min=5000, max=12000, step=500, value=11000, description='v₀₂ (m/s)'),
+    angle_2=IntSlider(min=0, max=90, step=5, value=60, description='Angle₂ (°)'),
+    sim_time=IntSlider(min=5000, max=20000, step=1000, value=10000, description='Time (s)')
+);
+</code></pre>
+<h2 id="link-to-the-adjustable-graph-on-colab">Link to the adjustable graph on colab:</h2>
+<p>https://colab.research.google.com/drive/1weDyNUnnCzVuiJtVWFnrUDHLfWNI4IiS#scrollTo=xLo0zbPLACx8</p>
+<h2 id="code-explanation-interactive-payload-trajectory-simulation">🛰️ Code Explanation – Interactive Payload Trajectory Simulation</h2>
+<p>This Python code simulates the motion of two payloads released near Earth with different initial velocities and angles. It demonstrates how their trajectories evolve under Earth’s gravitational pull.</p>
+<h2 id="key-features_1">✅ Key Features</h2>
+<ul>
+<li>Uses Newton’s law of gravity to compute motion in 2D space.</li>
+<li>Simulates and compares two different payloads.</li>
+<li>Lets you adjust:</li>
+<li><strong>Altitude</strong>: Initial height above Earth.</li>
+<li><strong>Initial speeds and angles</strong>: For both objects.</li>
+<li><strong>Simulation time</strong>: Duration of the simulation.</li>
+<li>Uses <code>ipywidgets</code> sliders to make the parameters interactive.</li>
+<li>Visualizes:</li>
+<li>The curved paths (orbits/trajectories) of each payload.</li>
+<li>A filled blue circle representing Earth.</li>
+</ul>
+<h2 id="goal_1">📌 Goal</h2>
+<p>To show how changing the initial velocity and direction affects whether the payload:
+- Falls back to Earth,
+- Enters orbit,
+- Escapes Earth’s gravity.</p>
 <hr/>
 <h2 id="3-initial-conditions"><strong>3. Initial Conditions</strong></h2>
 <p>Let’s assume the payload is released from a height <span class="arithmatex">\(h\)</span> above Earth’s surface with an initial velocity <span class="arithmatex">\(v_0\)</span> at angle <span class="arithmatex">\(\theta\)</span> from the horizontal.</p>
