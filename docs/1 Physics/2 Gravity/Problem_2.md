@@ -64,8 +64,9 @@ Where:
 
 ## **3. Mathematical Analysis and Parameters**
 
-### **3.1 Dependence on Mass ($M$)**
-All cosmic velocities are **directly proportional** to the square root of the celestial body's mass:
+### **3.1 Dependence on Mass ($M$)
+All cosmic velocities are directly proportional to the square root of the celestial body's mass:
+
 - 
 $$
 v \propto \sqrt{M}
@@ -73,8 +74,9 @@ $$
 
 This means that more massive planets or stars require higher speeds to orbit or escape their gravitational fields.
 
-### **3.2 Dependence on Radius ($R$)**
+### **3.2 Dependence on Radius ($R$)
 All cosmic velocities are **inversely proportional** to the square root of the radius:
+
 - 
 $$
 v \propto \frac{1}{\sqrt{R}}
@@ -82,8 +84,9 @@ $$
 
 Larger planets (in terms of radius) require lower speeds for orbit or escape, assuming mass is constant.
 
-### **3.3 First Cosmic Velocity Recap**
+### **3.3 First Cosmic Velocity Recap
 The orbital velocity ($v_1$) ensures that the centripetal acceleration matches gravitational acceleration:
+
 - 
 $$
 v_1 = \sqrt{\frac{GM}{R}}
@@ -91,14 +94,16 @@ $$
 
 ### **3.4 Second Cosmic Velocity Recap**
 The escape velocity ($v_2$) is derived by equating kinetic energy to gravitational potential energy:
+
 - 
 $$
 \frac{1}{2}mv^2 = \frac{GMm}{R} \Rightarrow v_2 = \sqrt{\frac{2GM}{R}}
 $$
 
-### **3.5 Third Cosmic Velocity Recap**
+### **3.5 Third Cosmic Velocity Recap
 To escape the **entire solar system**, the third cosmic velocity takes into account both the Sun’s gravity and Earth's motion around the Sun:
-- 
+
+ 
 $$
 v_3 = \sqrt{v_\text{escape,Sun}^2 + v_\text{Earth orbit}^2}
 $$
