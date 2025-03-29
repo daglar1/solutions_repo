@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Interference Patterns on a Water Surface - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Interference Patterns on a Water Surface";
         var mkdocs_page_input_path = "1 Physics/3 Waves/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -64,8 +64,28 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">3 Waves</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Interference Patterns on a Water Surface</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-motivation">1. Motivation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-mathematical-foundations">2. Mathematical Foundations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#21-circular-wave-from-a-point-source">2.1 Circular Wave from a Point Source</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#22-superposition-of-multiple-waves">2.2 Superposition of Multiple Waves</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#23-source-geometry-regular-polygon-configuration">2.3 Source Geometry: Regular Polygon Configuration</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-interference-analysis">3. Interference Analysis</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#31-constructive-interference">3.1 Constructive Interference</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#32-destructive-interference">3.2 Destructive Interference</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -111,7 +131,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">3 Waves</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Interference Patterns on a Water Surface</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -119,7 +139,411 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="interference-patterns-on-a-water-surface">Interference Patterns on a Water Surface</h1>
+<h2 id="1-motivation">1. Motivation</h2>
+<p>Interference occurs when multiple wave sources overlap in space and time, forming a new resultant wave pattern. On a water surface, this is observable as ripple patterns that vary in intensity depending on the positions and phases of the sources. This forms the basis of <strong>constructive interference</strong> (wave amplification) and <strong>destructive interference</strong> (wave cancellation).</p>
+<p>Studying wave interference helps us understand key physics concepts like <strong>superposition</strong>, <strong>phase relationships</strong>, and <strong>wave propagation</strong> — relevant in fields ranging from acoustics and optics to quantum physics and antenna design.</p>
+<h2 id="2-mathematical-foundations">2. Mathematical Foundations</h2>
+<h3 id="21-circular-wave-from-a-point-source">2.1 Circular Wave from a Point Source</h3>
+<p>A point source located at <span class="arithmatex">\((x_0,y_0)\)</span> emits a circular wave that propagates outward. The displacement <span class="arithmatex">\(\eta(x,y,t)\)</span> of the water surface at a point <span class="arithmatex">\((x,y)\)</span> and time <span class="arithmatex">\(t\)</span> is given by:</p>
+<div class="arithmatex">\[
+\eta(x,y,t) = \frac{A}{\sqrt{r}} \cos(kr - \omega t + \phi)
+\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\(A\)</span>: amplitude of the wave  </li>
+<li><span class="arithmatex">\(r = \sqrt{(x - x_0)^2 + (y - y_0)^2}\)</span>: distance from the source to the point  </li>
+<li><span class="arithmatex">\(k = \frac{2\pi}{\lambda}\)</span>: wave number  </li>
+<li><span class="arithmatex">\(\lambda\)</span>: wavelength  </li>
+<li><span class="arithmatex">\(\omega = 2\pi f\)</span>: angular frequency  </li>
+<li><span class="arithmatex">\(f\)</span>: frequency  </li>
+<li><span class="arithmatex">\(\phi\)</span>: initial phase of the wave<br/>
+<img alt="alt text" src="../image-2.png"/></li>
+</ul>
+<h3 id="22-superposition-of-multiple-waves">2.2 Superposition of Multiple Waves</h3>
+<p>When there are <span class="arithmatex">\(N\)</span> point sources, each emitting coherent waves, the total displacement at a point <span class="arithmatex">\((x,y)\)</span> is the <strong>sum</strong> of the displacements from each source:</p>
+<div class="arithmatex">\[
+\eta_{\text{sum}}(x,y,t) = \sum_{i=1}^{N} \frac{A}{\sqrt{r_i}} \cos(kr_i - \omega t + \phi_i)
+\]</div>
+<p>Where each <span class="arithmatex">\(r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2}\)</span> is the distance from the <span class="arithmatex">\(i\)</span>-th source located at <span class="arithmatex">\((x_i, y_i)\)</span>, and <span class="arithmatex">\(\phi_i\)</span> is the initial phase of that source.</p>
+<h3 id="23-source-geometry-regular-polygon-configuration">2.3 Source Geometry: Regular Polygon Configuration</h3>
+<p>To ensure symmetry and regular interference patterns, sources are placed at the vertices of a regular polygon with radius <span class="arithmatex">\(R\)</span> centered at the origin. The coordinates of the <span class="arithmatex">\(i\)</span>-th source (for <span class="arithmatex">\(N\)</span> total sources) are:</p>
+<div class="arithmatex">\[
+(x_i, y_i) = \left(R \cos\left(\frac{2\pi i}{N}\right), R \sin\left(\frac{2\pi i}{N}\right)\right), \quad i = 0, 1, \dots, N-1
+\]</div>
+<p>This configuration leads to symmetric and often beautiful interference patterns, especially when <span class="arithmatex">\(N = 3\)</span> (triangle), <span class="arithmatex">\(N = 4\)</span> (square), <span class="arithmatex">\(N = 5\)</span> (pentagon), etc.</p>
+<h2 id="3-interference-analysis">3. Interference Analysis</h2>
+<h3 id="31-constructive-interference">3.1 Constructive Interference</h3>
+<p>Occurs when wave crests meet crests and troughs meet troughs, leading to amplification:</p>
+<div class="arithmatex">\[
+\Delta\phi = 2\pi n, \quad n \in \mathbb{Z}
+\]</div>
+<h3 id="32-destructive-interference">3.2 Destructive Interference</h3>
+<p>Occurs when wave crests meet troughs, leading to cancellation:</p>
+<div class="arithmatex">\[
+\Delta\phi = (2n + 1)\pi, \quad n \in \mathbb{Z}
+\]</div>
+<p>These conditions are crucial in analyzing the positions of <strong>nodal lines</strong> (destructive zones) and <strong>antinodal lines</strong> 
+(constructive zones).</p>
+<hr/>
+<h1 id="moire-wave-interference-visualization-with-interactive-sliders">Moiré Wave Interference Visualization with interactive sliders</h1>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from ipywidgets import interact, FloatSlider
+
+# Grid
+x = np.linspace(-10, 10, 600)
+y = np.linspace(-10, 10, 600)
+X, Y = np.meshgrid(x, y)
+
+def moire_wave(theta1=0, theta2=30, k1=1.0, k2=1.05, phase=0.0):
+    # Dalga yönlerini radyana çevir
+    t1 = np.radians(theta1)
+    t2 = np.radians(theta2)
+
+    # İki düzlem dalgası tanımla
+    wave1 = np.cos(k1 * (X * np.cos(t1) + Y * np.sin(t1)))
+    wave2 = np.cos(k2 * (X * np.cos(t2) + Y * np.sin(t2)) + phase)
+
+    # Üst üste bindirme (interference)
+    result = wave1 + wave2
+
+    # Görselleştir
+    plt.figure(figsize=(8, 8))
+    plt.imshow(result, extent=[-10, 10, -10, 10], cmap='inferno', origin='lower')
+    plt.title('Moiré Interference Pattern')
+    plt.axis('off')
+    plt.tight_layout()
+    plt.show()
+
+# Etkileşimli arayüz
+interact(
+    moire_wave,
+    theta1=FloatSlider(min=0, max=180, step=1, value=0, description='Angle 1 (°)'),
+    theta2=FloatSlider(min=0, max=180, step=1, value=30, description='Angle 2 (°)'),
+    k1=FloatSlider(min=0.5, max=2.0, step=0.01, value=1.0, description='k1'),
+    k2=FloatSlider(min=0.5, max=2.0, step=0.01, value=1.05, description='k2'),
+    phase=FloatSlider(min=0.0, max=2*np.pi, step=0.1, value=0.0, description='Phase Δφ'),
+)
+</code></pre>
+<h2 id="link-to-adjustable-3d-moire-interference-visualization">Link to adjustable  3D Moiré Interference Visualization</h2>
+<p>https://colab.research.google.com/drive/1eXp2bAQnResxHlL04EFPfJjSYixG5DgP</p>
+<h1 id="moire-wave-interference-visualization">Moiré Wave Interference Visualization</h1>
+<p>This Python code creates an interactive 2D visualization of moiré interference patterns formed by the superposition of two plane waves.</p>
+<h2 id="what-it-does">What it does:</h2>
+<pre><code>•   Simulates two waves traveling at different angles and wave numbers (k1, k2).
+•   The result of their interference is displayed as a moiré pattern — a visually striking pattern that looks 3D or holographic.
+•   Uses sliders (ipywidgets) to control:
+•   Angles of each wave
+•   Wave numbers (spatial frequency)
+•   Phase offset
+</code></pre>
+<p>⸻</p>
+<h2 id="purpose">Purpose:</h2>
+<p>To explore how small differences in wave direction and frequency create complex interference patterns — useful in optics, physics, and signal processing.</p>
+<hr/>
+<h2 id="4-parameters-and-their-effects">4. Parameters and Their Effects</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Symbol</th>
+<th>Effect on Pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amplitude</td>
+<td><span class="arithmatex">\(A\)</span></td>
+<td>Affects brightness/intensity of plot, not pattern shape</td>
+</tr>
+<tr>
+<td>Wavelength</td>
+<td><span class="arithmatex">\(\lambda\)</span></td>
+<td>Larger <span class="arithmatex">\(\lambda\)</span> → wider fringes</td>
+</tr>
+<tr>
+<td>Frequency</td>
+<td><span class="arithmatex">\(f\)</span></td>
+<td>Affects speed of time-dependent animation, not pattern shape</td>
+</tr>
+<tr>
+<td>Phase Offset</td>
+<td><span class="arithmatex">\(\phi\)</span></td>
+<td>Can shift/interfere patterns asymmetrically</td>
+</tr>
+<tr>
+<td>Number of Sources</td>
+<td><span class="arithmatex">\(N\)</span></td>
+<td>More sources = richer, more complex patterns</td>
+</tr>
+<tr>
+<td>Polygon Radius</td>
+<td><span class="arithmatex">\(R\)</span></td>
+<td>Affects spacing and detail in the pattern</td>
+</tr>
+<tr>
+<td>---</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="interference-patterns-on-a-water-surface_1">interference patterns on a water surface</h1>
+<h2 id="objective">🎯 objective</h2>
+<p>Analyze the interference patterns formed on the water surface due to the superposition of waves emitted from point sources placed at the vertices of a chosen regular polygon.</p>
+<hr/>
+<h2 id="steps-to-follow">steps to follow</h2>
+<h3 id="1-select-a-regular-polygon">1. select a regular polygon</h3>
+<p>We choose a <strong>regular polygon</strong> — for example:
+- equilateral triangle
+- square
+- regular pentagon</p>
+<p>Let the polygon have <span class="arithmatex">\(N\)</span> vertices (and hence <span class="arithmatex">\(N\)</span> point sources), placed symmetrically around a circle of radius <span class="arithmatex">\(R\)</span> centered at the origin.</p>
+<p>Each vertex (source position) is given by:</p>
+<div class="arithmatex">\[
+\vec{r}_i = \left(R \cos\left(\theta_i\right), R \sin\left(\theta_i\right)\right), \quad \theta_i = \frac{2\pi(i-1)}{N}, \quad i = 1, 2, \dots, N
+\]</div>
+<hr/>
+<h3 id="2-position-the-sources">2. position the sources</h3>
+<p>We place point wave sources at these <span class="arithmatex">\(N\)</span> vertices. All sources emit <strong>coherent circular waves</strong> with:</p>
+<ul>
+<li>same amplitude <span class="arithmatex">\(A\)</span></li>
+<li>same wavelength <span class="arithmatex">\(\lambda\)</span></li>
+<li>same frequency <span class="arithmatex">\(f\)</span></li>
+<li>same initial phase <span class="arithmatex">\(\phi = 0\)</span></li>
+</ul>
+<hr/>
+<h3 id="3-wave-equations">3. wave equations</h3>
+<p>The wave emitted from the <span class="arithmatex">\(i\)</span>-th source located at <span class="arithmatex">\(\vec{r}_i\)</span> is described by:</p>
+<div class="arithmatex">\[
+\eta_i(x, y, t) = A \cdot \cos\left(k \cdot |\vec{r} - \vec{r}_i| - \omega t \right)
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(\vec{r} = (x, y)\)</span> is the observation point on the water surface
+- <span class="arithmatex">\(k = \dfrac{2\pi}{\lambda}\)</span> is the wave number
+- <span class="arithmatex">\(\omega = 2\pi f\)</span> is the angular frequency
+- <span class="arithmatex">\(|\vec{r} - \vec{r}_i|\)</span> is the Euclidean distance between the observation point and source <span class="arithmatex">\(i\)</span></p>
+<hr/>
+<h3 id="4-superposition-of-waves">4. superposition of waves</h3>
+<p>By the principle of superposition, the total displacement at point <span class="arithmatex">\((x, y)\)</span> and time <span class="arithmatex">\(t\)</span> is:</p>
+<div class="arithmatex">\[
+\eta_{\text{sum}}(x, y, t) = \sum_{i=1}^{N} \eta_i(x, y, t) = \sum_{i=1}^{N} A \cdot \cos\left(k \cdot |\vec{r} - \vec{r}_i| - \omega t \right)
+\]</div>
+<p>This total wave function governs the interference pattern on the water surface.</p>
+<hr/>
+<h2 id="analyze-interference-patterns">Analyze interference patterns</h2>
+<p>We analyze <span class="arithmatex">\(\eta_{\text{sum}}(x, y, t)\)</span> to find:</p>
+<ul>
+<li>
+<p><strong>constructive interference</strong>:<br/>
+  When waves arrive <strong>in phase</strong>, amplifying displacement.  </p>
+</li>
+<li>
+<p><strong>destructive interference</strong>:<br/>
+  When waves arrive <strong>out of phase</strong>, leading to cancellation.</p>
+</li>
+</ul>
+<p>These patterns depend on the <strong>differences in distance</strong> from each point to the sources, and hence on the geometry of the polygon.</p>
+<hr/>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Wave parameters
+A = 1.0               # Amplitude
+wavelength = 1.0      # Wavelength (lambda)
+k = 2 * np.pi / wavelength  # Wave number
+f = 1.0               # Frequency
+omega = 2 * np.pi * f # Angular frequency
+phi = 0               # Phase
+
+# Grid setup
+x_range = y_range = 5.0
+resolution = 500
+x = np.linspace(-x_range, x_range, resolution)
+y = np.linspace(-y_range, y_range, resolution)
+X, Y = np.meshgrid(x, y)
+
+# Time snapshot (can loop later for animation)
+t = 0
+
+# Polygon setup
+N = 5          # Number of sources (e.g., 3 for triangle, 4 for square, 5 for pentagon)
+R = 2.0        # Radius of polygon
+
+# Source positions
+angles = np.linspace(0, 2 * np.pi, N, endpoint=False)
+sources = [(R * np.cos(a), R * np.sin(a)) for a in angles]
+
+# Compute total wave field
+eta_sum = np.zeros_like(X)
+
+for (x0, y0) in sources:
+    r = np.sqrt((X - x0)**2 + (Y - y0)**2)
+    eta_i = A / np.sqrt(r + 1e-6) * np.cos(k * r - omega * t + phi)
+    eta_sum += eta_i
+
+# Plotting
+plt.figure(figsize=(8, 6))
+plt.pcolormesh(X, Y, eta_sum, shading='auto', cmap='RdBu')
+plt.colorbar(label='Wave Displacement')
+plt.title(f'Interference Pattern from {N} Coherent Sources (Polygon)')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.gca().set_aspect('equal')
+plt.grid(False)
+plt.tight_layout()
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image.png"/></p>
+<h1 id="wave-interference-simulation">Wave Interference Simulation</h1>
+<p>This code visualizes the interference pattern created by multiple circular wave sources arranged in a regular polygon.</p>
+<p>⸻</p>
+<h2 id="what-it-does_1">🔧 What It Does</h2>
+<pre><code>•   Places N wave sources on a circle (polygon).
+•   Each source emits a circular wave.
+•   Uses the superposition principle to compute total wave displacement on a 2D grid.
+•   Plots the result as a color map showing constructive and destructive interference.
+</code></pre>
+<p>⸻</p>
+<h2 id="key-parameters">🧪 Key Parameters</h2>
+<pre><code>•   A: Amplitude
+•   λ: Wavelength
+•   f: Frequency
+•   N: Number of sources (e.g. 3 = triangle, 5 = pentagon)
+•   R: Radius of the polygon
+•   t: Time snapshot (static)
+</code></pre>
+<p>⸻</p>
+<h2 id="output">📊 Output</h2>
+<pre><code>•   A 2D plot of the wave interference pattern
+•   Shows how waves from multiple sources interact over space.
+</code></pre>
+<hr/>
+<h1 id="interactive-wave-interference-simulation-with-animation-with-sliders">Interactive Wave Interference Simulation with Animation (with sliders)</h1>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import animation
+from IPython.display import display, HTML, clear_output
+import ipywidgets as widgets
+import matplotlib as mpl
+
+# Gömülecek maksimum animasyon boyutunu yükselt
+mpl.rcParams['animation.embed_limit'] = 50_000_000
+
+# Sabit grid
+x = np.linspace(-10, 10, 200)
+y = np.linspace(-10, 10, 200)
+X, Y = np.meshgrid(x, y)
+
+# Parametreleri tut
+params = {
+    'A': 1.0,
+    'wavelength': 2.0,
+    'f': 1.0,
+    'phase_diff': 0.0,
+    'R': 3.0,
+    'N': 3
+}
+
+def compute_frame(t):
+    A = params['A']
+    wavelength = params['wavelength']
+    f = params['f']
+    phase_diff = params['phase_diff']
+    R = params['R']
+    N = int(params['N'])
+
+    k = 2 * np.pi / wavelength
+    omega = 2 * np.pi * f
+
+    eta_sum = np.zeros_like(X)
+
+    for i in range(N):
+        angle = 2 * np.pi * i / N
+        sx = R * np.cos(angle)
+        sy = R * np.sin(angle)
+        r = np.sqrt((X - sx)**2 + (Y - sy)**2)
+        phi = i * phase_diff
+        eta = A / np.sqrt(r + 0.1) * np.cos(k * r - omega * t + phi)
+        eta_sum += eta
+
+    return eta_sum
+
+# Animasyon oluşturma fonksiyonu
+def create_animation():
+    fig, ax = plt.subplots(figsize=(6, 6))
+    img = ax.imshow(np.zeros_like(X), extent=[-10, 10, -10, 10], cmap='viridis', origin='lower')
+    cb = plt.colorbar(img, ax=ax)
+    ax.set_title('Interference Pattern')
+
+    def update(frame):
+        eta = compute_frame(frame / 10.0)
+        img.set_data(eta)
+        return [img]
+
+    ani = animation.FuncAnimation(fig, update, frames=100, interval=50, blit=True)
+    plt.close()
+    return HTML(ani.to_jshtml())
+
+# Widgetlar
+A_slider = widgets.FloatSlider(value=1.0, min=0.1, max=5.0, step=0.1, description='Amplitude')
+wavelength_slider = widgets.FloatSlider(value=2.0, min=0.5, max=10.0, step=0.1, description='Wavelength')
+f_slider = widgets.FloatSlider(value=1.0, min=0.1, max=5.0, step=0.1, description='Frequency')
+phase_slider = widgets.FloatSlider(value=0.0, min=0.0, max=2*np.pi, step=0.1, description='Phase Δφ')
+R_slider = widgets.FloatSlider(value=3.0, min=1.0, max=10.0, step=0.5, description='Radius R')
+N_slider = widgets.IntSlider(value=3, min=2, max=10, step=1, description='Sources N')
+
+sliders = [A_slider, wavelength_slider, f_slider, phase_slider, R_slider, N_slider]
+
+# Her değişiklikte animasyonu yenile
+output = widgets.Output()
+
+def on_slider_change(change):
+    # Güncel değerleri al
+    params['A'] = A_slider.value
+    params['wavelength'] = wavelength_slider.value
+    params['f'] = f_slider.value
+    params['phase_diff'] = phase_slider.value
+    params['R'] = R_slider.value
+    params['N'] = N_slider.value
+
+    with output:
+        clear_output(wait=True)
+        display(create_animation())
+
+for s in sliders:
+    s.observe(on_slider_change, names='value')
+
+# İlk gösterim
+on_slider_change(None)
+
+# Tüm arayüz
+controls = widgets.VBox(sliders)
+display(widgets.HBox([controls, output]))
+</code></pre>
+<h1 id="link-to-the-simulation">Link to the simulation</h1>
+<p>https://colab.research.google.com/drive/1uUhLx7KvFGlkzMb7FH9ShLf_bdqVYlX5</p>
+<h2 id="description">Description:</h2>
+<p>This Python code creates an interactive and animated simulation of wave interference, designed to run inside a Jupyter Notebook or Google Colab environment.</p>
+<hr/>
+<h3 id="what-it-does_2">🔧 What It Does:</h3>
+<pre><code>•   Simulates circular waves emitted from multiple sources arranged in a regular polygon (triangle, square, pentagon, etc.).
+•   Calculates the resulting interference pattern by summing all wave contributions over a 2D grid using the superposition principle.
+•   Uses matplotlib.animation to generate a looping animation of the wave field over time.
+•   Displays an interactive control panel (sliders) using ipywidgets to let users change key parameters in real-time:
+•   Amplitude (A)
+•   Wavelength (λ)
+•   Frequency (f)
+•   Phase Difference (Δφ)
+•   Polygon Radius (R)
+•   Number of Sources (N)
+</code></pre>
+<h3 id="output_1">🖼 Output:</h3>
+<pre><code>•   Left: Interactive sliders for adjusting parameters.
+•   Right: Real-time animated heatmap showing the interference pattern evolving over time.
+•   The color pattern represents wave peaks and troughs, showing constructive and destructive interference zones.
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
