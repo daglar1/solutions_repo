@@ -71,6 +71,8 @@
 <li class="toctree-l1 current"><a class="reference internal current">4 Electromagnetism</a>
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<ul class="current">
+</ul>
 </li>
 </ul>
 </li>
@@ -117,6 +119,180 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
+<h1 id="problem-1">Problem 1</h1>
+<h1 id="simulating-the-effects-of-the-lorentz-force">Simulating the Effects of the Lorentz Force</h1>
+<h2 id="1-introduction-and-motivation">1. Introduction and Motivation</h2>
+<p>The Lorentz force governs the motion of charged particles in electromagnetic fields and is essential in understanding systems like:<br/>
+- Particle accelerators – guiding and accelerating beams.<br/>
+- Mass spectrometers – separating particles based on mass-to-charge ratio.<br/>
+- Plasma confinement devices (e.g., tokamaks) – controlling plasma using magnetic fields.  </p>
+<p>Understanding the Lorentz force enables the design and analysis of such systems.</p>
+<hr/>
+<h2 id="2-lorentz-force-equation">2. Lorentz Force Equation</h2>
+<p>The Lorentz force <span class="arithmatex">\(\vec{F}\)</span> acting on a charged particle is given by:</p>
+<div class="arithmatex">\[
+\vec{F} = q (\vec{E} + \vec{v} \times \vec{B})
+\]</div>
+<p>Where:<br/>
+- <span class="arithmatex">\(q\)</span>: Charge of the particle<br/>
+- <span class="arithmatex">\(\vec{E}\)</span>: Electric field<br/>
+- <span class="arithmatex">\(\vec{B}\)</span>: Magnetic field<br/>
+- <span class="arithmatex">\(\vec{v}\)</span>: Particle velocity  </p>
+<p>Using Newton’s Second Law:</p>
+<div class="arithmatex">\[
+\vec{F} = m \frac{d\vec{v}}{dt}
+\]</div>
+<p>We obtain the equation of motion:</p>
+<div class="arithmatex">\[
+m \frac{d\vec{v}}{dt} = q (\vec{E} + \vec{v} \times \vec{B})
+\]</div>
+<p>This equation is generally solved numerically due to the complexity of <span class="arithmatex">\(\vec{v} \times \vec{B}\)</span>.</p>
+<hr/>
+<h2 id="3-simulation-overview">3. Simulation Overview</h2>
+<p>We simulate particle trajectories using the 4th-order Runge-Kutta method for accuracy.</p>
+<p><strong>Scenarios Simulated:</strong><br/>
+1. Uniform magnetic field only: Circular motion.<br/>
+2. Parallel <span class="arithmatex">\(\vec{E}\)</span> and <span class="arithmatex">\(\vec{B}\)</span>: Helical motion.<br/>
+3. Crossed fields: Drift motion.  </p>
+<p><strong>Parameters that can be varied:</strong><br/>
+- Electric field strength <span class="arithmatex">\(\vec{E}\)</span><br/>
+- Magnetic field strength <span class="arithmatex">\(\vec{B}\)</span><br/>
+- Initial velocity <span class="arithmatex">\(\vec{v}_0\)</span><br/>
+- Charge <span class="arithmatex">\(q\)</span> and mass <span class="arithmatex">\(m\)</span></p>
+<hr/>
+<h2 id="4-code-implementation">4. Code Implementation</h2>
+<p>See the attached Python script for full implementation: RK4 integration, Lorentz force application, and 3D visualization.</p>
+<pre><code class="language-python"># Lorentz Force Simulation and Visualization
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Constants and Parameters
+def lorentz_force(q, v, E, B):
+    return q * (E + np.cross(v, B))
+
+# Runge-Kutta 4th order integrator
+def rk4_step(pos, vel, dt, q, m, E, B):
+    def acceleration(v):
+        return lorentz_force(q, v, E, B) / m
+
+    k1v = dt * acceleration(vel)
+    k1x = dt * vel
+
+    k2v = dt * acceleration(vel + 0.5 * k1v)
+    k2x = dt * (vel + 0.5 * k1v)
+
+    k3v = dt * acceleration(vel + 0.5 * k2v)
+    k3x = dt * (vel + 0.5 * k2v)
+
+    k4v = dt * acceleration(vel + k3v)
+    k4x = dt * (vel + k3v)
+
+    new_vel = vel + (k1v + 2*k2v + 2*k3v + k4v)/6
+    new_pos = pos + (k1x + 2*k2x + 2*k3x + k4x)/6
+
+    return new_pos, new_vel
+
+# Simulation function
+def simulate_motion(E, B, q, m, v0, r0, dt=1e-9, steps=1000):
+    positions = [r0]
+    velocities = [v0]
+    pos, vel = r0, v0
+
+    for _ in range(steps):
+        pos, vel = rk4_step(pos, vel, dt, q, m, E, B)
+        positions.append(pos)
+        velocities.append(vel)
+
+    return np.array(positions), np.array(velocities)
+
+# Visualization function
+def plot_trajectory(positions, title="Particle Trajectory"):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot3D(positions[:,0], positions[:,1], positions[:,2])
+    ax.set_title(title)
+    ax.set_xlabel('x (m)')
+    ax.set_ylabel('y (m)')
+    ax.set_zlabel('z (m)')
+    plt.show()
+
+# Example scenarios
+q = 1.6e-19  # Charge (C)
+m = 9.11e-31 # Mass (kg)
+v0 = np.array([1e6, 0, 0])
+r0 = np.array([0, 0, 0])
+
+# Uniform magnetic field only
+E1 = np.array([0, 0, 0])
+B1 = np.array([0, 0, 1])
+pos1, vel1 = simulate_motion(E1, B1, q, m, v0, r0)
+plot_trajectory(pos1, title="Circular Motion in Magnetic Field")
+
+# Electric and magnetic fields parallel
+E2 = np.array([0, 0, 1e5])
+B2 = np.array([0, 0, 1])
+pos2, vel2 = simulate_motion(E2, B2, q, m, v0, r0)
+plot_trajectory(pos2, title="Helical Motion in E &amp; B Fields")
+
+# Crossed electric and magnetic fields
+E3 = np.array([0, 1e5, 0])
+B3 = np.array([0, 0, 1])
+pos3, vel3 = simulate_motion(E3, B3, q, m, v0, r0)
+plot_trajectory(pos3, title="Drift Motion in Crossed E &amp; B Fields")
+</code></pre>
+<p><img alt="alt text" src="../image-10.png"/>
+<img alt="alt text" src="../image-11.png"/>
+<img alt="alt text" src="../image-12.png"/></p>
+<hr/>
+<h2 id="5-results-and-visualizations">5. Results and Visualizations</h2>
+<h3 id="case-1-circular-motion">Case 1: Circular Motion</h3>
+<ul>
+<li><span class="arithmatex">\(\vec{E} = 0\)</span> </li>
+<li><span class="arithmatex">\(\vec{B} = [0, 0, B]\)</span> </li>
+<li>Initial velocity perpendicular to <span class="arithmatex">\(\vec{B}\)</span> </li>
+</ul>
+<p><strong>Expected motion:</strong> circular  </p>
+<p>From theory:</p>
+<div class="arithmatex">\[
+r_L = \frac{mv}{|q||B|} \quad \text{(Larmor radius)}
+\]</div>
+<p><strong>Plot:</strong> [Circular orbit in x-y plane]</p>
+<hr/>
+<h3 id="case-2-helical-motion">Case 2: Helical Motion</h3>
+<ul>
+<li><span class="arithmatex">\(\vec{E} = [0, 0, E]\)</span> </li>
+<li><span class="arithmatex">\(\vec{B} = [0, 0, B]\)</span> </li>
+</ul>
+<p><strong>Expected motion:</strong> helix, as velocity has components both parallel and perpendicular to <span class="arithmatex">\(\vec{B}\)</span>.  </p>
+<p><strong>Plot:</strong> [3D helical path]</p>
+<hr/>
+<h3 id="case-3-crossed-fields-drift">Case 3: Crossed Fields (Drift)</h3>
+<ul>
+<li><span class="arithmatex">\(\vec{E} = [0, E, 0]\)</span> </li>
+<li><span class="arithmatex">\(\vec{B} = [0, 0, B]\)</span> </li>
+</ul>
+<p><strong>Expected motion:</strong> drift velocity in x-direction:</p>
+<div class="arithmatex">\[
+\vec{v}_d = \frac{\vec{E} \times \vec{B}}{B^2}
+\]</div>
+<p><strong>Plot:</strong> [Curved motion with net drift]</p>
+<hr/>
+<h2 id="6-real-world-relevance">6. Real-World Relevance</h2>
+<ul>
+<li>Cyclotrons exploit circular motion in magnetic fields.  </li>
+<li>Magnetic traps and Penning traps confine particles using combined E and B fields.  </li>
+<li>In space physics, the Earth’s magnetic field and solar wind electric fields produce drift phenomena.</li>
+</ul>
+<hr/>
+<h2 id="7-extensions-and-improvements">7. Extensions and Improvements</h2>
+<p><strong>Possible future improvements:</strong><br/>
+- Non-uniform <span class="arithmatex">\(\vec{B}(x, y, z)\)</span><br/>
+- Collisions or friction forces<br/>
+- Relativistic effects at high speeds<br/>
+- External potentials (e.g., gravitational field)</p>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
