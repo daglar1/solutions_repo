@@ -120,6 +120,213 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="central-limit-theorem-simulation-and-analysis">📊 Central Limit Theorem Simulation and Analysis</h1>
+<h2 id="motivation">🧠 Motivation</h2>
+<p>The <strong>Central Limit Theorem (CLT)</strong> is one of the most important results in statistics. It states:</p>
+<blockquote>
+<p>Given a sufficiently large sample size from a population with finite mean (<span class="arithmatex">\(\mu\)</span>) and finite variance (<span class="arithmatex">\(\sigma^2\)</span>), the sampling distribution of the sample mean will be approximately normally distributed, regardless of the population’s original distribution.</p>
+</blockquote>
+<p>This simulation-based study provides a hands-on exploration of the CLT using Python.</p>
+<hr/>
+<h2 id="1-simulating-sampling-distributions">📌 1. Simulating Sampling Distributions</h2>
+<h3 id="population-distributions">Population Distributions</h3>
+<p>We explore the CLT using three different types of distributions:</p>
+<ol>
+<li>
+<p><strong>Uniform Distribution:</strong><br/>
+   $$
+   X \sim \text{Uniform}(a, b), \quad f(x) = \frac{1}{b-a} \text{ for } a \leq x \leq b
+   $$</p>
+</li>
+<li>
+<p><strong>Exponential Distribution:</strong><br/>
+   $$
+   X \sim \text{Exponential}(\lambda), \quad f(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0
+   $$</p>
+</li>
+<li>
+<p><strong>Binomial Distribution:</strong><br/>
+   $$
+   X \sim \text{Binomial}(n, p), \quad P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
+   $$</p>
+</li>
+</ol>
+<hr/>
+<h2 id="2-sampling-and-visualization">🧪 2. Sampling and Visualization</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.set(style='whitegrid')
+
+def simulate_clt(distribution_name, pop_data, sample_sizes=[5, 10, 30, 50], n_simulations=1000):
+    fig, axes = plt.subplots(1, len(sample_sizes), figsize=(18, 4))
+    fig.suptitle(f'Sampling Distributions - {distribution_name}', fontsize=16)
+
+    for idx, size in enumerate(sample_sizes):
+        sample_means = [np.mean(np.random.choice(pop_data, size, replace=True)) for _ in range(n_simulations)]
+
+        sns.histplot(sample_means, kde=True, ax=axes[idx], bins=30, stat="density")
+        axes[idx].set_title(f'Sample size = {size}')
+        axes[idx].axvline(np.mean(pop_data), color='red', linestyle='--', label='Population Mean')
+        axes[idx].legend()
+
+    plt.tight_layout()
+    plt.show()
+
+# Generate population data
+np.random.seed(42)
+N = 100000  # Population size
+
+# 1. Uniform(0, 1)
+uniform_data = np.random.uniform(0, 1, N)
+simulate_clt("Uniform(0,1)", uniform_data)
+
+# 2. Exponential(λ=1)
+exp_data = np.random.exponential(scale=1, size=N)
+simulate_clt("Exponential(λ=1)", exp_data)
+
+# 3. Binomial(n=10, p=0.5)
+binom_data = np.random.binomial(n=10, p=0.5, size=N)
+simulate_clt("Binomial(n=10, p=0.5)", binom_data)
+</code></pre>
+<p><img alt="alt text" src="../image.png"/>
+<img alt="alt text" src="../image-1.png"/>
+<img alt="alt text" src="../image-2.png"/></p>
+<hr/>
+<h2 id="3-parameter-exploration">📐 3. Parameter Exploration</h2>
+<h3 id="a-effect-of-sample-size">A. Effect of Sample Size</h3>
+<ul>
+<li><strong>Small sample size (<span class="arithmatex">\(n=5\)</span>):</strong> Sampling distribution retains the original distribution’s shape.</li>
+<li><strong>Large sample size (<span class="arithmatex">\(n=30+\)</span>):</strong> Distribution of sample means becomes bell-shaped and symmetric.</li>
+</ul>
+<h3 id="b-effect-of-population-variance">B. Effect of Population Variance</h3>
+<p>From theory:</p>
+<div class="arithmatex">\[
+\text{Var}(\bar{X}) = \frac{\sigma^2}{n}
+\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\(\bar{X}\)</span>: sample mean  </li>
+<li><span class="arithmatex">\(\sigma^2\)</span>: population variance  </li>
+<li><span class="arithmatex">\(n\)</span>: sample size  </li>
+</ul>
+<p>As <span class="arithmatex">\(n\)</span> increases, the variance of the sampling distribution decreases. The distribution becomes narrower, meaning more precise estimates of the population mean.</p>
+<h3 id="c-visual-example-varying-variance">C. Visual Example: Varying Variance</h3>
+<pre><code class="language-python">def plot_variance_effect(data, sample_size=30):
+    sample_means = [np.mean(np.random.choice(data, sample_size, replace=True)) for _ in range(1000)]
+    plt.figure(figsize=(7, 4))
+    sns.histplot(sample_means, kde=True, stat="density")
+    plt.axvline(np.mean(data), color='red', linestyle='--', label='Population Mean')
+    plt.title(f'Sample Mean Distribution (n={sample_size})')
+    plt.xlabel('Sample Mean')
+    plt.ylabel('Density')
+    plt.legend()
+    plt.show()
+
+# Call for examples
+plot_variance_effect(exp_data)
+plot_variance_effect(uniform_data)
+</code></pre>
+<hr/>
+<h2 id="variance-vs-sample-size">📉 Variance vs. Sample Size</h2>
+<p>```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns</p>
+<p>sns.set(style="whitegrid")
+np.random.seed(42)</p>
+<h1 id="populasyon-verisi-uretimi">Popülasyon verisi üretimi</h1>
+<p>N = 100000
+pop_uniform = np.random.uniform(0, 1, N)
+pop_exponential = np.random.exponential(scale=1, size=N)
+pop_binomial = np.random.binomial(n=10, p=0.5, size=N)</p>
+<p>populations = {
+    "Uniform(0,1)": pop_uniform,
+    "Exponential(λ=1)": pop_exponential,
+    "Binomial(n=10, p=0.5)": pop_binomial
+}</p>
+<h1 id="varyans-vs-orneklem-boyutu-cizimi">Varyans vs Örneklem Boyutu çizimi</h1>
+<p>def plot_variance_vs_sample_size(population, pop_name):
+    sample_sizes = np.arange(2, 201, 2)  # 2'den 200'e kadar örneklem boyutları
+    sample_variances = []</p>
+<pre><code>for n in sample_sizes:
+    sample_means = [np.mean(np.random.choice(population, n, replace=True)) for _ in range(500)]
+    sample_variances.append(np.var(sample_means))
+
+plt.figure(figsize=(8, 5))
+plt.plot(sample_sizes, sample_variances, marker='o', linewidth=2)
+plt.title(f'Variance of Sample Means vs Sample Size\nPopulation: {pop_name}')
+plt.xlabel('Sample Size (n)')
+plt.ylabel('Variance of Sample Means')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+</code></pre>
+<h1 id="tum-daglmlar-icin-ciz">Tüm dağılımlar için çiz</h1>
+<p>for name, data in populations.items():
+    plot_variance_vs_sample_size(data, name)
+ ```
+ <img alt="alt text" src="../image-3.png"/>
+<img alt="alt text" src="../image-4.png"/>
+<img alt="alt text" src="../image-5.png"/></p>
+<p>These plots demonstrate how the <strong>variance of sample means decreases</strong> as the <strong>sample size increases</strong>, which is a key implication of the <strong>Central Limit Theorem (CLT)</strong>.</p>
+<h3 id="code-explanation">🔍 Code Explanation</h3>
+<ul>
+<li>The code runs simulations for three population distributions: <strong>Uniform</strong>, <strong>Exponential</strong>, and <strong>Binomial</strong>.</li>
+<li>For each sample size (from <span class="arithmatex">\(n = 2\)</span> to <span class="arithmatex">\(n = 200\)</span>):</li>
+<li>500 samples are drawn with replacement.</li>
+<li>The mean of each sample is calculated.</li>
+<li>The variance of these 500 sample means is computed.</li>
+<li>A line plot is generated showing <strong>sample size vs. variance of sample means</strong>.</li>
+</ul>
+<h3 id="theoretical-background">📌 Theoretical Background</h3>
+<p>The variance of the sampling distribution of the mean is given by:</p>
+<div class="arithmatex">\[
+\text{Var}(\bar{X}) = \frac{\sigma^2}{n}
+\]</div>
+<p>This formula tells us that as the sample size (<span class="arithmatex">\(n\)</span>) increases, the variance of the sample mean <strong>decreases</strong>. In other words, the distribution of sample means becomes <strong>tighter</strong> around the population mean.</p>
+<h3 id="plot-interpretation">📈 Plot Interpretation</h3>
+<ul>
+<li>The x-axis represents the <strong>sample size</strong>.</li>
+<li>The y-axis represents the <strong>variance of the sample means</strong>.</li>
+<li>For all distributions, we observe a <strong>decline in variance</strong> as sample size increases.</li>
+<li>This confirms that larger samples yield more <strong>precise estimates</strong> of the population mean, in accordance with the CLT.</li>
+</ul>
+<h2 id="4-practical-applications-of-clt">🌍 4. Practical Applications of CLT</h2>
+<h3 id="estimating-population-parameters">✅ Estimating Population Parameters</h3>
+<p>The CLT allows us to construct <strong>confidence intervals</strong> around the sample mean, assuming a normal distribution of the sampling distribution:</p>
+<div class="arithmatex">\[
+\bar{X} \pm z^* \cdot \frac{\sigma}{\sqrt{n}}
+\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\(\bar{X}\)</span>: sample mean  </li>
+<li><span class="arithmatex">\(z^*\)</span>: critical value from standard normal distribution (e.g., 1.96 for 95% CI)  </li>
+<li><span class="arithmatex">\(\sigma\)</span>: population standard deviation  </li>
+<li><span class="arithmatex">\(n\)</span>: sample size  </li>
+</ul>
+<h3 id="quality-control">🏭 Quality Control</h3>
+<p>In manufacturing, companies use samples to monitor process performance. The CLT allows interpretation of sample means over time to detect defects or shifts in the process.</p>
+<h3 id="finance-and-risk">💹 Finance and Risk</h3>
+<p>Risk analysts use the CLT to assume normality when modeling average returns, enabling value-at-risk (VaR) calculations and financial forecasting.</p>
+<hr/>
+<h2 id="conclusion">📚 Conclusion</h2>
+<ul>
+<li>The <strong>Central Limit Theorem</strong> confirms that the distribution of sample means converges to normality as sample size increases, regardless of the original population shape.</li>
+<li>Simulations verify this behavior for uniform, exponential, and binomial distributions.</li>
+<li>Larger sample sizes reduce the variance of the sample mean, increasing the accuracy of estimates.</li>
+</ul>
+<hr/>
+<h2 id="references-resources">📎 References &amp; Resources</h2>
+<ul>
+<li>Khan Academy — Central Limit Theorem</li>
+<li>OpenIntro Statistics (free textbook)</li>
+<li>Python Libraries:</li>
+<li>NumPy</li>
+<li>Matplotlib</li>
+<li>Seaborn</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
