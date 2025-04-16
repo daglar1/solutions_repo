@@ -127,6 +127,7 @@ plot_variance_effect(uniform_data)
 ## 📉 Variance vs. Sample Size
 
 ```python
+
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -169,6 +170,7 @@ def plot_variance_vs_sample_size(population, pop_name):
 for name, data in populations.items():
     plot_variance_vs_sample_size(data, name)
  ```
+ 
  ![alt text](image-3.png)
  ![alt text](image-4.png)
  ![alt text](image-5.png)
