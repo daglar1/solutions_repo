@@ -230,43 +230,48 @@ plot_variance_effect(uniform_data)
 </code></pre>
 <hr/>
 <h2 id="variance-vs-sample-size">📉 Variance vs. Sample Size</h2>
-<p>```python</p>
-<p>import numpy as np
+<pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns</p>
-<p>sns.set(style="whitegrid")
-np.random.seed(42)</p>
-<h1 id="populasyon-verisi-uretimi">Popülasyon verisi üretimi</h1>
-<p>N = 100000
+import seaborn as sns
+
+sns.set(style="whitegrid")
+np.random.seed(42)
+
+# Popülasyon verisi üretimi
+N = 100000
 pop_uniform = np.random.uniform(0, 1, N)
 pop_exponential = np.random.exponential(scale=1, size=N)
-pop_binomial = np.random.binomial(n=10, p=0.5, size=N)</p>
-<p>populations = {
+pop_binomial = np.random.binomial(n=10, p=0.5, size=N)
+
+populations = {
     "Uniform(0,1)": pop_uniform,
     "Exponential(λ=1)": pop_exponential,
     "Binomial(n=10, p=0.5)": pop_binomial
-}</p>
-<h1 id="varyans-vs-orneklem-boyutu-cizimi">Varyans vs Örneklem Boyutu çizimi</h1>
-<p>def plot_variance_vs_sample_size(population, pop_name):
-    sample_sizes = np.arange(2, 201, 2)  # 2'den 200'e kadar örneklem boyutları
-    sample_variances = []</p>
-<pre><code>for n in sample_sizes:
-    sample_means = [np.mean(np.random.choice(population, n, replace=True)) for _ in range(500)]
-    sample_variances.append(np.var(sample_means))
+}
 
-plt.figure(figsize=(8, 5))
-plt.plot(sample_sizes, sample_variances, marker='o', linewidth=2)
-plt.title(f'Variance of Sample Means vs Sample Size\nPopulation: {pop_name}')
-plt.xlabel('Sample Size (n)')
-plt.ylabel('Variance of Sample Means')
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-</code></pre>
-<h1 id="tum-daglmlar-icin-ciz">Tüm dağılımlar için çiz</h1>
-<p>for name, data in populations.items():
+# Varyans vs Örneklem Boyutu çizimi
+def plot_variance_vs_sample_size(population, pop_name):
+    sample_sizes = np.arange(2, 201, 2)  # 2'den 200'e kadar örneklem boyutları
+    sample_variances = []
+
+    for n in sample_sizes:
+        sample_means = [np.mean(np.random.choice(population, n, replace=True)) for _ in range(500)]
+        sample_variances.append(np.var(sample_means))
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(sample_sizes, sample_variances, marker='o', linewidth=2)
+    plt.title(f'Variance of Sample Means vs Sample Size\nPopulation: {pop_name}')
+    plt.xlabel('Sample Size (n)')
+    plt.ylabel('Variance of Sample Means')
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+
+# Tüm dağılımlar için çiz
+for name, data in populations.items():
     plot_variance_vs_sample_size(data, name)
- ```</p>
+</code></pre>
 <p><img alt="alt text" src="../image-3.png"/>
 <img alt="alt text" src="../image-4.png"/>
 <img alt="alt text" src="../image-5.png"/></p>
