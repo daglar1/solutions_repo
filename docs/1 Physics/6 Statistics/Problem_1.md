@@ -123,7 +123,9 @@ plot_variance_effect(uniform_data)
 ```
 
 ---
+
 ## 📉 Variance vs. Sample Size
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
