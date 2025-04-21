@@ -120,6 +120,274 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="estimating-using-monte-carlo-methods">Estimating π Using Monte Carlo Methods</h1>
+<h2 id="motivation">Motivation</h2>
+<p>Monte Carlo simulations use randomness to solve numerical and geometric problems. Estimating π is a classic example. This document includes two methods:</p>
+<ol>
+<li><strong>Circle-based Monte Carlo method</strong></li>
+<li><strong>Buffon’s Needle method</strong></li>
+</ol>
+<hr/>
+<h1 id="part-1-estimating-using-circle-based-monte-carlo-method">Part 1: Estimating π Using Circle-Based Monte Carlo Method</h1>
+<h2 id="1-theoretical-background">1. Theoretical Background</h2>
+<p>A unit circle is inscribed in a square of side 2. The area of the circle is:</p>
+<div class="arithmatex">\[
+A_{\text{circle}} = \pi r^2 = \pi
+\]</div>
+<p>The area of the square is:</p>
+<div class="arithmatex">\[
+A_{\text{square}} = (2r)^2 = 4
+\]</div>
+<p>So the ratio:</p>
+<div class="arithmatex">\[
+\frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
+\Rightarrow
+\pi \approx 4 \cdot \frac{\text{points inside the circle}}{\text{total points}}
+\]</div>
+<hr/>
+<h2 id="python-implementation">Python implementation</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# --- Part 1: Monte Carlo Circle Method ---
+
+def estimate_pi(num_points):
+    x = np.random.uniform(-1, 1, num_points)
+    y = np.random.uniform(-1, 1, num_points)
+    distance = x**2 + y**2
+    inside_circle = distance &lt;= 1
+    pi_estimate = 4 * np.sum(inside_circle) / num_points
+    return pi_estimate, x, y, inside_circle
+
+# Single run and scatter plot
+num_points = 10000
+pi_estimate, x, y, inside = estimate_pi(num_points)
+
+plt.figure(figsize=(6, 6))
+plt.scatter(x[inside], y[inside], color='blue', s=1, label="Inside Circle")
+plt.scatter(x[~inside], y[~inside], color='red', s=1, label="Outside Circle")
+plt.title(f"Monte Carlo π Estimation\nEstimated π = {pi_estimate:.5f}")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.axis("equal")
+plt.grid(True)
+plt.show()
+
+# Convergence graph
+sample_sizes = np.logspace(2, 6, 20, dtype=int)
+estimates = [estimate_pi(n)[0] for n in sample_sizes]
+
+plt.figure(figsize=(10, 5))
+plt.plot(sample_sizes, estimates, marker='o', label='Estimated π')
+plt.axhline(np.pi, color='r', linestyle='--', label='Actual π')
+plt.xscale('log')
+plt.xlabel('Number of Random Points')
+plt.ylabel('Estimated π')
+plt.title('Convergence of π Estimate (Circle Method)')
+plt.legend()
+plt.grid(True)
+plt.show()
+</code></pre>
+<h2 id="explanation-of-monte-carlo-circle-estimation-code">Explanation of Monte Carlo Circle π Estimation Code</h2>
+<p>This Python code estimates the value of π using the <strong>Monte Carlo method</strong> by simulating random points in a square and checking how many fall inside an inscribed unit circle.</p>
+<h3 id="step-by-step-breakdown">🔹 Step-by-Step Breakdown:</h3>
+<ol>
+<li><strong>Function <code>estimate_pi(num_points)</code></strong>:</li>
+<li>Generates <code>num_points</code> random <span class="arithmatex">\((x, y)\)</span> coordinates within the square <span class="arithmatex">\([-1, 1] \times [-1, 1]\)</span>.</li>
+<li>Calculates the distance of each point from the origin.</li>
+<li>Counts how many points fall <strong>inside the unit circle</strong> using the condition <span class="arithmatex">\(x^2 + y^2 \le 1\)</span>.</li>
+<li>
+<p>Estimates π with the formula:
+     $$
+     \pi \approx 4 \cdot \frac{\text{Number inside circle}}{\text{Total points}}
+     $$</p>
+</li>
+<li>
+<p><strong>Scatter Plot Visualization</strong>:</p>
+</li>
+<li>Shows blue dots for points inside the circle and red for those outside.</li>
+<li>
+<p>Helps visualize the geometric probability that underlies the method.</p>
+</li>
+<li>
+<p><strong>Convergence Plot</strong>:</p>
+</li>
+<li>Runs the simulation for increasing numbers of points (from <span class="arithmatex">\(10^2\)</span> to <span class="arithmatex">\(10^6\)</span>).</li>
+<li>Plots the estimated π values against the number of points.</li>
+<li>Includes a dashed horizontal line at the true value of π to observe how fast the estimation converges.</li>
+</ol>
+<p>This method beautifully demonstrates how randomness can be used to approximate mathematical constants like π using geometry and probability.</p>
+<h2 id="3-visualization">3. Visualization</h2>
+<p><em>A scatter plot shows inside-circle points in blue and outside-circle points in red.</em></p>
+<p><img alt="alt text" src="../image-7.png"/></p>
+<h2 id="4-convergence-analysis">4. Convergence Analysis</h2>
+<p><em>A plot of estimated π versus number of points (log scale) shows convergence to real π.</em></p>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<hr/>
+<h1 id="part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</h1>
+<h2 id="1-theoretical-background_1">1. Theoretical Background</h2>
+<p>If a needle of length <span class="arithmatex">\(\ell\)</span> is dropped onto a plane with parallel lines spaced distance <span class="arithmatex">\(d\)</span> apart, the probability it crosses a line is:</p>
+<div class="arithmatex">\[
+P = \frac{2\ell}{d\pi}
+\Rightarrow
+\pi \approx \frac{2\ell \cdot N}{d \cdot H}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(N\)</span> = total number of throws
+- <span class="arithmatex">\(H\)</span> = number of crossings</p>
+<hr/>
+<h2 id="python-implementation_1">Python implementation</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# --- Part 2: Buffon’s Needle Method ---
+
+# π estimation function using Buffon's Needle experiment
+def buffon_needle(num_needles, needle_length=1.0, line_distance=1.0):
+    hits = 0
+    for _ in range(num_needles):
+        center = np.random.uniform(0, line_distance / 2)  # Distance from center to nearest line
+        angle = np.random.uniform(0, np.pi / 2)           # Random angle between 0 and 90 degrees
+        if center &lt;= (needle_length / 2) * np.sin(angle):  # Crossing condition
+            hits += 1
+    if hits == 0:
+        return None  # Avoid division by zero
+    return (2 * needle_length * num_needles) / (line_distance * hits)
+
+# Run the simulation with 10,000 needles
+estimated_pi_buffon = buffon_needle(10000)
+print(f"Estimated π using Buffon's Needle: {estimated_pi_buffon:.5f}")
+
+# Optional: Visualize the needle drops
+def buffon_visualize(num_needles=100, needle_length=1.0, line_distance=1.0):
+    plt.figure(figsize=(10, 6))
+
+    # Draw parallel lines
+    for i in range(6):
+        plt.axhline(i * line_distance, color='gray', linestyle='--')
+
+    # Drop needles
+    for _ in range(num_needles):
+        y_center = np.random.uniform(0, 5)
+        theta = np.random.uniform(0, np.pi)
+        dy = (needle_length / 2) * np.sin(theta)
+        y1 = y_center - dy
+        y2 = y_center + dy
+        color = 'blue' if int(y1 / line_distance) != int(y2 / line_distance) else 'red'
+        plt.plot([0, 1], [y1, y2], color=color)
+
+    plt.title("Buffon's Needle Simulation")
+    plt.xlim(0, 1)
+    plt.ylim(0, 5)
+    plt.xlabel("Needle Span")
+    plt.ylabel("Parallel Lines")
+    plt.grid(True)
+    plt.show()
+
+# Run visualization
+buffon_visualize()
+
+# Convergence graph for different needle counts
+needle_counts = np.logspace(2, 5, 10, dtype=int)
+estimates_buffon = [buffon_needle(n) for n in needle_counts]
+
+plt.figure(figsize=(10, 5))
+plt.plot(needle_counts, estimates_buffon, marker='o', label='Estimated π')
+plt.axhline(np.pi, color='r', linestyle='--', label='Actual π')
+plt.xscale('log')
+plt.xlabel('Number of Needle Drops')
+plt.ylabel('Estimated π')
+plt.title("Convergence of π Estimate (Buffon's Needle)")
+plt.legend()
+plt.grid(True)
+plt.show()
+</code></pre>
+<h2 id="explanation-of-buffons-needle-estimation-code">🪡 Explanation of Buffon’s Needle π Estimation Code</h2>
+<p>This code estimates the value of π using the <strong>Buffon’s Needle experiment</strong>, a probabilistic geometric method based on randomly dropping a needle on a surface with parallel lines.</p>
+<h3 id="step-by-step-breakdown_1">🔹 Step-by-Step Breakdown:</h3>
+<ol>
+<li><strong>Function <code>buffon_needle(num_needles)</code></strong>:</li>
+<li>Simulates dropping <code>num_needles</code> on a plane with parallel lines spaced a fixed distance <code>d</code> apart.</li>
+<li>For each needle:<ul>
+<li>A <strong>random center distance</strong> from the closest line is generated.</li>
+<li>A <strong>random angle</strong> of orientation (between 0 and 90 degrees) is picked.</li>
+<li>The needle is considered <strong>"crossing a line"</strong> if:
+   $$
+   \text{center distance} \leq \frac{\ell}{2} \cdot \sin(\theta)
+   $$</li>
+</ul>
+</li>
+<li>
+<p>If <span class="arithmatex">\(H\)</span> is the number of hits (crossings), π is estimated with:
+     $$
+     \pi \approx \frac{2 \ell N}{d H}
+     $$</p>
+</li>
+<li>
+<p><strong>Simulation Execution</strong>:</p>
+</li>
+<li>
+<p>The function is run for 10,000 needles and prints an estimated value of π.</p>
+</li>
+<li>
+<p><strong>Visualization (<code>buffon_visualize</code>)</strong>:</p>
+</li>
+<li>Visually drops 100 needles between horizontal parallel lines.</li>
+<li><strong>Blue needles</strong> cross a line; <strong>red needles</strong> do not.</li>
+<li>
+<p>This helps build geometric intuition behind the probability calculation.</p>
+</li>
+<li>
+<p><strong>Convergence Plot</strong>:</p>
+</li>
+<li>Runs simulations for increasing numbers of needles (from <span class="arithmatex">\(10^2\)</span> to <span class="arithmatex">\(10^5\)</span>).</li>
+<li>Plots estimated π against needle count on a log scale.</li>
+<li>Shows how the estimate stabilizes and converges to real π as sample size increases.</li>
+</ol>
+<hr/>
+<p>This experiment not only offers a historical and elegant way to compute π, but also beautifully demonstrates how geometry, probability, and simulation can work together.</p>
+<h2 id="3-visualization_1">3. Visualization</h2>
+<p><em>A plot shows many needles dropped on parallel lines, with crossing ones in blue, others in red.</em>
+<img alt="alt text" src="../image-8.png"/></p>
+<h2 id="4-convergence-analysis_1">4. Convergence Analysis</h2>
+<p><em>A plot shows estimated π versus number of drops on log scale.</em>
+<img alt="alt text" src="../image-9.png"/></p>
+<hr/>
+<h1 id="final-comparison">Final Comparison</h1>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Formula</th>
+<th>Speed</th>
+<th>Accuracy</th>
+<th>Visual Intuition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Circle Monte Carlo</td>
+<td><span class="arithmatex">\(\pi \approx 4 \cdot \frac{\text{hits}}{\text{total}}\)</span></td>
+<td>Fast</td>
+<td>High with <span class="arithmatex">\(10^5\)</span>+</td>
+<td>Very clear</td>
+</tr>
+<tr>
+<td>Buffon’s Needle</td>
+<td><span class="arithmatex">\(\pi \approx \frac{2\ell N}{d H}\)</span></td>
+<td>Slower</td>
+<td>Lower with small <span class="arithmatex">\(N\)</span></td>
+<td>Historical &amp; interesting</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="references">References</h2>
+<ul>
+<li>Buffon’s Needle: <a href="https://en.wikipedia.org/wiki/Buffon%27s_needle">Wikipedia</a> </li>
+<li>Monte Carlo Method: <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Wikipedia</a></li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
