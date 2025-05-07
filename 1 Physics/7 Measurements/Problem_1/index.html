@@ -120,6 +120,387 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="measuring-earths-gravitational-acceleration-with-a-pendulum">📌 Measuring Earth’s Gravitational Acceleration with a Pendulum</h1>
+<h2 id="motivation">🔷 Motivation</h2>
+<p>The acceleration due to gravity, <strong><span class="arithmatex">\(g\)</span></strong>, is a fundamental physical constant that governs the motion of objects and underpins many areas of physics and engineering. A <strong>simple pendulum</strong> offers a time-tested experimental method to determine <span class="arithmatex">\(g\)</span> through the relationship between its length and period of oscillation.</p>
+<p>From the formula:</p>
+<div class="arithmatex">\[
+T = 2\pi \sqrt{\frac{L}{g}} \Rightarrow g = \frac{4\pi^2 L}{T^2}
+\]</div>
+<p>we can measure the period <span class="arithmatex">\(T\)</span> and length <span class="arithmatex">\(L\)</span> to estimate the local gravitational acceleration <span class="arithmatex">\(g\)</span>.</p>
+<hr/>
+<h2 id="task">🔷 Task</h2>
+<ul>
+<li>Measure <span class="arithmatex">\(g\)</span> using a pendulum.</li>
+<li>Analyze the <strong>uncertainties</strong> in your measurements.</li>
+<li>Understand how measurement accuracy impacts scientific results.</li>
+</ul>
+<hr/>
+<h2 id="procedure">🔷 Procedure</h2>
+<h3 id="1-materials">1. Materials</h3>
+<ul>
+<li>A string (1–1.5 meters long)</li>
+<li>A small weight (e.g., bag of coins, keychain)</li>
+<li>Stopwatch or smartphone timer</li>
+<li>Ruler or measuring tape</li>
+</ul>
+<hr/>
+<h3 id="2-setup">2. Setup</h3>
+<ul>
+<li>Suspend the weight from the string and fix the upper end to a stable support.</li>
+<li>Measure the <strong>length <span class="arithmatex">\(L\)</span></strong> from the suspension point to the center of mass of the weight.</li>
+</ul>
+<h4 id="uncertainty-in-length">Uncertainty in Length:</h4>
+<p>If the ruler has a resolution <span class="arithmatex">\(R\)</span>, then the uncertainty is:</p>
+<div class="arithmatex">\[
+\Delta L = \frac{R}{2}
+\]</div>
+<hr/>
+<h3 id="3-data-collection">3. Data Collection</h3>
+<ol>
+<li>Displace the pendulum by less than <span class="arithmatex">\(15^\circ\)</span> and release it.</li>
+<li>Measure the time for <strong>10 full oscillations</strong>, denoted <span class="arithmatex">\(T_{10,i}\)</span> for <span class="arithmatex">\(i = 1\)</span> to <span class="arithmatex">\(10\)</span>.</li>
+<li>Repeat this measurement 10 times.</li>
+<li>Compute the <strong>mean time</strong> for 10 oscillations:</li>
+</ol>
+<div class="arithmatex">\[
+\bar{T}_{10} = \frac{1}{10} \sum_{i=1}^{10} T_{10,i}
+\]</div>
+<ol>
+<li>Compute the <strong>standard deviation</strong>:</li>
+</ol>
+<div class="arithmatex">\[
+\sigma_t = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{10} \left(T_{10,i} - \bar{T}_{10} \right)^2 }
+\]</div>
+<ol>
+<li>Calculate the <strong>uncertainty in the mean</strong>:</li>
+</ol>
+<div class="arithmatex">\[
+\Delta T_{10} = \frac{\sigma_t}{\sqrt{n}} \quad \text{where } n = 10
+\]</div>
+<hr/>
+<h2 id="calculations">🔷 Calculations</h2>
+<h3 id="1-period-of-one-oscillation">1. Period of One Oscillation</h3>
+<div class="arithmatex">\[
+T = \frac{\bar{T}_{10}}{10}, \quad \Delta T = \frac{\Delta T_{10}}{10}
+\]</div>
+<hr/>
+<h3 id="2-gravitational-acceleration">2. Gravitational Acceleration</h3>
+<p>Using the pendulum formula:</p>
+<div class="arithmatex">\[
+g = \frac{4\pi^2 L}{T^2}
+\]</div>
+<hr/>
+<h3 id="3-uncertainty-in-g-propagation-of-uncertainties">3. Uncertainty in <span class="arithmatex">\(g\)</span> (Propagation of Uncertainties)</h3>
+<p>Apply the uncertainty propagation formula:</p>
+<div class="arithmatex">\[
+\Delta g = g \cdot \sqrt{ \left( \frac{\Delta L}{L} \right)^2 + \left( 2 \cdot \frac{\Delta T}{T} \right)^2 }
+\]</div>
+<hr/>
+<h2 id="analysis">🔷 Analysis</h2>
+<h3 id="1-comparison-with-standard-value">1. Comparison with Standard Value</h3>
+<p>Compare the measured value of <span class="arithmatex">\(g\)</span> with the known standard:</p>
+<div class="arithmatex">\[
+g_{\text{measured}} \quad \text{vs} \quad g_{\text{standard}} = 9.81 \ \text{m/s}^2
+\]</div>
+<hr/>
+<h3 id="2-discussion-points">2. Discussion Points</h3>
+<ul>
+<li>
+<p><strong>Effect of Measurement Resolution on <span class="arithmatex">\(\Delta L\)</span></strong><br/>
+  A coarser ruler (e.g., 1 cm resolution) results in higher uncertainty:
+  $$
+  \Delta L = 0.005 \ \text{m}
+  $$</p>
+</li>
+<li>
+<p><strong>Timing Variability and Impact on <span class="arithmatex">\(\Delta T\)</span></strong><br/>
+  Human reaction time during stopwatch usage introduces random errors, which increase <span class="arithmatex">\(\sigma_t\)</span> and <span class="arithmatex">\(\Delta T\)</span>.</p>
+</li>
+<li>
+<p><strong>Assumptions and Limitations</strong>:</p>
+</li>
+<li>Small-angle approximation: Valid only for <span class="arithmatex">\(\theta &lt; 15^\circ\)</span>.</li>
+<li>Neglects air resistance, friction at the pivot, and mass of the string.</li>
+<li>Assumes a rigid, non-stretching string.</li>
+</ul>
+<hr/>
+<h2 id="deliverables">🔷 Deliverables</h2>
+<h3 id="data-table">📋 Data Table</h3>
+<table>
+<thead>
+<tr>
+<th>Trial</th>
+<th><span class="arithmatex">\(T_{10}\)</span> (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><strong>Measured Values</strong></p>
+<ul>
+<li><span class="arithmatex">\(L = \ldots\)</span> m  </li>
+<li><span class="arithmatex">\(\Delta L = \ldots\)</span> m</li>
+</ul>
+<p><strong>Time Measurements</strong></p>
+<ul>
+<li><span class="arithmatex">\(\bar{T}_{10} = \ldots\)</span> s  </li>
+<li><span class="arithmatex">\(\sigma_t = \ldots\)</span> s  </li>
+<li><span class="arithmatex">\(\Delta T_{10} = \ldots\)</span> s  </li>
+<li><span class="arithmatex">\(T = \bar{T}_{10} / 10 = \ldots\)</span> s  </li>
+<li><span class="arithmatex">\(\Delta T = \Delta T_{10} / 10 = \ldots\)</span> s  </li>
+</ul>
+<p><strong>Final Result</strong></p>
+<ul>
+<li><span class="arithmatex">\(g = \ldots\)</span> m/s²  </li>
+<li><span class="arithmatex">\(\Delta g = \ldots\)</span> m/s²</li>
+</ul>
+<hr/>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# --- Simulated or measured values ---
+# Replace this list with your real stopwatch values for 10 oscillations (T₁₀)
+T10_measurements = np.array([18.21, 18.25, 18.19, 18.23, 18.26,
+                             18.24, 18.20, 18.22, 18.18, 18.27])  # in seconds
+
+L = 1.000  # Pendulum length in meters (adjust to your setup)
+delta_L = 0.005  # Uncertainty in length (e.g., 0.5 cm ruler resolution)
+
+# --- Compute statistics ---
+T10_mean = np.mean(T10_measurements)
+sigma_t = np.std(T10_measurements, ddof=1)
+delta_T10 = sigma_t / np.sqrt(len(T10_measurements))
+
+# Period for one oscillation
+T = T10_mean / 10
+delta_T = delta_T10 / 10
+
+# Gravitational acceleration
+g = (4 * np.pi**2 * L) / T**2
+
+# Uncertainty propagation
+delta_g = g * np.sqrt((delta_L / L)**2 + (2 * delta_T / T)**2)
+
+# --- Print results ---
+print(f"Mean of T₁₀: {T10_mean:.4f} s")
+print(f"Standard deviation σₜ: {sigma_t:.4f} s")
+print(f"Uncertainty in mean ΔT₁₀: {delta_T10:.4f} s")
+print(f"Period T: {T:.4f} s ± {delta_T:.4f} s")
+print(f"Length L: {L:.3f} m ± {delta_L:.3f} m")
+print(f"g = {g:.4f} m/s² ± {delta_g:.4f} m/s²")
+
+# --- Histogram of Time Measurements ---
+plt.figure(figsize=(8, 5))
+plt.hist(T10_measurements, bins=6, edgecolor='black', alpha=0.7)
+plt.axvline(T10_mean, color='red', linestyle='--', label=f'Mean = {T10_mean:.2f}s')
+plt.title("Histogram of 10-Oscillation Timings")
+plt.xlabel("Time for 10 Oscillations (s)")
+plt.ylabel("Frequency")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# --- Error Bar Plot of T10 Measurements ---
+plt.figure(figsize=(8, 5))
+trial_numbers = np.arange(1, 11)
+plt.errorbar(trial_numbers, T10_measurements, yerr=sigma_t, fmt='o', capsize=5, label='Measurements ± σₜ')
+plt.axhline(T10_mean, color='green', linestyle='--', label=f'Mean = {T10_mean:.2f}s')
+plt.title("T₁₀ Measurements with Error Bars")
+plt.xlabel("Trial")
+plt.ylabel("T₁₀ (s)")
+plt.xticks(trial_numbers)
+plt.legend()
+plt.grid(True)
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image-1.png"/>
+<img alt="alt text" src="../image.png"/></p>
+<h2 id="what-this-python-code-does">🧪 What This Python Code Does</h2>
+<p>This script simulates and visualizes an experiment to <strong>measure gravitational acceleration (<span class="arithmatex">\(g\)</span>)</strong> using a <strong>simple pendulum</strong>. It processes timing data and provides statistical and graphical insight into the accuracy of the measurement.</p>
+<hr/>
+<h3 id="1-inputssimulated-measurements">🔢 1. Inputs/Simulated Measurements</h3>
+<ul>
+<li>It starts with an array of 10 stopwatch measurements for 10 full pendulum swings (<span class="arithmatex">\(T_{10}\)</span>).</li>
+<li>You can replace these with real values from your own experiment.</li>
+</ul>
+<hr/>
+<h3 id="2-computes-statistics">📊 2. Computes Statistics</h3>
+<ul>
+<li>Calculates the <strong>mean</strong> of the 10 measurements:</li>
+</ul>
+<p>$$
+  \bar{T}<em>{10} = \frac{1}{10} \sum T</em>{10,i}
+  $$</p>
+<ul>
+<li>Calculates the <strong>standard deviation</strong> (<span class="arithmatex">\(\sigma_t\)</span>) and <strong>uncertainty in the mean</strong> (<span class="arithmatex">\(\Delta T_{10}\)</span>):</li>
+</ul>
+<p>$$
+  \Delta T_{10} = \frac{\sigma_t}{\sqrt{n}}
+  $$</p>
+<ul>
+<li>Computes the <strong>period for one oscillation</strong>:</li>
+</ul>
+<p>$$
+  T = \frac{\bar{T}<em>{10}}{10}, \quad \Delta T = \frac{\Delta T</em>{10}}{10}
+  $$</p>
+<hr/>
+<h3 id="3-calculates-gravitational-acceleration">🌍 3. Calculates Gravitational Acceleration</h3>
+<ul>
+<li>Uses the pendulum formula:</li>
+</ul>
+<p>$$
+  g = \frac{4\pi^2 L}{T^2}
+  $$</p>
+<ul>
+<li>Calculates the uncertainty using:</li>
+</ul>
+<p>$$
+  \Delta g = g \cdot \sqrt{ \left( \frac{\Delta L}{L} \right)^2 + \left( 2 \cdot \frac{\Delta T}{T} \right)^2 }
+  $$</p>
+<hr/>
+<h3 id="4-prints-key-results">🖨️ 4. Prints Key Results</h3>
+<ul>
+<li>Outputs:</li>
+<li>Mean and standard deviation of <span class="arithmatex">\(T_{10}\)</span></li>
+<li>Period <span class="arithmatex">\(T\)</span> with its uncertainty</li>
+<li>Pendulum length <span class="arithmatex">\(L\)</span> and <span class="arithmatex">\(\Delta L\)</span></li>
+<li>Gravitational acceleration <span class="arithmatex">\(g\)</span> with <span class="arithmatex">\(\Delta g\)</span></li>
+</ul>
+<hr/>
+<h3 id="5-visualizations">📈 5. Visualizations</h3>
+<ul>
+<li><strong>Histogram</strong> of the 10 measurements to see distribution and spread.</li>
+<li><strong>Error bar plot</strong> showing each trial with standard deviation and a horizontal line at the mean.</li>
+</ul>
+<p>These help identify outliers and assess experimental consistency.</p>
+<hr/>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import linregress
+
+# --- Simulate lengths and measure T values for each (or replace with your own data) ---
+lengths = np.array([0.40, 0.60, 0.80, 1.00, 1.20])  # in meters
+g_true = 9.81  # true g for simulation
+T_values = 2 * np.pi * np.sqrt(lengths / g_true)
+
+# Add small noise to simulate measurement uncertainty
+T_values_noisy = T_values + np.random.normal(0, 0.02, size=len(T_values))
+
+# Compute T^2
+T_squared = T_values_noisy**2
+
+# Linear regression: T^2 vs L
+slope, intercept, r_value, p_value, std_err = linregress(lengths, T_squared)
+g_estimated = 4 * np.pi**2 / slope
+
+# --- Plot ---
+plt.figure(figsize=(8, 6))
+plt.scatter(lengths, T_squared, color='blue', label='Data Points (Noisy)')
+plt.plot(lengths, slope * lengths + intercept, 'r--', label='Linear Fit')
+plt.title("T² vs. Pendulum Length")
+plt.xlabel("Length (m)")
+plt.ylabel("T² (s²)")
+plt.grid(True)
+plt.legend()
+
+# Annotate result
+plt.text(0.5, min(T_squared)+0.1, f"Estimated g = {g_estimated:.3f} m/s²", fontsize=12, color='green')
+
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<hr/>
+<h2 id="extended-analysis-plotting-t2-vs-length-l-to-estimate-g">📊 Extended Analysis: Plotting <span class="arithmatex">\(T^2\)</span> vs Length <span class="arithmatex">\(L\)</span> to Estimate <span class="arithmatex">\(g\)</span></h2>
+<p>When we rearrange the formula for a pendulum’s period:</p>
+<div class="arithmatex">\[
+T = 2\pi \sqrt{\frac{L}{g}} \Rightarrow T^2 = \frac{4\pi^2}{g} \cdot L
+\]</div>
+<p>This shows that <span class="arithmatex">\(T^2\)</span> is <strong>linearly proportional</strong> to the pendulum length <span class="arithmatex">\(L\)</span>:</p>
+<ul>
+<li>The <strong>slope</strong> of a <span class="arithmatex">\(T^2\)</span> vs. <span class="arithmatex">\(L\)</span> plot is:</li>
+</ul>
+<p>$$
+  \text{slope} = \frac{4\pi^2}{g}
+  $$</p>
+<ul>
+<li>Therefore, we can estimate <span class="arithmatex">\(g\)</span> using:</li>
+</ul>
+<p>$$
+  g = \frac{4\pi^2}{\text{slope}}
+  $$</p>
+<hr/>
+<h3 id="why-this-plot-is-impressive">✅ Why This Plot is Impressive:</h3>
+<ul>
+<li>It <strong>validates</strong> the physical model with experimental data.</li>
+<li>The <strong>linearity</strong> provides evidence for the small-angle approximation.</li>
+<li>Linear regression is used to extract <span class="arithmatex">\(g\)</span> from multiple measurements, reducing the impact of outliers or random error.</li>
+</ul>
+<hr/>
+<h3 id="example-interpretation">🧮 Example Interpretation</h3>
+<p>Let’s say the slope from the linear fit was found to be:</p>
+<div class="arithmatex">\[
+\text{slope} = 4.01 \ \text{s}^2/\text{m}
+\]</div>
+<p>Then the estimated gravitational acceleration would be:</p>
+<div class="arithmatex">\[
+g = \frac{4\pi^2}{4.01} \approx 9.84 \ \text{m/s}^2
+\]</div>
+<p>Which is very close to the standard value:</p>
+<div class="arithmatex">\[
+g_{\text{standard}} = 9.81 \ \text{m/s}^2
+\]</div>
+<hr/>
+<h3 id="visual-outcome">📈 Visual Outcome</h3>
+<p>This plot visually shows:</p>
+<ul>
+<li>Data points of <span class="arithmatex">\(T^2\)</span> vs. <span class="arithmatex">\(L\)</span></li>
+<li>Best-fit line from regression</li>
+<li>Calculated value of <span class="arithmatex">\(g\)</span> annotated on the plot</li>
+</ul>
+<p>It adds depth and <strong>professionalism</strong> to your analysis and makes your report or presentation <strong>stand out</strong>.</p>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
