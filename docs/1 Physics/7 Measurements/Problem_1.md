@@ -346,6 +346,7 @@ plt.show()
 
 When we rearrange the formula for a pendulum’s period:
 
+
 $$
 T = 2\pi \sqrt{\frac{L}{g}} \Rightarrow T^2 = \frac{4\pi^2}{g} \cdot L
 $$
@@ -354,15 +355,15 @@ This shows that $T^2$ is **linearly proportional** to the pendulum length $L$:
 
 - The **slope** of a $T^2$ vs. $L$ plot is:
   
-  $$
-  \text{slope} = \frac{4\pi^2}{g}
-  $$
+$$
+\text{slope} = \frac{4\pi^2}{g}
+$$
 
 - Therefore, we can estimate $g$ using:
   
-  $$
-  g = \frac{4\pi^2}{\text{slope}}
-  $$
+$$
+g = \frac{4\pi^2}{\text{slope}}
+$$
 
 ---
 
