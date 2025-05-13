@@ -120,113 +120,72 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<h1 id="measuring-earths-gravitational-acceleration-with-a-pendulum">📌 Measuring Earth’s Gravitational Acceleration with a Pendulum</h1>
-<h2 id="motivation">🔷 Motivation</h2>
-<p>The acceleration due to gravity, <strong><span class="arithmatex">\(g\)</span></strong>, is a fundamental physical constant that governs the motion of objects and underpins many areas of physics and engineering. A <strong>simple pendulum</strong> offers a time-tested experimental method to determine <span class="arithmatex">\(g\)</span> through the relationship between its length and period of oscillation.</p>
-<p>From the formula:</p>
+<h1 id="measurement-of-earths-gravitational-acceleration-using-a-simple-pendulum">📌 Measurement of Earth’s Gravitational Acceleration Using a Simple Pendulum</h1>
+<h2 id="theoretical-background">🔷 Theoretical Background</h2>
+<p>The acceleration due to gravity, denoted as <span class="arithmatex">\(g\)</span>, is a fundamental physical constant influencing motion and structure in both classical and modern physics. One of the most reliable classical methods to determine <span class="arithmatex">\(g\)</span> involves analyzing the motion of a <strong>simple pendulum</strong>.</p>
+<p>The period of a simple pendulum under the small-angle approximation (<span class="arithmatex">\(\theta &lt; 15^\circ\)</span>) is given by:</p>
 <div class="arithmatex">\[
-T = 2\pi \sqrt{\frac{L}{g}} \Rightarrow g = \frac{4\pi^2 L}{T^2}
+T = 2\pi \sqrt{\frac{L}{g}} \quad \Rightarrow \quad g = \frac{4\pi^2 L}{T^2}
 \]</div>
-<p>we can measure the period <span class="arithmatex">\(T\)</span> and length <span class="arithmatex">\(L\)</span> to estimate the local gravitational acceleration <span class="arithmatex">\(g\)</span>.</p>
+<p>Where:
+- <span class="arithmatex">\(T\)</span> is the period of oscillation,
+- <span class="arithmatex">\(L\)</span> is the length from the suspension point to the center of mass of the bob,
+- <span class="arithmatex">\(g\)</span> is the local gravitational field strength.</p>
 <hr/>
-<h2 id="task">🔷 Task</h2>
+<h2 id="experimental-method">🔷 Experimental Method</h2>
+<h3 id="materials">Materials</h3>
 <ul>
-<li>Measure <span class="arithmatex">\(g\)</span> using a pendulum.</li>
-<li>Analyze the <strong>uncertainties</strong> in your measurements.</li>
-<li>Understand how measurement accuracy impacts scientific results.</li>
+<li>String (1–1.5 m)</li>
+<li>Rigid support stand</li>
+<li>Dense bob (e.g., metallic keychain)</li>
+<li>Ruler or tape measure</li>
+<li>Stopwatch or timer-enabled device</li>
 </ul>
+<h3 id="procedure">Procedure</h3>
+<p>The pendulum was constructed by suspending a small weight on a string attached to a fixed support. The length <span class="arithmatex">\(L\)</span> was measured from the suspension point to the bob’s center of mass. Oscillations were initiated by displacing the pendulum to a small angle and releasing it without push.</p>
+<p>The time for 10 full oscillations (<span class="arithmatex">\(T_{10}\)</span>) was recorded ten times. These readings were used to compute the average period and estimate the local gravitational acceleration.</p>
 <hr/>
-<h2 id="procedure">🔷 Procedure</h2>
-<h3 id="1-materials">1. Materials</h3>
-<ul>
-<li>A string (1–1.5 meters long)</li>
-<li>A small weight (e.g., bag of coins, keychain)</li>
-<li>Stopwatch or smartphone timer</li>
-<li>Ruler or measuring tape</li>
-</ul>
-<hr/>
-<h3 id="2-setup">2. Setup</h3>
-<ul>
-<li>Suspend the weight from the string and fix the upper end to a stable support.</li>
-<li>Measure the <strong>length <span class="arithmatex">\(L\)</span></strong> from the suspension point to the center of mass of the weight.</li>
-</ul>
-<h4 id="uncertainty-in-length">Uncertainty in Length:</h4>
-<p>If the ruler has a resolution <span class="arithmatex">\(R\)</span>, then the uncertainty is:</p>
+<h2 id="uncertainty-analysis">🔷 Uncertainty Analysis</h2>
+<h3 id="length-uncertainty">Length Uncertainty</h3>
+<p>The measurement uncertainty in <span class="arithmatex">\(L\)</span> arises from the resolution of the measuring instrument:</p>
 <div class="arithmatex">\[
 \Delta L = \frac{R}{2}
 \]</div>
-<hr/>
-<h3 id="3-data-collection">3. Data Collection</h3>
-<ol>
-<li>Displace the pendulum by less than <span class="arithmatex">\(15^\circ\)</span> and release it.</li>
-<li>Measure the time for <strong>10 full oscillations</strong>, denoted <span class="arithmatex">\(T_{10,i}\)</span> for <span class="arithmatex">\(i = 1\)</span> to <span class="arithmatex">\(10\)</span>.</li>
-<li>Repeat this measurement 10 times.</li>
-<li>Compute the <strong>mean time</strong> for 10 oscillations:</li>
-</ol>
+<p>Where <span class="arithmatex">\(R\)</span> is the ruler's resolution (e.g., <span class="arithmatex">\(R = 1\)</span> cm → <span class="arithmatex">\(\Delta L = 0.005\)</span> m).</p>
+<h3 id="timing-uncertainty">Timing Uncertainty</h3>
+<p>From the 10 recorded measurements <span class="arithmatex">\(T_{10,i}\)</span>:</p>
+<ul>
+<li><strong>Mean time for 10 oscillations</strong>:</li>
+</ul>
 <div class="arithmatex">\[
-\bar{T}_{10} = \frac{1}{10} \sum_{i=1}^{10} T_{10,i}
+\bar{T}_{10} = \frac{1}{n} \sum_{i=1}^{n} T_{10,i}
 \]</div>
-<ol>
-<li>Compute the <strong>standard deviation</strong>:</li>
-</ol>
+<ul>
+<li><strong>Standard deviation</strong>:</li>
+</ul>
 <div class="arithmatex">\[
-\sigma_t = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{10} \left(T_{10,i} - \bar{T}_{10} \right)^2 }
+\sigma_t = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{n} (T_{10,i} - \bar{T}_{10})^2 }
 \]</div>
-<ol>
-<li>Calculate the <strong>uncertainty in the mean</strong>:</li>
-</ol>
+<ul>
+<li><strong>Uncertainty in the mean</strong>:</li>
+</ul>
 <div class="arithmatex">\[
-\Delta T_{10} = \frac{\sigma_t}{\sqrt{n}} \quad \text{where } n = 10
+\Delta T_{10} = \frac{\sigma_t}{\sqrt{n}}
 \]</div>
-<hr/>
-<h2 id="calculations">🔷 Calculations</h2>
-<h3 id="1-period-of-one-oscillation">1. Period of One Oscillation</h3>
+<ul>
+<li><strong>Period of one oscillation</strong> and its uncertainty:</li>
+</ul>
 <div class="arithmatex">\[
 T = \frac{\bar{T}_{10}}{10}, \quad \Delta T = \frac{\Delta T_{10}}{10}
 \]</div>
-<hr/>
-<h3 id="2-gravitational-acceleration">2. Gravitational Acceleration</h3>
-<p>Using the pendulum formula:</p>
-<div class="arithmatex">\[
-g = \frac{4\pi^2 L}{T^2}
-\]</div>
-<hr/>
-<h3 id="3-uncertainty-in-g-propagation-of-uncertainties">3. Uncertainty in <span class="arithmatex">\(g\)</span> (Propagation of Uncertainties)</h3>
-<p>Apply the uncertainty propagation formula:</p>
+<h3 id="propagation-of-uncertainty-in-g">Propagation of Uncertainty in <span class="arithmatex">\(g\)</span></h3>
+<p>The uncertainty in <span class="arithmatex">\(g\)</span> due to both length and timing is propagated as:</p>
 <div class="arithmatex">\[
 \Delta g = g \cdot \sqrt{ \left( \frac{\Delta L}{L} \right)^2 + \left( 2 \cdot \frac{\Delta T}{T} \right)^2 }
 \]</div>
 <hr/>
-<h2 id="analysis">🔷 Analysis</h2>
-<h3 id="1-comparison-with-standard-value">1. Comparison with Standard Value</h3>
-<p>Compare the measured value of <span class="arithmatex">\(g\)</span> with the known standard:</p>
-<div class="arithmatex">\[
-g_{\text{measured}} \quad \text{vs} \quad g_{\text{standard}} = 9.81 \ \text{m/s}^2
-\]</div>
-<hr/>
-<h3 id="2-discussion-points">2. Discussion Points</h3>
-<ul>
-<li>
-<p><strong>Effect of Measurement Resolution on <span class="arithmatex">\(\Delta L\)</span></strong><br/>
-  A coarser ruler (e.g., 1 cm resolution) results in higher uncertainty:
-  $$
-  \Delta L = 0.005 \ \text{m}
-  $$</p>
-</li>
-<li>
-<p><strong>Timing Variability and Impact on <span class="arithmatex">\(\Delta T\)</span></strong><br/>
-  Human reaction time during stopwatch usage introduces random errors, which increase <span class="arithmatex">\(\sigma_t\)</span> and <span class="arithmatex">\(\Delta T\)</span>.</p>
-</li>
-<li>
-<p><strong>Assumptions and Limitations</strong>:</p>
-</li>
-<li>Small-angle approximation: Valid only for <span class="arithmatex">\(\theta &lt; 15^\circ\)</span>.</li>
-<li>Neglects air resistance, friction at the pivot, and mass of the string.</li>
-<li>Assumes a rigid, non-stretching string.</li>
-</ul>
-<hr/>
-<h2 id="deliverables">🔷 Deliverables</h2>
-<h3 id="data-table">📋 Data Table</h3>
+<h2 id="results">🔷 Results</h2>
+<h3 id="raw-data-table">Raw Data Table</h3>
 <table>
 <thead>
 <tr>
@@ -278,25 +237,36 @@ g_{\text{measured}} \quad \text{vs} \quad g_{\text{standard}} = 9.81 \ \text{m/s
 </tbody>
 </table>
 <hr/>
-<p><strong>Measured Values</strong></p>
+<h3 id="processed-results">Processed Results</h3>
 <ul>
 <li><span class="arithmatex">\(L = \ldots\)</span> m  </li>
-<li><span class="arithmatex">\(\Delta L = \ldots\)</span> m</li>
-</ul>
-<p><strong>Time Measurements</strong></p>
-<ul>
+<li><span class="arithmatex">\(\Delta L = \ldots\)</span> m  </li>
 <li><span class="arithmatex">\(\bar{T}_{10} = \ldots\)</span> s  </li>
 <li><span class="arithmatex">\(\sigma_t = \ldots\)</span> s  </li>
 <li><span class="arithmatex">\(\Delta T_{10} = \ldots\)</span> s  </li>
-<li><span class="arithmatex">\(T = \bar{T}_{10} / 10 = \ldots\)</span> s  </li>
-<li><span class="arithmatex">\(\Delta T = \Delta T_{10} / 10 = \ldots\)</span> s  </li>
-</ul>
-<p><strong>Final Result</strong></p>
-<ul>
+<li><span class="arithmatex">\(T = \ldots\)</span> s  </li>
+<li><span class="arithmatex">\(\Delta T = \ldots\)</span> s  </li>
 <li><span class="arithmatex">\(g = \ldots\)</span> m/s²  </li>
-<li><span class="arithmatex">\(\Delta g = \ldots\)</span> m/s²</li>
+<li><span class="arithmatex">\(\Delta g = \ldots\)</span> m/s²  </li>
 </ul>
 <hr/>
+<h2 id="discussion">🔷 Discussion</h2>
+<p>The experimentally determined value of <span class="arithmatex">\(g\)</span> can be compared to the accepted standard:</p>
+<div class="arithmatex">\[
+g_{\text{standard}} = 9.81 \ \text{m/s}^2
+\]</div>
+<p>Deviations from this value may arise due to:</p>
+<ul>
+<li>Manual timing errors (human reaction time)</li>
+<li>Inaccurate length measurements</li>
+<li>Air resistance and pivot friction</li>
+<li>Departure from ideal small-angle behavior</li>
+</ul>
+<p>The dominant contributions to uncertainty were assessed. If <span class="arithmatex">\(\Delta T / T\)</span> is significantly larger than <span class="arithmatex">\(\Delta L / L\)</span>, then improvements should focus on timing precision.</p>
+<hr/>
+<h2 id="conclusion">🔷 Conclusion</h2>
+<p>This experiment demonstrates how a simple apparatus can yield an accurate estimate of Earth’s gravitational acceleration. With careful measurement and uncertainty analysis, even basic equipment can approach high-precision physics. The propagation of error emphasizes how each component (timing, length) influences the final result and reveals the importance of statistical treatment in experimental science.</p>
+<h2 id="-">---</h2>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -470,13 +440,6 @@ T = 2\pi \sqrt{\frac{L}{g}} \Rightarrow T^2 = \frac{4\pi^2}{g} \cdot L
 <div class="arithmatex">\[
 g = \frac{4\pi^2}{\text{slope}}
 \]</div>
-<hr/>
-<h3 id="why-this-plot-is-impressive">✅ Why This Plot is Impressive:</h3>
-<ul>
-<li>It <strong>validates</strong> the physical model with experimental data.</li>
-<li>The <strong>linearity</strong> provides evidence for the small-angle approximation.</li>
-<li>Linear regression is used to extract <span class="arithmatex">\(g\)</span> from multiple measurements, reducing the impact of outliers or random error.</li>
-</ul>
 <hr/>
 <h3 id="example-interpretation">🧮 Example Interpretation</h3>
 <p>Let’s say the slope from the linear fit was found to be:</p>
