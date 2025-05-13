@@ -1,103 +1,82 @@
 # Problem 1
-# 📌 Measuring Earth’s Gravitational Acceleration with a Pendulum
+# 📌 Measurement of Earth’s Gravitational Acceleration Using a Simple Pendulum
 
 
-## 🔷 Motivation
+## 🔷 Theoretical Background
 
-The acceleration due to gravity, **$g$**, is a fundamental physical constant that governs the motion of objects and underpins many areas of physics and engineering. A **simple pendulum** offers a time-tested experimental method to determine $g$ through the relationship between its length and period of oscillation.
+The acceleration due to gravity, denoted as $g$, is a fundamental physical constant influencing motion and structure in both classical and modern physics. One of the most reliable classical methods to determine $g$ involves analyzing the motion of a **simple pendulum**.
 
-From the formula:
+The period of a simple pendulum under the small-angle approximation ($\theta < 15^\circ$) is given by:
 
 $$
-T = 2\pi \sqrt{\frac{L}{g}} \Rightarrow g = \frac{4\pi^2 L}{T^2}
+T = 2\pi \sqrt{\frac{L}{g}} \quad \Rightarrow \quad g = \frac{4\pi^2 L}{T^2}
 $$
 
-we can measure the period $T$ and length $L$ to estimate the local gravitational acceleration $g$.
+Where:
+- $T$ is the period of oscillation,
+- $L$ is the length from the suspension point to the center of mass of the bob,
+- $g$ is the local gravitational field strength.
 
 ---
 
-## 🔷 Task
+## 🔷 Experimental Method
 
-- Measure $g$ using a pendulum.
-- Analyze the **uncertainties** in your measurements.
-- Understand how measurement accuracy impacts scientific results.
+### Materials
+- String (1–1.5 m)
+- Rigid support stand
+- Dense bob (e.g., metallic keychain)
+- Ruler or tape measure
+- Stopwatch or timer-enabled device
 
----
+### Procedure
+The pendulum was constructed by suspending a small weight on a string attached to a fixed support. The length $L$ was measured from the suspension point to the bob’s center of mass. Oscillations were initiated by displacing the pendulum to a small angle and releasing it without push.
 
-## 🔷 Procedure
-
-### 1. Materials
-
-- A string (1–1.5 meters long)
-- A small weight (e.g., bag of coins, keychain)
-- Stopwatch or smartphone timer
-- Ruler or measuring tape
+The time for 10 full oscillations ($T_{10}$) was recorded ten times. These readings were used to compute the average period and estimate the local gravitational acceleration.
 
 ---
 
-### 2. Setup
+## 🔷 Uncertainty Analysis
 
-- Suspend the weight from the string and fix the upper end to a stable support.
-- Measure the **length $L$** from the suspension point to the center of mass of the weight.
-
-#### Uncertainty in Length:
-
-If the ruler has a resolution $R$, then the uncertainty is:
+### Length Uncertainty
+The measurement uncertainty in $L$ arises from the resolution of the measuring instrument:
 
 $$
 \Delta L = \frac{R}{2}
 $$
 
----
+Where $R$ is the ruler's resolution (e.g., $R = 1$ cm → $\Delta L = 0.005$ m).
 
-### 3. Data Collection
+### Timing Uncertainty
 
-1. Displace the pendulum by less than $15^\circ$ and release it.
-2. Measure the time for **10 full oscillations**, denoted $T_{10,i}$ for $i = 1$ to $10$.
-3. Repeat this measurement 10 times.
-4. Compute the **mean time** for 10 oscillations:
+From the 10 recorded measurements $T_{10,i}$:
 
-$$
-\bar{T}_{10} = \frac{1}{10} \sum_{i=1}^{10} T_{10,i}
-$$
-
-5. Compute the **standard deviation**:
+- **Mean time for 10 oscillations**:
 
 $$
-\sigma_t = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{10} \left(T_{10,i} - \bar{T}_{10} \right)^2 }
+\bar{T}_{10} = \frac{1}{n} \sum_{i=1}^{n} T_{10,i}
 $$
 
-6. Calculate the **uncertainty in the mean**:
+- **Standard deviation**:
 
 $$
-\Delta T_{10} = \frac{\sigma_t}{\sqrt{n}} \quad \text{where } n = 10
+\sigma_t = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{n} (T_{10,i} - \bar{T}_{10})^2 }
 $$
 
----
+- **Uncertainty in the mean**:
 
-## 🔷 Calculations
+$$
+\Delta T_{10} = \frac{\sigma_t}{\sqrt{n}}
+$$
 
-### 1. Period of One Oscillation
+- **Period of one oscillation** and its uncertainty:
 
 $$
 T = \frac{\bar{T}_{10}}{10}, \quad \Delta T = \frac{\Delta T_{10}}{10}
 $$
 
----
+### Propagation of Uncertainty in $g$
 
-### 2. Gravitational Acceleration
-
-Using the pendulum formula:
-
-$$
-g = \frac{4\pi^2 L}{T^2}
-$$
-
----
-
-### 3. Uncertainty in $g$ (Propagation of Uncertainties)
-
-Apply the uncertainty propagation formula:
+The uncertainty in $g$ due to both length and timing is propagated as:
 
 $$
 \Delta g = g \cdot \sqrt{ \left( \frac{\Delta L}{L} \right)^2 + \left( 2 \cdot \frac{\Delta T}{T} \right)^2 }
@@ -105,39 +84,9 @@ $$
 
 ---
 
-## 🔷 Analysis
+## 🔷 Results
 
-### 1. Comparison with Standard Value
-
-Compare the measured value of $g$ with the known standard:
-
-$$
-g_{\text{measured}} \quad \text{vs} \quad g_{\text{standard}} = 9.81 \ \text{m/s}^2
-$$
-
----
-
-### 2. Discussion Points
-
-- **Effect of Measurement Resolution on $\Delta L$**  
-  A coarser ruler (e.g., 1 cm resolution) results in higher uncertainty:
-  $$
-  \Delta L = 0.005 \ \text{m}
-  $$
-
-- **Timing Variability and Impact on $\Delta T$**  
-  Human reaction time during stopwatch usage introduces random errors, which increase $\sigma_t$ and $\Delta T$.
-
-- **Assumptions and Limitations**:
-  - Small-angle approximation: Valid only for $\theta < 15^\circ$.
-  - Neglects air resistance, friction at the pivot, and mass of the string.
-  - Assumes a rigid, non-stretching string.
-
----
-
-## 🔷 Deliverables
-
-### 📋 Data Table
+### Raw Data Table
 
 | Trial | $T_{10}$ (s) |
 |-------|--------------|
@@ -154,24 +103,44 @@ $$
 
 ---
 
-**Measured Values**
+### Processed Results
 
 - $L = \ldots$ m  
-- $\Delta L = \ldots$ m
-
-**Time Measurements**
-
+- $\Delta L = \ldots$ m  
 - $\bar{T}_{10} = \ldots$ s  
 - $\sigma_t = \ldots$ s  
 - $\Delta T_{10} = \ldots$ s  
-- $T = \bar{T}_{10} / 10 = \ldots$ s  
-- $\Delta T = \Delta T_{10} / 10 = \ldots$ s  
-
-**Final Result**
-
+- $T = \ldots$ s  
+- $\Delta T = \ldots$ s  
 - $g = \ldots$ m/s²  
-- $\Delta g = \ldots$ m/s²
+- $\Delta g = \ldots$ m/s²  
 
+---
+
+## 🔷 Discussion
+
+The experimentally determined value of $g$ can be compared to the accepted standard:
+
+$$
+g_{\text{standard}} = 9.81 \ \text{m/s}^2
+$$
+
+Deviations from this value may arise due to:
+
+- Manual timing errors (human reaction time)
+- Inaccurate length measurements
+- Air resistance and pivot friction
+- Departure from ideal small-angle behavior
+
+The dominant contributions to uncertainty were assessed. If $\Delta T / T$ is significantly larger than $\Delta L / L$, then improvements should focus on timing precision.
+
+---
+
+## 🔷 Conclusion
+
+This experiment demonstrates how a simple apparatus can yield an accurate estimate of Earth’s gravitational acceleration. With careful measurement and uncertainty analysis, even basic equipment can approach high-precision physics. The propagation of error emphasizes how each component (timing, length) influences the final result and reveals the importance of statistical treatment in experimental science.
+
+---
 ---
 ```python
 import numpy as np
@@ -365,13 +334,7 @@ $$
 g = \frac{4\pi^2}{\text{slope}}
 $$
 
----
 
-### ✅ Why This Plot is Impressive:
-
-- It **validates** the physical model with experimental data.
-- The **linearity** provides evidence for the small-angle approximation.
-- Linear regression is used to extract $g$ from multiple measurements, reducing the impact of outliers or random error.
 
 ---
 
